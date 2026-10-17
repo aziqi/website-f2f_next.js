@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Download, Cpu } from "lucide-react";
-import { Reveal, SplitWords } from "@/components/motion/reveal";
+import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { motion } from "framer-motion";
 
@@ -28,14 +28,15 @@ export function Hero() {
               </div>
             </Reveal>
 
-            {/* SplitWords Headline */}
-            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] text-white">
-              <SplitWords text="Pulihkan lahan sawah pasca banjir" />{" "}
-              <span className="text-[#22C55E] drop-shadow-[0_0_30px_rgba(34,197,94,0.35)]">
-                <SplitWords text="berbasis data," delay={0.2} />
-              </span>{" "}
-              <SplitWords text="bukan perkiraan." delay={0.35} />
-            </h1>
+            {/* Main Headline */}
+            <Reveal delay={0.2}>
+              <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-none text-white">
+                Flood<span className="text-[#F58220] drop-shadow-[0_0_35px_rgba(245,130,32,0.45)]">2</span>Food
+              </h1>
+              <p className="mt-4 text-lg sm:text-xl font-semibold text-[#22C55E] tracking-tight">
+                Sistem Cerdas Pemulihan Lahan Sawah Pascabanjir
+              </p>
+            </Reveal>
 
             {/* Lead description */}
             <Reveal delay={0.3}>
@@ -46,7 +47,6 @@ export function Hero() {
               </p>
             </Reveal>
 
-            {/* CTA Buttons */}
             {/* CTA Buttons */}
             <Reveal delay={0.4}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
