@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Cpu, Radio, CheckCircle2 } from "lucide-react";
+import { Download, Cpu } from "lucide-react";
 import { Reveal, SplitWords } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { motion } from "framer-motion";
@@ -78,47 +78,6 @@ export function Hero() {
               </div>
             </Reveal>
 
-            {/* Key Metric Stats Grid: Responsive Deck */}
-            <Reveal delay={0.5} className="w-full mt-12 pt-8 border-t border-[#A7C7B5]/15">
-              {/* Desktop 4-Col Grid / Mobile Horizontal Snap Deck */}
-              <div className="flex md:grid md:grid-cols-4 gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
-                <div className="min-w-[140px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
-                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none">
-                    7
-                  </div>
-                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Parameter Tanah
-                  </div>
-                </div>
-
-                <div className="min-w-[155px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
-                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
-                    10,64 <span className="text-xs font-sans text-[#22C55E]">km</span>
-                  </div>
-                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Jangkauan LoRa
-                  </div>
-                </div>
-
-                <div className="min-w-[155px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
-                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
-                    ≥98<span className="text-xs font-sans text-[#22C55E]">%</span>
-                  </div>
-                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Presisi Sensor
-                  </div>
-                </div>
-
-                <div className="min-w-[140px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
-                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
-                    14 <span className="text-xs font-sans text-[#F58220]">hari</span>
-                  </div>
-                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Uji Tanpa Korosi
-                  </div>
-                </div>
-              </div>
-            </Reveal>
           </div>
 
           {/* Right Column: 3D Mascot "Si Bimo" with Ambient Halo & Interactive Badges */}
@@ -146,29 +105,6 @@ export function Hero() {
                 />
               </motion.div>
 
-              {/* Floating Chip Top-Left: LoRa Antenna Status */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-8 -left-2 sm:-left-6 bg-[#081A10]/95 backdrop-blur-md border border-[#38BDF8]/40 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
-              >
-                <Radio className="w-3.5 h-3.5 text-[#38BDF8] animate-pulse" />
-                <span className="text-[11px] sm:text-xs font-mono font-medium text-white tracking-wide">
-                  LoRa Aktif · 10,64 km
-                </span>
-              </motion.div>
-
-              {/* Floating Chip Bottom-Right: Mascot Si Bimo AI */}
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                className="absolute bottom-6 -right-2 sm:-right-6 bg-[#081A10]/95 backdrop-blur-md border border-[#F58220]/40 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#F58220] animate-ping" />
-                <span className="text-[11px] sm:text-xs font-mono font-semibold text-[#F58220] tracking-wide">
-                  Si Bimo · AI Agronomi
-                </span>
-              </motion.div>
             </Reveal>
           </div>
         </div>
