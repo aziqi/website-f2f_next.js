@@ -9,7 +9,6 @@ import { AppDownload } from "@/components/sections/app-download";
 import { Team } from "@/components/sections/team";
 import { Gallery } from "@/components/sections/gallery";
 import { Faq } from "@/components/sections/faq";
-import { ScrollMotionBlur } from "@/components/motion/scroll-motion-blur";
 import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
@@ -17,7 +16,6 @@ export default function Home() {
     <div className="relative min-h-screen bg-[#081A10] text-[#F4F8F5] selection:bg-[#F58220] selection:text-[#081A10] overflow-x-clip">
       {/* GPU-Composited Fixed Background Layer (Zero paint overhead during scroll) */}
       <div className="bg-canvas-fixed" aria-hidden="true" />
-      <ScrollMotionBlur targetSelector="#main" maxBlur={2.2} sensitivity={0.06} />
       <Navbar />
       <main id="main" className="relative z-10">
         <Hero />
