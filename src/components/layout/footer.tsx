@@ -124,6 +124,11 @@ export function Footer() {
             #TANAH SEHAT, SAWAH KUAT.
           </div>
         </div>
+
+        {/* AI Attribution Note */}
+        <div className="pt-4 text-center text-[11px] font-mono text-white/30 tracking-wider">
+          This website made by AI
+        </div>
       </div>
     </footer>
   );
