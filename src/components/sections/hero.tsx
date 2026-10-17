@@ -49,17 +49,15 @@ export function Hero() {
             <Reveal delay={0.4}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Magnetic strength={0.25}>
-                  <a
-                    href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="#unduh"
                     className="btn-nested bg-gradient-to-r from-[#F58220] via-[#F58220] to-[#E06D10] text-[#081A10] font-bold text-sm tracking-wide shadow-xl shadow-[#F58220]/25 hover:shadow-[#F58220]/45"
                   >
                     <span>Download APK Flood2Food</span>
                     <span className="btn-nested-icon bg-black/15 text-[#081A10]">
                       <Download className="w-4 h-4 stroke-[2.5]" />
                     </span>
-                  </a>
+                  </Link>
                 </Magnetic>
 
                 <Magnetic strength={0.15}>

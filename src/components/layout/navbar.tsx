@@ -81,17 +81,15 @@ export function Navbar() {
         {/* CTA Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           <Magnetic strength={0.2}>
-            <a
-              href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/#unduh"
               className="btn-nested hidden sm:inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] text-xs font-semibold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25"
             >
               <span>Download APK</span>
               <span className="btn-nested-icon w-6 h-6 bg-black/15">
                 <Download className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
-            </a>
+            </Link>
           </Magnetic>
 
           {/* Mobile Menu Button */}
@@ -127,16 +125,14 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/#unduh"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-3 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#F58220] text-[#081A10] shadow-md shadow-[#F58220]/20"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>Download APK Flood2Food</span>
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

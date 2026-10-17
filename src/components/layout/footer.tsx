@@ -71,17 +71,15 @@ export function Footer() {
           {/* Download & Credentials */}
           <div className="md:col-span-3 space-y-3">
             <div className="font-mono text-white uppercase tracking-wider text-[11px] mb-2">Aplikasi Mobile</div>
-            <a
-              href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/#unduh"
               className="btn-nested inline-flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-semibold bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] transition-all shadow-md group"
             >
               <span>Unduh File APK (.apk)</span>
               <span className="btn-nested-icon w-6 h-6 rounded-lg bg-black/15 flex items-center justify-center">
                 <Download className="w-3.5 h-3.5 stroke-[2.5]" />
               </span>
-            </a>
+            </Link>
             <p className="text-[11px] text-[#A3C2AF] leading-snug">
               Terakreditasi laboratorium penguji BPTP Sumut (KAN LP-863-IDN). Hak cipta software &amp; desain sistem terdaftar.
             </p>
