@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Reveal } from "@/components/motion/reveal";
-import { Smartphone, LayoutDashboard, CheckSquare, MessageSquare, Bluetooth, MapPin, Database, Download } from "lucide-react";
+import { Smartphone, LayoutDashboard, CheckSquare, MessageSquare, Bluetooth, MapPin, Database } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const screens = [
@@ -134,28 +134,6 @@ export function AppShowcase() {
                   </motion.div>
                 </AnimatePresence>
               </div>
-            </div>
-
-            {/* Feature Description Card on Mobile */}
-            <div className="w-full p-5 rounded-2xl bg-[#0F2E1B]/80 border border-white/10 text-center mb-6">
-              <h3 className="font-display font-bold text-lg text-white mb-1">
-                {activeScreen.title}
-              </h3>
-              <div className="text-xs font-mono text-[#F58220] mb-2">{activeScreen.subtitle}</div>
-              <p className="text-xs text-[#A3C2AF] leading-relaxed mb-4">
-                {activeScreen.description}
-              </p>
-              <a
-                href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-nested bg-[#F58220] text-[#081A10] text-xs font-bold py-2 px-4 shadow-lg shadow-[#F58220]/20"
-              >
-                <span>Unduh File APK (.apk)</span>
-                <span className="btn-nested-icon w-6 h-6 bg-black/15">
-                  <Download className="w-3.5 h-3.5 stroke-[2.5]" />
-                </span>
-              </a>
             </div>
           </div>
         </div>
