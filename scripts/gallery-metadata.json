@@ -1,0 +1,222 @@
+[
+  {
+    "id": 1,
+    "originalFile": "FullSizeRender.HEIC",
+    "optimizedFile": "gallery-01.webp",
+    "width": 900,
+    "height": 1600,
+    "originalKB": "1122.2",
+    "optimizedKB": "166.1",
+    "savings": "85.2%"
+  },
+  {
+    "id": 2,
+    "originalFile": "IMG_5018.JPG",
+    "optimizedFile": "gallery-02.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2519.4",
+    "optimizedKB": "186.9",
+    "savings": "92.6%"
+  },
+  {
+    "id": 3,
+    "originalFile": "IMG_5317.JPG",
+    "optimizedFile": "gallery-03.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "3120.2",
+    "optimizedKB": "411.7",
+    "savings": "86.8%"
+  },
+  {
+    "id": 4,
+    "originalFile": "IMG_5318.JPG",
+    "optimizedFile": "gallery-04.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "3688.4",
+    "optimizedKB": "501.8",
+    "savings": "86.4%"
+  },
+  {
+    "id": 5,
+    "originalFile": "IMG_5325.JPG",
+    "optimizedFile": "gallery-05.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2630.3",
+    "optimizedKB": "296.6",
+    "savings": "88.7%"
+  },
+  {
+    "id": 6,
+    "originalFile": "IMG_5332.jpg",
+    "optimizedFile": "gallery-06.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "2301.4",
+    "optimizedKB": "107.7",
+    "savings": "95.3%"
+  },
+  {
+    "id": 7,
+    "originalFile": "IMG_5470.jpg",
+    "optimizedFile": "gallery-07.webp",
+    "width": 900,
+    "height": 1600,
+    "originalKB": "2865.1",
+    "optimizedKB": "283.1",
+    "savings": "90.1%"
+  },
+  {
+    "id": 8,
+    "originalFile": "IMG_5563.JPG",
+    "optimizedFile": "gallery-08.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2172.6",
+    "optimizedKB": "123.3",
+    "savings": "94.3%"
+  },
+  {
+    "id": 9,
+    "originalFile": "IMG_5572.JPG",
+    "optimizedFile": "gallery-09.webp",
+    "width": 1600,
+    "height": 1200,
+    "originalKB": "3292.0",
+    "optimizedKB": "283.8",
+    "savings": "91.4%"
+  },
+  {
+    "id": 10,
+    "originalFile": "IMG_5585.jpg",
+    "optimizedFile": "gallery-10.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "2014.4",
+    "optimizedKB": "143.8",
+    "savings": "92.9%"
+  },
+  {
+    "id": 11,
+    "originalFile": "IMG_5703.JPG",
+    "optimizedFile": "gallery-11.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "4780.8",
+    "optimizedKB": "664.7",
+    "savings": "86.1%"
+  },
+  {
+    "id": 12,
+    "originalFile": "IMG_5704.JPG",
+    "optimizedFile": "gallery-12.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2738.8",
+    "optimizedKB": "297.8",
+    "savings": "89.1%"
+  },
+  {
+    "id": 13,
+    "originalFile": "IMG_5714.JPG",
+    "optimizedFile": "gallery-13.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "3094.7",
+    "optimizedKB": "322.3",
+    "savings": "89.6%"
+  },
+  {
+    "id": 14,
+    "originalFile": "IMG_5718.jpg",
+    "optimizedFile": "gallery-14.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "3002.3",
+    "optimizedKB": "291.7",
+    "savings": "90.3%"
+  },
+  {
+    "id": 15,
+    "originalFile": "IMG_5719.jpg",
+    "optimizedFile": "gallery-15.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "2989.0",
+    "optimizedKB": "288.5",
+    "savings": "90.3%"
+  },
+  {
+    "id": 16,
+    "originalFile": "IMG_5748.jpg",
+    "optimizedFile": "gallery-16.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "2633.9",
+    "optimizedKB": "239.9",
+    "savings": "90.9%"
+  },
+  {
+    "id": 17,
+    "originalFile": "IMG_5971.JPG",
+    "optimizedFile": "gallery-17.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "4177.6",
+    "optimizedKB": "484.5",
+    "savings": "88.4%"
+  },
+  {
+    "id": 18,
+    "originalFile": "IMG_6011.JPG",
+    "optimizedFile": "gallery-18.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2467.5",
+    "optimizedKB": "195.7",
+    "savings": "92.1%"
+  },
+  {
+    "id": 19,
+    "originalFile": "IMG_6089.JPG",
+    "optimizedFile": "gallery-19.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "1509.5",
+    "optimizedKB": "113.7",
+    "savings": "92.5%"
+  },
+  {
+    "id": 20,
+    "originalFile": "IMG_6097.jpg",
+    "optimizedFile": "gallery-20.webp",
+    "width": 1600,
+    "height": 900,
+    "originalKB": "2216.9",
+    "optimizedKB": "119.7",
+    "savings": "94.6%"
+  },
+  {
+    "id": 21,
+    "originalFile": "IMG_6113.jpg",
+    "optimizedFile": "gallery-21.webp",
+    "width": 900,
+    "height": 1600,
+    "originalKB": "1792.7",
+    "optimizedKB": "89.0",
+    "savings": "95.0%"
+  },
+  {
+    "id": 22,
+    "originalFile": "IMG_6134.JPG",
+    "optimizedFile": "gallery-22.webp",
+    "width": 1200,
+    "height": 1600,
+    "originalKB": "2558.1",
+    "optimizedKB": "263.4",
+    "savings": "89.7%"
+  }
+]
