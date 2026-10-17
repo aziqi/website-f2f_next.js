@@ -1,0 +1,17 @@
+{
+  "name": "Flood2Food — Sistem Cerdas Pemulihan Lahan Sawah Pasca Banjir",
+  "short_name": "Flood2Food",
+  "description": "Command Center & Landing Page Resmi Sistem IoT Pemulihan Lahan Sawah Pasca Banjir PKM-KC USU 2026",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050D09",
+  "theme_color": "#050D09",
+  "icons": [
+    {
+      "src": "assets/mascot/bimo-avatar.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
