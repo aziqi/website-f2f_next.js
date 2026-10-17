@@ -63,11 +63,6 @@ export function IotSystem() {
                   </li>
                 </ul>
               </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#A3C2AF]">
-                <span>Status Daya: Mandiri Solar</span>
-                <span className="text-[#22C55E] font-bold">Transmisi: LoRa TX</span>
-              </div>
             </div>
           </Reveal>
 
@@ -108,11 +103,6 @@ export function IotSystem() {
                   </li>
                 </ul>
               </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#A3C2AF]">
-                <span>Pencadangan: MicroSD Offline</span>
-                <span className="text-[#F58220] font-bold">Bridge: LoRa ↔ BLE</span>
-              </div>
             </div>
           </Reveal>
 
@@ -152,11 +142,6 @@ export function IotSystem() {
                     <span><strong>Gamifikasi:</strong> Misi Harian Remediasi, Poin XP &amp; Riwayat Lapangan</span>
                   </li>
                 </ul>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#A3C2AF]">
-                <span>Database: Offline SQLite</span>
-                <span className="text-[#38BDF8] font-bold">Engine: TinyML</span>
               </div>
             </div>
           </Reveal>
