@@ -29,14 +29,12 @@ export function Hero() {
             </Reveal>
 
             {/* Main Headline */}
-            <Reveal delay={0.2}>
-              <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-none text-white">
-                Flood<span className="text-[#F58220] drop-shadow-[0_0_35px_rgba(245,130,32,0.45)]">2</span>Food
-              </h1>
-              <p className="mt-4 text-lg sm:text-xl font-semibold text-[#22C55E] tracking-tight">
-                Sistem Cerdas Pemulihan Lahan Sawah Pascabanjir
-              </p>
-            </Reveal>
+            <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-none text-white">
+              Flood<span className="text-[#F58220] drop-shadow-[0_0_35px_rgba(245,130,32,0.45)]">2</span>Food
+            </h1>
+            <p className="mt-4 text-lg sm:text-xl font-semibold text-[#22C55E] tracking-tight">
+              Sistem Cerdas Pemulihan Lahan Sawah Pascabanjir
+            </p>
 
             {/* Lead description */}
             <Reveal delay={0.3}>
