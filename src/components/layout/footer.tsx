@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { Download, Github, ExternalLink } from "lucide-react";
 
 const sponsors = [
   { name: "Kemendiktisaintek", src: "/assets/logos/kemendiktisaintek.png", width: 36, height: 36 },
@@ -40,9 +40,24 @@ export function Footer() {
               Sistem Cerdas Pemantauan &amp; Percepatan Pemulihan Lahan Sawah Pascabanjir Berbasis Sensor Fusion 7-in-1,
               Transmisi LoRa Jarak Jauh, dan Kecerdasan Buatan AI Tanya Bimo.
             </p>
-            <div className="text-xs font-mono text-[#22C55E]">
-              Program Kreativitas Mahasiswa — Karsa Cipta (PKM-KC) 2026<br />
-              Universitas Sumatera Utara (USU)
+            <div className="flex flex-col gap-2">
+              <div className="text-xs font-mono text-[#22C55E]">
+                Program Kreativitas Mahasiswa — Karsa Cipta (PKM-KC) 2026<br />
+                Universitas Sumatera Utara (USU)
+              </div>
+              <div>
+                <a
+                  href="https://github.com/aziqi/Flood2Food"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-white hover:border-[#22C55E]/40 hover:bg-white/10 transition-all"
+                  title="Repositori Resmi Flood2Food di GitHub"
+                >
+                  <Github className="w-3.5 h-3.5 text-[#22C55E]" />
+                  <span>github.com/aziqi/Flood2Food</span>
+                  <ExternalLink className="w-3 h-3 text-[#A3C2AF]" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -63,7 +78,17 @@ export function Footer() {
                 <li><Link href="/#tim" className="hover:text-white transition-colors">Tim Peneliti</Link></li>
                 <li><Link href="/#galeri" className="text-[#22C55E] hover:text-[#4ade80] font-medium transition-colors">Galeri Dokumentasi</Link></li>
                 <li><Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link></li>
-                <li><Link href="/#mitra" className="hover:text-white transition-colors">Mitra Resmi</Link></li>
+                <li>
+                  <a
+                    href="https://github.com/aziqi/Flood2Food"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[#F58220] hover:text-[#ea7310] font-medium transition-colors"
+                  >
+                    <Github className="w-3.5 h-3.5" />
+                    <span>GitHub Repository</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

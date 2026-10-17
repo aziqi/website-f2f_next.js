@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Menu, X } from "lucide-react";
+import { Download, Menu, X, Github } from "lucide-react";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -89,6 +89,18 @@ export function Navbar() {
             <Download className="w-4 h-4 stroke-[2.5]" />
           </Link>
 
+          {/* GitHub Repository Link Button */}
+          <a
+            href="https://github.com/aziqi/Flood2Food"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/15 border border-white/15 text-[#A3C2AF] hover:text-white flex items-center justify-center transition-all shrink-0"
+            aria-label="Repository GitHub Flood2Food"
+            title="GitHub: aziqi/Flood2Food"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+
           {/* Tablet & Desktop Full Download Button */}
           <div className="hidden sm:block">
             <Magnetic strength={0.2}>
@@ -137,10 +149,20 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="https://github.com/aziqi/Flood2Food"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-colors"
+              >
+                <Github className="w-4 h-4" />
+                <span>GitHub: aziqi/Flood2Food</span>
+              </a>
               <Link
                 href="/#unduh"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-3 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#F58220] text-[#081A10] shadow-md shadow-[#F58220]/20"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#F58220] text-[#081A10] shadow-md shadow-[#F58220]/20"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>Download APK Flood2Food</span>

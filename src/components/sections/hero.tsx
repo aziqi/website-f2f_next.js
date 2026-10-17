@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Cpu } from "lucide-react";
+import { Download, Cpu, Github } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { motion } from "framer-motion";
@@ -70,6 +70,21 @@ export function Hero() {
                       <Cpu className="w-4 h-4" />
                     </span>
                   </Link>
+                </Magnetic>
+
+                <Magnetic strength={0.15}>
+                  <a
+                    href="https://github.com/aziqi/Flood2Food"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-nested bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/30 text-sm font-semibold"
+                    title="Lihat Repositori Resmi di GitHub"
+                  >
+                    <span>GitHub</span>
+                    <span className="btn-nested-icon bg-white/10 text-white">
+                      <Github className="w-4 h-4" />
+                    </span>
+                  </a>
                 </Magnetic>
               </div>
             </Reveal>

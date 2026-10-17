@@ -16,6 +16,7 @@ import {
   Sparkles,
   ExternalLink,
   Cpu,
+  Github,
 } from "lucide-react";
 
 const APK_DOWNLOAD_URL =
@@ -158,6 +159,17 @@ export function AppDownload() {
                         </>
                       )}
                     </button>
+
+                    <a
+                      href="https://github.com/aziqi/Flood2Food"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-md"
+                      title="Lihat Repositori Resmi di GitHub"
+                    >
+                      <Github className="w-4 h-4 text-[#A3C2AF]" />
+                      <span>Source Code GitHub</span>
+                    </a>
                   </div>
                 </div>
 
