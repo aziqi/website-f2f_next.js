@@ -657,25 +657,154 @@ code, kbd, samp, .mono {
   display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
 }
 .member-card {
-  background: var(--soil-2); border: var(--border);
-  border-radius: var(--radius-lg); padding: 20px 16px;
+  position: relative;
+  background: var(--soil-2);
+  border: 1px solid rgba(167, 199, 181, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 24px 14px 18px;
   text-align: center;
-  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+  overflow: hidden;
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.member-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--card-accent, var(--emerald));
 }
 .member-card:hover {
-  transform: translateY(-4px); border-color: rgba(34, 197, 94, 0.35);
+  transform: translateY(-6px);
 }
-.member-name { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-.member-nim { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted-2); margin-bottom: 6px; }
-.member-prodi { font-size: 0.82rem; color: var(--muted-1); margin-bottom: 12px; }
+
+.member-avatar {
+  width: 50px; height: 50px; border-radius: 50%;
+  margin-bottom: 12px;
+  display: grid; place-items: center;
+  font-size: 0.95rem; font-weight: 800; font-family: var(--font-mono);
+  background: var(--card-bg, rgba(34, 197, 94, 0.1));
+  color: var(--card-accent, var(--emerald));
+  border: 2px solid var(--card-accent, var(--emerald));
+  box-shadow: 0 0 16px var(--card-glow, rgba(34, 197, 94, 0.2));
+  transition: transform 0.25s var(--ease);
+}
+.member-card:hover .member-avatar {
+  transform: scale(1.1);
+}
+
+.member-name {
+  font-size: 0.98rem; font-weight: 700; color: var(--text);
+  margin-bottom: 3px; line-height: 1.25;
+}
+.member-nim {
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted-2);
+  margin-bottom: 4px;
+}
+.member-prodi {
+  font-size: 0.78rem; color: var(--muted-1); margin-bottom: 12px;
+  line-height: 1.3;
+}
 .member-role {
-  font-size: 0.74rem; font-weight: 700; padding: 4px 10px;
-  border-radius: var(--radius-pill); display: inline-block;
-  letter-spacing: 0.04em;
+  font-size: 0.72rem; font-weight: 700; padding: 4px 10px;
+  border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 4px;
+  letter-spacing: 0.03em; margin-bottom: 10px;
 }
-.role--software { background: rgba(56, 189, 248, 0.12); color: var(--sky); border: 1px solid rgba(56, 189, 248, 0.3); }
-.role--hardware { background: rgba(220, 243, 74, 0.12); color: var(--lime); border: 1px solid rgba(220, 243, 74, 0.3); }
-.role--member { background: rgba(167, 199, 181, 0.08); color: var(--muted-1); border: 1px solid rgba(167, 199, 181, 0.18); }
+.member-focus {
+  font-size: 0.74rem; color: var(--muted-2); line-height: 1.35;
+  margin-top: auto; padding-top: 10px;
+  border-top: 1px dashed rgba(167, 199, 181, 0.12);
+  width: 100%;
+}
+
+/* 1. Ketua Tim (Syakirah Fathanah): Emerald Royale & Gold */
+.member-card--lead {
+  --card-accent: #22C55E;
+  --card-bg: rgba(34, 197, 94, 0.12);
+  --card-glow: rgba(34, 197, 94, 0.35);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.08) 0%, rgba(16, 28, 21, 0.9) 60%);
+  border-color: rgba(34, 197, 94, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(34, 197, 94, 0.12);
+}
+.member-card--lead:hover {
+  border-color: #22C55E;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 32px rgba(34, 197, 94, 0.3);
+}
+.role--lead {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(234, 179, 8, 0.25));
+  color: #4ADE80; border: 1px solid rgba(234, 179, 8, 0.5); font-weight: 800;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+}
+
+/* 2. Software Lead (Athallah M. Maajid): Cyber Sky Blue */
+.member-card--software {
+  --card-accent: #38BDF8;
+  --card-bg: rgba(56, 189, 248, 0.12);
+  --card-glow: rgba(56, 189, 248, 0.3);
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.06) 0%, rgba(13, 24, 33, 0.9) 60%);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(56, 189, 248, 0.1);
+}
+.member-card--software:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 32px rgba(56, 189, 248, 0.25);
+}
+.role--software {
+  background: rgba(56, 189, 248, 0.15); color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+/* 3. Hardware Lead (Aziqi Arifian Dova): Electric Cyber Lime */
+.member-card--hardware {
+  --card-accent: #DCF34A;
+  --card-bg: rgba(220, 243, 74, 0.12);
+  --card-glow: rgba(220, 243, 74, 0.3);
+  background: linear-gradient(180deg, rgba(220, 243, 74, 0.06) 0%, rgba(20, 26, 14, 0.9) 60%);
+  border-color: rgba(220, 243, 74, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(220, 243, 74, 0.1);
+}
+.member-card--hardware:hover {
+  border-color: #DCF34A;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 32px rgba(220, 243, 74, 0.25);
+}
+.role--hardware {
+  background: rgba(220, 243, 74, 0.15); color: #DCF34A;
+  border: 1px solid rgba(220, 243, 74, 0.4);
+}
+
+/* 4. Agronomi & Mutu Pangan (M. Ghozi Muzakki): Sunset Amber */
+.member-card--food {
+  --card-accent: #FB923C;
+  --card-bg: rgba(251, 146, 60, 0.12);
+  --card-glow: rgba(251, 146, 60, 0.3);
+  background: linear-gradient(180deg, rgba(251, 146, 60, 0.06) 0%, rgba(28, 18, 12, 0.9) 60%);
+  border-color: rgba(251, 146, 60, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(251, 146, 60, 0.1);
+}
+.member-card--food:hover {
+  border-color: #FB923C;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 32px rgba(251, 146, 60, 0.25);
+}
+.role--food {
+  background: rgba(251, 146, 60, 0.15); color: #FB923C;
+  border: 1px solid rgba(251, 146, 60, 0.4);
+}
+
+/* 5. Riset Ekologi Tanah (Isrok Tenggar Martua): Bio-Violet */
+.member-card--bio {
+  --card-accent: #C084FC;
+  --card-bg: rgba(192, 132, 252, 0.12);
+  --card-glow: rgba(192, 132, 252, 0.3);
+  background: linear-gradient(180deg, rgba(192, 132, 252, 0.06) 0%, rgba(24, 15, 30, 0.9) 60%);
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(192, 132, 252, 0.1);
+}
+.member-card--bio:hover {
+  border-color: #C084FC;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 32px rgba(192, 132, 252, 0.25);
+}
+.role--bio {
+  background: rgba(192, 132, 252, 0.15); color: #C084FC;
+  border: 1px solid rgba(192, 132, 252, 0.4);
+}
 
 .advisor-card {
   margin-top: 24px; background: var(--soil-3);
@@ -823,6 +952,7 @@ code, kbd, samp, .mono {
   .hero__stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   .sim-grid { grid-template-columns: 1fr; }
+  .team-members-grid { grid-template-columns: repeat(2, 1fr); }
 
   .download-box { grid-template-columns: 1fr; }
   .proto-grid { grid-template-columns: 1fr; }
