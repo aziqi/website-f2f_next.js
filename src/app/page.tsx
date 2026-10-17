@@ -2,7 +2,6 @@ import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
 import { SponsorsBar } from "@/components/sections/sponsors-bar";
 import { VideoDemo } from "@/components/sections/video-demo";
-import { SoilProblems } from "@/components/sections/soil-problems";
 import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
 import { AppShowcase } from "@/components/sections/app-showcase";
@@ -18,7 +17,6 @@ export default function Home() {
         <Hero />
         <SponsorsBar />
         <VideoDemo />
-        <SoilProblems />
         <IotSystem />
         <Parameters />
         <AppShowcase />

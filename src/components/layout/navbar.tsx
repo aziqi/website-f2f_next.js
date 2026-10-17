@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
   { href: "#video", label: "Video Demo" },
-  { href: "#masalah", label: "Masalah" },
   { href: "#sistem", label: "Sistem IoT" },
   { href: "#fitur", label: "7 Parameter" },
   { href: "#tampilan", label: "Aplikasi" },

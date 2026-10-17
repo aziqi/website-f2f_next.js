@@ -52,7 +52,6 @@ export function Footer() {
               <div className="font-mono text-white uppercase tracking-wider text-[11px] mb-3">Navigasi</div>
               <ul className="space-y-2">
                 <li><Link href="#video" className="hover:text-white transition-colors">Video Demo</Link></li>
-                <li><Link href="#masalah" className="hover:text-white transition-colors">Masalah Lahan</Link></li>
                 <li><Link href="#sistem" className="hover:text-white transition-colors">Sistem IoT</Link></li>
                 <li><Link href="#fitur" className="hover:text-white transition-colors">7 Parameter</Link></li>
               </ul>
