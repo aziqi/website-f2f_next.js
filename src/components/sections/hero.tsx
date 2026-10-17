@@ -102,10 +102,10 @@ export function Hero() {
 
                 <div className="min-w-[155px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
                   <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
-                    ≤5<span className="text-xs font-sans text-[#22C55E]">%</span>
+                    ≥98<span className="text-xs font-sans text-[#22C55E]">%</span>
                   </div>
                   <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Maks. Galat BPTP
+                    Presisi Sensor
                   </div>
                 </div>
 
@@ -121,45 +121,52 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* Right Column: 3D Mockup with Floating Telemetry Chips */}
-          <div className="lg:col-span-5 flex justify-center relative mt-6 lg:mt-0">
-            <Reveal delay={0.25} className="relative w-[280px] sm:w-[320px]">
-              {/* Glow Aura */}
-              <div className="absolute inset-0 bg-[#22C55E]/15 rounded-[44px] blur-2xl transform scale-95" />
+          {/* Right Column: 3D Mascot "Si Bimo" with Ambient Halo & Interactive Badges */}
+          <div className="lg:col-span-5 flex justify-center items-center relative mt-8 lg:mt-0">
+            <Reveal delay={0.25} className="relative w-[300px] sm:w-[360px] lg:w-[410px] flex flex-col items-center">
+              {/* Dual Glow Ambient Aura (Emerald + Solar Marigold) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] h-[340px] sm:h-[400px] bg-gradient-to-tr from-[#22C55E]/20 via-[#F58220]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-              {/* Phone Case */}
-              <div className="relative rounded-[44px] border-[10px] border-[#122b1c] bg-black overflow-hidden shadow-2xl shadow-black/80 ring-1 ring-white/10">
+              {/* Floating Pedestal Ground Shadow */}
+              <div className="absolute -bottom-3 w-48 sm:w-64 h-8 bg-black/60 rounded-full blur-md" />
+
+              {/* Mascot Animated Floating Container */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10 w-full"
+              >
                 <Image
-                  src="/assets/screens/02_dashboard_screen.png"
-                  alt="Dashboard Aplikasi Flood2Food: Telemetri dan Status Kesehatan Tanah"
-                  width={320}
-                  height={693}
-                  className="w-full h-auto block"
+                  src="/assets/mascot/cheerful-buffalo-mascot.png"
+                  alt="Maskot Si Bimo Flood2Food: Kerbau Cerdas Bertenaga Surya dan Kecerdasan Buatan Agronomi"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)] select-none pointer-events-none"
                   priority
                 />
-              </div>
+              </motion.div>
 
-              {/* Floating Chip Top: LoRa Status */}
+              {/* Floating Chip Top-Left: LoRa Antenna Status */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-3 left-0 sm:-left-8 bg-[#081A10]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-8 -left-2 sm:-left-6 bg-[#081A10]/95 backdrop-blur-md border border-[#38BDF8]/40 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
               >
                 <Radio className="w-3.5 h-3.5 text-[#38BDF8] animate-pulse" />
-                <span className="text-[11px] sm:text-xs font-medium text-white tracking-wide">
+                <span className="text-[11px] sm:text-xs font-mono font-medium text-white tracking-wide">
                   LoRa Aktif · 10,64 km
                 </span>
               </motion.div>
 
-              {/* Floating Chip Bottom: BPTP Error Rate */}
+              {/* Floating Chip Bottom-Right: Mascot Si Bimo AI */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-3 right-0 sm:-right-8 bg-[#081A10]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                className="absolute bottom-6 -right-2 sm:-right-6 bg-[#081A10]/95 backdrop-blur-md border border-[#F58220]/40 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
               >
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#22C55E]" />
-                <span className="text-[11px] sm:text-xs font-medium text-white tracking-wide">
-                  Galat Ukur ≤5% BPTP
+                <span className="w-2 h-2 rounded-full bg-[#F58220] animate-ping" />
+                <span className="text-[11px] sm:text-xs font-mono font-semibold text-[#F58220] tracking-wide">
+                  Si Bimo · AI Agronomi
                 </span>
               </motion.div>
             </Reveal>
