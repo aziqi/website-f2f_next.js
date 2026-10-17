@@ -56,6 +56,18 @@
     el.style.setProperty('--d', String(d));
   });
 
+  function checkReveals() {
+    var vh = window.innerHeight || 900;
+    revealEls.forEach(function (el) {
+      if (!el.classList.contains('is-in')) {
+        var r = el.getBoundingClientRect();
+        if (r.top < vh + 400 && r.bottom > -400) {
+          el.classList.add('is-in');
+        }
+      }
+    });
+  }
+
   if (reduceMotion || !('IntersectionObserver' in window)) {
     revealEls.forEach(function (el) { el.classList.add('is-in'); });
   } else {
@@ -66,8 +78,10 @@
           revealObs.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '120px 0px 120px 0px', threshold: 0.01 });
+    }, { rootMargin: '400px 0px 400px 0px', threshold: 0 });
     revealEls.forEach(function (el) { revealObs.observe(el); });
+    checkReveals();
+    window.addEventListener('scroll', checkReveals, { passive: true });
   }
 
   /* ---------- 4. Animated Numerical Stat Counters ---------- */
