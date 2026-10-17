@@ -16,7 +16,6 @@ import {
   Sparkles,
   ExternalLink,
   Cpu,
-  Layers,
 } from "lucide-react";
 
 const APK_DOWNLOAD_URL =
@@ -107,10 +106,6 @@ export function AppDownload() {
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#22C55E]/15 text-[#22C55E] border border-[#22C55E]/30">
                       <Cpu className="w-3.5 h-3.5" />
                       v1.0.4 Release
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-white/10 text-[#F4F8F5] border border-white/15">
-                      <Layers className="w-3.5 h-3.5 text-[#F58220]" />
-                      ~28.4 MB (.apk)
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#F58220]/15 text-[#F58220] border border-[#F58220]/30">
                       <Smartphone className="w-3.5 h-3.5" />
