@@ -752,11 +752,14 @@ code, kbd, samp, .mono {
   margin-bottom: 36px;
 }
 .team-group-img-wrap {
-  width: 100%; position: relative; background: #fff;
-  border-bottom: 1px solid rgba(167, 199, 181, 0.14);
+  width: 100%; position: relative;
+  background: radial-gradient(ellipse 80% 65% at 50% 70%, rgba(34, 197, 94, 0.16) 0%, rgba(10, 16, 13, 0.95) 75%);
+  padding: 36px 20px 0;
+  display: flex; justify-content: center;
 }
 .team-group-img-wrap img {
-  width: 100%; height: auto; display: block;
+  width: 100%; max-width: 1020px; height: auto; display: block;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
 }
 
 .team-members-grid {
@@ -884,9 +887,13 @@ code, kbd, samp, .mono {
 }
 
 .sticky-cta {
+  display: none;
   position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 90;
   transform: translateY(140%); transition: transform 0.3s var(--ease);
   pointer-events: none;
+}
+@media (max-width: 640px) {
+  .sticky-cta { display: block; }
 }
 .sticky-cta.is-visible { transform: translateY(0); pointer-events: auto; }
 .sticky-cta .btn { box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8); }
