@@ -26,11 +26,6 @@ const faqs = [
     answer:
       "Ya, 100% offline-first. Gateway terhubung langsung ke smartphone petani melalui Bluetooth Low Energy (BLE). Seluruh basis pengetahuan agronomi dan kalkulasi dosis remediasi pupuk diproses langsung di perangkat (on-device engine) tanpa memerlukan sinyal internet.",
   },
-  {
-    question: "Bagaimana akurasi rekomendasi dosis pupuk dan kapur dihitung?",
-    answer:
-      "Perhitungan mengadopsi model keseimbangan hara berbasis kalibrasi BPTP Sumatera Utara. AI Tanya Bimo menganalisis selisih nilai aktual tanah terhadap batas kritis hara (Critical Level) dengan memperhitungkan faktor kejenuhan basa dan kapasitas tukar kation (KTK).",
-  },
 ];
 
 export function Faq() {
