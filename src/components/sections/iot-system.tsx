@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Reveal } from "@/components/motion/reveal";
-import { Cpu, Radio, Smartphone, Zap, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Cpu, Radio, Smartphone, Zap, ArrowRight, ShieldCheck } from "lucide-react";
 
 export function IotSystem() {
   return (
@@ -23,19 +23,6 @@ export function IotSystem() {
           </p>
         </Reveal>
 
-        {/* Transmission Overview Banner */}
-        <Reveal delay={0.1} className="mb-10 p-4 sm:p-5 rounded-2xl bg-black/40 border border-[#22C55E]/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-[#22C55E] animate-ping" />
-            <span className="font-mono text-xs sm:text-sm text-white font-semibold">
-              Protokol LoRa E220-900T22D (915 MHz) · Jarak Uji Nyata 10,64 km Tanpa Blank Spot
-            </span>
-          </div>
-          <div className="flex items-center gap-2 font-mono text-xs text-[#22C55E] bg-[#22C55E]/10 px-3 py-1.5 rounded-full border border-[#22C55E]/20">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Terverifikasi di Pagar Merbau II</span>
-          </div>
-        </Reveal>
 
         {/* Engineering Schematic Pipeline (Desktop 3-Node Connected / Mobile Vertical Step Journey) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 relative">
