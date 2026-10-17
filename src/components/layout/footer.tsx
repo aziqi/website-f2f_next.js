@@ -88,20 +88,25 @@ export function Footer() {
         </div>
 
         {/* Institutional Sponsor Ribbon in Footer */}
-        <div className="py-8 border-b border-[#A7C7B5]/10 flex flex-col items-center gap-4 text-center">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#A3C2AF]">
-            Didukung &amp; Dibiayai Secara Resmi Oleh:
-          </span>
-          <div className="w-full max-w-4xl bg-white rounded-xl py-2.5 px-6 shadow-lg border border-white/20">
-            <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4">
+        <div className="py-10 border-b border-[#A7C7B5]/15 flex flex-col items-center gap-4 text-center">
+          <div className="flex items-center gap-3">
+            <span className="w-8 h-0.5 bg-[#22C55E]/50 rounded-full" />
+            <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[#22C55E]">
+              Didukung &amp; Dibiayai Secara Resmi Oleh
+            </span>
+            <span className="w-8 h-0.5 bg-[#22C55E]/50 rounded-full" />
+          </div>
+          <div className="w-full max-w-5xl bg-white rounded-2xl py-6 px-6 sm:px-10 shadow-xl border border-white/40 ring-1 ring-black/5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-items-center">
               {sponsors.map((item) => (
-                <div key={item.name} className="relative select-none hover:scale-105 transition-transform">
+                <div key={item.name} className="relative select-none hover:scale-105 transition-transform flex items-center justify-center w-full h-11 sm:h-12 px-2">
                   <Image
                     src={item.src}
                     alt={item.name}
                     width={item.width}
                     height={item.height}
-                    className="h-7 w-auto object-contain filter drop-shadow-sm"
+                    className="max-h-9 sm:max-h-11 max-w-[88%] w-auto object-contain filter drop-shadow-sm transition-all"
+                    style={{ width: "auto", height: "auto" }}
                     loading="lazy"
                   />
                 </div>
