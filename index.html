@@ -5,35 +5,40 @@
 <script>document.documentElement.classList.add('has-js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flood2Food — Sistem Cerdas Pemulihan Lahan Sawah Pasca Banjir</title>
-<meta name="description" content="Flood2Food membaca 7 parameter tanah (N, P, K, pH, suhu, kelembapan, EC) tanpa sinyal seluler lewat LoRa, lengkap dengan AI Tanya Bimo dan gamifikasi misi harian. Unduh aplikasi Android-nya.">
-<meta name="theme-color" content="#0A100D">
-<meta property="og:title" content="Flood2Food — Dari Perkiraan menuju Data">
-<meta property="og:description" content="Sensor fusion 7-in-1, transmisi LoRa 10,64 km tanpa sinyal seluler, dan rekomendasi remediasi berbasis AI. Prototipe teruji 14 hari di lapangan.">
+<meta name="description" content="Flood2Food membaca 7 parameter tanah (N, P, K, pH, suhu, kelembapan, EC) tanpa sinyal seluler lewat LoRa, lengkap dengan AI Tanya Bimo dan gamifikasi misi harian. Unduh aplikasi Android resmi PKM-KC USU 2026.">
+<meta name="theme-color" content="#050D09">
+<meta property="og:title" content="Flood2Food — Dari Perkiraan Menuju Data Presisi">
+<meta property="og:description" content="Sensor fusion 7-in-1, transmisi LoRa 10,64 km mandiri tanpa sinyal seluler, dan rekomendasi remediasi AI. Teruji 14 hari di persawahan Pagar Merbau II.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A100D'/%3E%3Cpath d='M16 6c4 5 7 8.4 7 12a7 7 0 1 1-14 0c0-3.6 3-7 7-12z' fill='%2322C55E'/%3E%3Cpath d='M16 24c-2.2-1.4-3-3.4-3-5.6 0-1.6.8-3.3 2-5.2' stroke='%230A100D' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050D09'/%3E%3Cpath d='M16 6c4 5 7 8.4 7 12a7 7 0 1 1-14 0c0-3.6 3-7 7-12z' fill='%2322C55E'/%3E%3Cpath d='M16 24c-2.2-1.4-3-3.4-3-5.6 0-1.6.8-3.3 2-5.2' stroke='%23DCF34A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Lompat ke konten utama</a>
 
+<!-- ============ NAVBAR ============ -->
 <header class="nav" id="nav">
   <div class="container nav__inner">
-    <a class="brand" href="#top" aria-label="Flood2Food — beranda">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="9" fill="#0F1F17"/><path d="M16 6c4 5 7 8.4 7 12a7 7 0 1 1-14 0c0-3.6 3-7 7-12z" fill="#22C55E"/><path d="M16 24c-2.2-1.4-3-3.4-3-5.6 0-1.6.8-3.3 2-5.2" stroke="#0A100D" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+    <a class="brand" href="#top" aria-label="Flood2Food — Beranda">
+      <span class="brand__avatar" aria-hidden="true">
+        <img src="assets/mascot/bimo-avatar.png" alt="Maskot BIMO" width="36" height="36">
       </span>
       <span class="brand__name">Flood<span class="brand__accent">2</span>Food</span>
     </a>
 
     <nav class="nav__links" id="nav-menu" aria-label="Navigasi utama">
       <a href="#masalah">Masalah</a>
-      <a href="#sistem">Sistem</a>
-      <a href="#fitur">Fitur</a>
-      <a href="#tampilan">Tampilan</a>
+      <a href="#sistem">Sistem IoT</a>
+      <a href="#fitur">7 Parameter</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#tampilan">Aplikasi</a>
       <a href="#hasil">Hasil Uji</a>
+      <a href="#bimo">Tanya Bimo</a>
+      <a href="#tim">Tim</a>
       <a href="#faq">FAQ</a>
     </nav>
 
@@ -52,23 +57,21 @@
 
 <main id="main">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO: TERMINAL BACA TANAH ============ -->
   <section class="hero" id="top">
-    <div class="hero__glow" aria-hidden="true"></div>
     <div class="container hero__grid">
       <div class="hero__copy">
-        <p class="badge reveal">
-          <span class="badge__dot" aria-hidden="true"></span>
-          PKM-KC 2026 · Prototipe teruji 14 hari di lapangan
-        </p>
+        <div class="badge-pkm reveal">
+          <span class="badge-pkm__dot" aria-hidden="true"></span>
+          PKM-KC 2026 · Prototipe Teruji 14 Hari di Lapangan
+        </div>
         <h1 class="hero__title reveal" data-delay="1">
-          Pulihkan lahan sawah pasca banjir <span class="hl">berbasis data</span>, bukan perkiraan
+          Pulihkan lahan sawah pasca banjir <em>berbasis data</em>, bukan perkiraan
         </h1>
         <p class="hero__lead reveal" data-delay="2">
-          Flood2Food membaca tujuh parameter tanah sekaligus — N, P, K, pH, suhu, kelembapan, dan EC —
-          lewat sensor fusion heavy-duty yang tahan lumpur. Datanya dikirim <strong>tanpa sinyal seluler</strong>
-          lewat LoRa, lalu diterjemahkan menjadi langkah remediasi oleh AI <strong>Tanya Bimo</strong>
-          di aplikasi Android Anda.
+          Flood2Food membaca 7 parameter tanah sekaligus melalui sensor fusion antikorosi tahan lumpur.
+          Datanya dikirimkan <strong>tanpa sinyal seluler</strong> lewat transmisi LoRa sejauh 10,64 km,
+          lalu dianalisis oleh AI <strong>Tanya Bimo</strong> di aplikasi Android untuk menentukan dosis remediasi presisi.
         </p>
 
         <div class="hero__cta reveal" data-delay="3">
@@ -76,13 +79,13 @@
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
             Download APK
           </a>
-          <a class="btn btn--ghost btn--lg" href="#sistem">Lihat cara kerja</a>
+          <a class="btn btn--ghost btn--lg" href="#simulator">Coba Simulator Telemetri</a>
         </div>
 
         <dl class="hero__stats reveal" data-delay="4">
           <div class="stat">
             <dt><span class="stat__num" data-count="7">7</span></dt>
-            <dd>Parameter tanah</dd>
+            <dd>Parameter Tanah</dd>
           </div>
           <div class="stat">
             <dt><span class="stat__num" data-count="10.64" data-decimals="2">10,64</span> <span class="stat__unit">km</span></dt>
@@ -90,478 +93,768 @@
           </div>
           <div class="stat">
             <dt><span class="stat__num" data-count="5">5</span><span class="stat__unit">%</span></dt>
-            <dd>Galat pengukuran</dd>
+            <dd>Maksimum Galat</dd>
           </div>
           <div class="stat">
             <dt><span class="stat__num" data-count="14">14</span> <span class="stat__unit">hari</span></dt>
-            <dd>Uji tanpa korosi</dd>
+            <dd>Uji Tanpa Korosi</dd>
           </div>
         </dl>
       </div>
 
       <div class="hero__visual reveal" data-delay="2">
-        <div class="phone">
-          <div class="phone__frame">
-            <img src="assets/app-4.png" alt="Tangkapan layar dashboard Flood2Food: telemetri real-time dengan indikator kondisi lahan" width="334" height="688" fetchpriority="high">
+        <div class="phone-mockup">
+          <div class="phone-case">
+            <img src="assets/screens/02_dashboard_screen.png" alt="Tampilan Dashboard Flood2Food: Health Score dan Telemetri Real-Time" width="320" height="693" fetchpriority="high">
           </div>
-          <div class="chip chip--float chip--top">
-            <span class="chip__ico" aria-hidden="true">
-              <svg class="ico" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M12 19h.01M2 9a15 15 0 0 1 20 0"/></svg>
-            </span>
-            LoRa aktif · 10,64 km
+          <div class="chip-tag chip-tag--top">
+            <svg class="ico" style="color:var(--sky)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M12 19h.01M2 9a15 15 0 0 1 20 0"/></svg>
+            <span>LoRa Aktif · 10,64 km</span>
           </div>
-          <div class="chip chip--float chip--bottom">
-            <span class="chip__ico chip__ico--ok" aria-hidden="true">
-              <svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            </span>
-            Galat ukur hanya 5%
+          <div class="chip-tag chip-tag--bottom">
+            <svg class="ico" style="color:var(--emerald)" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+            <span>Galat Ukur ≤5% BPTP</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ MASALAH ============ -->
+  <!-- ============ MASALAH: 3 LUKA TANAH ============ -->
   <section class="section" id="masalah">
     <div class="container">
       <div class="section__head reveal">
-        <p class="eyebrow">Masalahnya nyata</p>
-        <h2>Air surut belum berarti lahan siap ditanami</h2>
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Fakta Lapangan</span>
+        <h2>Air surut belum tentu lahan siap ditanami kembali</h2>
         <p class="section__lead">
-          Banjir mengikis topsoil yang kaya unsur hara, memadatkan pori tanah, dan mengubah keseimbangan
-          hara melalui pencucian serta akumulasi residu. Pulihnya lahan harus dipantau — bukan ditebak.
+          Genangan banjir mengikis topsoil humus, memicu deplesi hara makro secara drastis, meningkatkan kemasaman tanah,
+          serta memadatkan rongga aerasi. Penanganan tanpa data menyebabkan risiko gagal panen berulang.
         </p>
       </div>
 
-      <div class="cards cards--3">
-        <article class="card reveal">
-          <div class="card__ico card__ico--red" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M3 18h18M5 18V9l7-5 7 5v9M9 18v-5h6v5"/></svg>
-          </div>
-          <p class="card__kpi">±4.500 ha</p>
-          <h3>Lahan sawah gagal panen</h3>
-          <p>Luas lahan terdampak banjir di wilayah Sumatra. Lahan yang tersisa belum tentu langsung siap ditanami kembali.</p>
+      <div class="cards--3">
+        <article class="card-problem reveal">
+          <svg class="ico problem-kpi--red" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18M5 18V9l7-5 7 5v9M9 18v-5h6v5"/></svg>
+          <div class="problem-kpi problem-kpi--red">±4.500 ha</div>
+          <h3>Lahan Sawah Gagal Panen</h3>
+          <p>Luas sawah terdampak banjir berulang di wilayah Sumatra. Petani sering memaksakan tanam ulang tanpa mengetahui sisa hara di dalam lumpur.</p>
         </article>
 
-        <article class="card reveal" data-delay="1">
-          <div class="card__ico card__ico--amber" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M9 3h6v4H9zM7 7h10l1 13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM12 11v6"/></svg>
-          </div>
-          <p class="card__kpi">30–60 menit</p>
-          <h3>Uji manual per sampel</h3>
-          <p>Penyuluh masih memakai alat konvensional yang rentan korosi, bergantung jaringan seluler, dan tidak berkelanjutan.</p>
+        <article class="card-problem reveal" data-delay="1">
+          <svg class="ico problem-kpi--amber" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4H9zM7 7h10l1 13a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM12 11v6"/></svg>
+          <div class="problem-kpi problem-kpi--amber">30–60 mnt</div>
+          <h3>Uji Manual per Sampel</h3>
+          <p>Alat uji konvensional (soil test kit kimia) butuh 30–60 menit per sampel, memakai reagen sekali pakai, dan rentan salah baca di bawah terik matahari.</p>
         </article>
 
-        <article class="card reveal" data-delay="2">
-          <div class="card__ico card__ico--green" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 9 9"/></svg>
-          </div>
-          <p class="card__kpi">14 hari</p>
-          <h3>Jendela penanganan</h3>
-          <p>Penanganan tanaman sebaiknya dilakukan dalam 14 hari setelah banjir surut — keputusan butuh data cepat dan akurat.</p>
+        <article class="card-problem reveal" data-delay="2">
+          <svg class="ico problem-kpi--sky" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 9 9"/></svg>
+          <div class="problem-kpi problem-kpi--sky">14 Hari</div>
+          <h3>Jendela Emas Remediasi</h3>
+          <p>Masa pemulihan kritis tanah pascabanjir terjadi dalam 14 hari pertama. Keputusan dosis kapur dan pupuk harus presisi agar tanah kembali seimbang.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ SISTEM ============ -->
+  <!-- ============ SISTEM: ARSITEKTUR IOT SAWAH ============ -->
   <section class="section section--alt" id="sistem">
     <div class="container">
       <div class="section__head reveal">
-        <p class="eyebrow">Solusinya</p>
-        <h2>Satu ekosistem, tiga perangkat, nol ketergantungan sinyal</h2>
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Rekayasa Ketahanan</span>
+        <h2>Satu Ekosistem Cerdas, Nol Ketergantungan Sinyal</h2>
         <p class="section__lead">
-          Sensor Node tertanam di lahan, Gateway menerima di pos pemantauan, dan aplikasi Android
-          menyajikannya di gawai Anda — semuanya bekerja di area blank spot.
+          Arsitektur terdistribusi yang dirancang beroperasi 24/7 di tengah sawah dan kawasan pedesaan tanpa jaringan seluler (blank spot).
         </p>
       </div>
 
-      <div class="systems">
-        <article class="sys reveal">
-          <div class="sys__media">
-            <img src="assets/sensor-node.png" alt="Prototipe Sensor Node Flood2Food: kotak panel kedap air pada tiang dengan panel surya di atasnya" width="277" height="608" loading="lazy">
-          </div>
-          <div class="sys__body">
-            <span class="sys__step">01</span>
-            <h3>Sensor Node — stasiun di lahan</h3>
-            <p>Unit mandiri berpanel surya 10 Wp dengan probe heavy-duty tahan lumpur dan kotak panel kedap air.</p>
-            <ul class="ticks">
-              <li>Akuisisi 7 parameter via Modbus RTU, stempel waktu RTC</li>
-              <li>Panel surya + baterai LiFePO4 12V 8Ah, mode Deep Sleep</li>
-              <li>Log data ke MicroSD, konektor Aviation &amp; cable gland PG7</li>
-            </ul>
-          </div>
-        </article>
+      <div class="iot-flow reveal">
+        <!-- Node 1 -->
+        <div class="flow-node">
+          <span class="flow-node__step">Stasiun Lapangan</span>
+          <h3>Sensor Node 7-in-1</h3>
+          <p>Tertanam langsung di lahan sawah berlumpur, bekerja mandiri dengan catu daya surya.</p>
+          <ul class="flow-specs">
+            <li><strong>Probe:</strong> RS485 Modbus RTU Heavy-Duty (GX16)</li>
+            <li><strong>Mikrokontroler:</strong> ESP32 Dual-Core + Deep Sleep</li>
+            <li><strong>Catu Daya:</strong> Panel Surya 10 Wp + LiFePO4 12V 8Ah</li>
+            <li><strong>Redundansi:</strong> MicroSD Logging + RTC DS1307</li>
+          </ul>
+        </div>
 
-        <article class="sys sys--rev reveal">
-          <div class="sys__media">
-            <img src="assets/gateway.png" alt="Prototipe Gateway Flood2Food: konsol portabel dengan layar LCD biru dan tombol" width="294" height="590" loading="lazy">
-          </div>
-          <div class="sys__body">
-            <span class="sys__step">02</span>
-            <h3>Gateway — pusat penerima</h3>
-            <p>Konsol portabel berlayar LCD 20×4 dan tombol tactile di pos pemantauan.</p>
-            <ul class="ticks">
-              <li>Menangkap transmisi LoRa secara non-blocking</li>
-              <li>Pencatatan CSV kontinu ke MicroSD</li>
-              <li>Meneruskan data ke aplikasi via Bluetooth <em>Flood2Food_GW</em></li>
-            </ul>
-          </div>
-        </article>
+        <!-- Connector 1 -->
+        <div class="flow-connector">
+          <div class="flow-connector__line"></div>
+          <span class="flow-connector__badge">LoRa 930 MHz (10,64 km)</span>
+          <div class="flow-connector__line"></div>
+        </div>
 
-        <article class="sys reveal">
-          <div class="sys__media sys__media--app">
-            <img src="assets/app-1.png" alt="Tangkapan layar profil dan statistik pengguna di aplikasi Flood2Food" width="348" height="688" loading="lazy">
+        <!-- Node 2 -->
+        <div class="flow-node">
+          <span class="flow-node__step">Pusat Penerima</span>
+          <h3>Gateway Portabel</h3>
+          <p>Ditempatkan di rumah petani atau pos pemantauan, menangkap data radio LoRa.</p>
+          <ul class="flow-specs">
+            <li><strong>Hardware:</strong> ESP32 Type-C, Custom PCB FR4</li>
+            <li><strong>Display:</strong> LCD 20×4 I2C + Buzzer Notifikasi</li>
+            <li><strong>Arsip:</strong> Penyimpanan berkas CSV kontinu ke MicroSD</li>
+            <li><strong>Koneksi:</strong> Bluetooth Low Energy (BLE)</li>
+          </ul>
+        </div>
+
+        <!-- Connector 2 -->
+        <div class="flow-connector">
+          <div class="flow-connector__line"></div>
+          <span class="flow-connector__badge">BLE Flood2Food_GW</span>
+          <div class="flow-connector__line"></div>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="flow-node">
+          <span class="flow-node__step">Antarmuka Pengguna</span>
+          <h3>Mobile App Android</h3>
+          <p>Aplikasi Flutter di ponsel petani sebagai pusat analitik dan eksekusi tindakan.</p>
+          <ul class="flow-specs">
+            <li><strong>Dashboard:</strong> Health Score &amp; Status 7 Parameter</li>
+            <li><strong>AI Asisten:</strong> Tanya Bimo (Gemini-powered Agronomist)</li>
+            <li><strong>Gamifikasi:</strong> Misi Remediasi, Level, &amp; Poin XP</li>
+            <li><strong>Kalibrasi:</strong> Kalibrasi Spasial 3 Titik Sawah</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Foto Perangkat Fisik -->
+      <div class="proto-grid reveal">
+        <div class="proto-card">
+          <div class="proto-card__media">
+            <img src="assets/sensor-node.png" alt="Stasiun Sensor Node Flood2Food" width="180" height="395" loading="lazy">
           </div>
-          <div class="sys__body">
-            <span class="sys__step">03</span>
-            <h3>Aplikasi mobile — otak keputusan</h3>
-            <p>Dibangun dengan Flutter &amp; Dart, menghubungkan gawai dengan Gateway lewat BLE.</p>
-            <ul class="ticks">
-              <li>Dashboard parameter real-time berindikator warna</li>
-              <li>Kurva analitik riwayat hara harian</li>
-              <li>AI “Tanya Bimo” dan gamifikasi poin, level, misi harian</li>
-            </ul>
+          <div class="proto-card__body">
+            <h4>Prototipe Sensor Node Lapangan</h4>
+            <p>Box panel kedap air IP65 dengan braket tiang galvanis, catu daya panel surya 10 Wp, dan probe antikorosi yang tahan lumpur aktif.</p>
           </div>
-        </article>
+        </div>
+
+        <div class="proto-card">
+          <div class="proto-card__media">
+            <img src="assets/gateway.png" alt="Konsol Gateway Flood2Food" width="180" height="361" loading="lazy">
+          </div>
+          <div class="proto-card__body">
+            <h4>Konsol Gateway Pemantauan</h4>
+            <p>Dilengkapi antena omnidirectional LoRa E220, layar LCD informatif untuk pembacaan instan tanpa membuka ponsel, dan slot MicroSD.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ FITUR ============ -->
+  <!-- ============ FITUR: COCKPIT 7 PARAMETER ============ -->
   <section class="section" id="fitur">
     <div class="container">
       <div class="section__head reveal">
-        <p class="eyebrow">Fitur unggulan</p>
-        <h2>Dibangun untuk kondisi lapangan yang paling sulit</h2>
-      </div>
-
-      <div class="cards cards--3">
-        <article class="card reveal">
-          <div class="card__ico card__ico--green" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M12 3 3 7.5 12 12l9-4.5zM3 12l9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg>
-          </div>
-          <h3>Sensor Fusion 7-in-1</h3>
-          <p>N, P, K, pH, suhu, kelembapan, dan EC terukur simultan dengan prinsip induksi magnetik dan elektroda antikorosi — stabil di rawa berlumpur.</p>
-        </article>
-
-        <article class="card reveal" data-delay="1">
-          <div class="card__ico card__ico--sky" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M12 19h.01M2 9a15 15 0 0 1 20 0"/></svg>
-          </div>
-          <h3>LoRa tanpa sinyal seluler</h3>
-          <p>Data terkirim hingga 10,64 km ke Gateway tanpa WiFi maupun jaringan GSM — cocok untuk blank spot dan pedesaan terbuka.</p>
-        </article>
-
-        <article class="card reveal" data-delay="2">
-          <div class="card__ico card__ico--amber" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.5"/></svg>
-          </div>
-          <h3>Energi mandiri surya</h3>
-          <p>Panel surya 10 Wp, solar charge controller, dan baterai LiFePO4 menjaga perangkat beroperasi terus-menerus tanpa listrik PLN.</p>
-        </article>
-
-        <article class="card reveal">
-          <div class="card__ico card__ico--violet" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9zM18.5 15.5l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></svg>
-          </div>
-          <h3>AI “Tanya Bimo”</h3>
-          <p>Tanyakan kondisi lahan dalam bahasa sehari-hari, dapatkan rekomendasi dosis pembenah dan tindakan remediasi sesuai data terukur.</p>
-        </article>
-
-        <article class="card reveal" data-delay="1">
-          <div class="card__ico card__ico--lime" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
-          </div>
-          <h3>Gamifikasi misi harian</h3>
-          <p>Poin, level, dan misi remediasi terstruktur mendisiplinkan pencatatan data serta tindakan pemupukan secara interaktif.</p>
-        </article>
-
-        <article class="card reveal" data-delay="2">
-          <div class="card__ico card__ico--green" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M7 15l4-5 3 3 5-7"/></svg>
-          </div>
-          <h3>Dashboard &amp; riwayat</h3>
-          <p>Telemetri real-time berindikator warna dan kurva riwayat hara, terekam juga ke MicroSD sebagai arsip lapangan.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TAMPILAN APLIKASI ============ -->
-  <section class="section section--alt" id="tampilan">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Di dalam aplikasi</p>
-        <h2>Empat layar yang dipakai setiap hari</h2>
-        <p class="section__lead">Tangkapan layar asli dari aplikasi Flood2Food versi uji lapangan.</p>
-      </div>
-
-      <div class="shots reveal" role="region" aria-label="Galeri tangkapan layar aplikasi" tabindex="0">
-        <figure class="shot">
-          <img src="assets/app-1.png" alt="Layar Profil dan Statistik: kartu pengguna, level, poin, dan ringkasan aktivitas" width="348" height="688" loading="lazy">
-          <figcaption>
-            <strong>Profil &amp; Statistik</strong>
-            <span>Level, poin, dan riwayat aktivitas pengelola lahan</span>
-          </figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="assets/app-2.png" alt="Layar Misi Harian: progres level, daftar misi remediasi, dan rekomendasi tindakan" width="327" height="688" loading="lazy">
-          <figcaption>
-            <strong>Misi Harian</strong>
-            <span>Misi remediasi terstruktur dengan progres &amp; hadiah</span>
-          </figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="assets/app-3.png" alt="Layar Tanya Bimo: asisten AI dengan kolom percakapan" width="333" height="688" loading="lazy">
-          <figcaption>
-            <strong>Tanya Bimo (AI)</strong>
-            <span>Tanya kondisi lahan, terima rekomendasi tindakan</span>
-          </figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="assets/app-4.png" alt="Layar dashboard Flood2Food: telemetri real-time dan kondisi lahan" width="334" height="688" loading="lazy">
-          <figcaption>
-            <strong>Telemetri Real-Time</strong>
-            <span>Parameter tanah terkini dengan indikator warna</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="inline-cta reveal">
-        <p>Ingin mencobanya sendiri?</p>
-        <a class="btn btn--primary" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          Download APK
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ HASIL UJI ============ -->
-  <section class="section" id="hasil">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Bukti lapangan</p>
-        <h2>Teruji 14 hari di persawahan Pagar Merbau II</h2>
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Sensor Fusion</span>
+        <h2>7 Parameter Kritis, Terbaca Simultan dalam 1 Probe</h2>
         <p class="section__lead">
-          Kalibrasi 5–6 Juli 2026 dibanding Soil Test Kit Kementan dan Laboratorium BPTP Sumatra Utara.
-          Tren pemantauan seluruh parameter bergerak menuju rentang ideal.
+          Menggunakan probe baja tahan karat standar industri dengan perlindungan IP68 untuk memantau neraca hara dan kesuburan fisika-kimia tanah.
         </p>
       </div>
 
-      <div class="results">
-        <div class="panel reveal">
-          <h3 class="panel__title">Perubahan parameter (hari ke-1 → ke-14)</h3>
-          <ul class="params">
-            <li class="param">
-              <span class="param__name">Nitrogen (N)</span>
-              <span class="param__flow"><span class="val">24,8</span><span class="arrow" aria-hidden="true">→</span><span class="val val--end">50,1</span> <span class="unit">mg/kg</span></span>
-              <span class="delta delta--up">+102%</span>
-            </li>
-            <li class="param">
-              <span class="param__name">Fosfor (P)</span>
-              <span class="param__flow"><span class="val">14,5</span><span class="arrow" aria-hidden="true">→</span><span class="val val--end">40,2</span> <span class="unit">mg/kg</span></span>
-              <span class="delta delta--up">+177%</span>
-            </li>
-            <li class="param">
-              <span class="param__name">Kalium (K)</span>
-              <span class="param__flow"><span class="val">105,2</span><span class="arrow" aria-hidden="true">→</span><span class="val val--end">134,3</span> <span class="unit">mg/kg</span></span>
-              <span class="delta delta--up">+28%</span>
-            </li>
-            <li class="param">
-              <span class="param__name">pH tanah</span>
-              <span class="param__flow"><span class="val">5,34</span><span class="arrow" aria-hidden="true">→</span><span class="val val--end">6,40</span></span>
-              <span class="delta delta--up">+1,06 poin</span>
-            </li>
-            <li class="param">
-              <span class="param__name">EC (daya hantar)</span>
-              <span class="param__flow"><span class="val">360,2</span><span class="arrow" aria-hidden="true">→</span><span class="val val--end">157,8</span> <span class="unit">µS/cm</span></span>
-              <span class="delta delta--down">−56% residu garam</span>
-            </li>
-            <li class="param">
-              <span class="param__name">Suhu &amp; kelembapan</span>
-              <span class="param__flow"><span class="val">24–28°C</span><span class="arrow" aria-hidden="true">·</span><span class="val val--end">95% → 60%</span></span>
-              <span class="delta delta--flat">stabil</span>
-            </li>
-          </ul>
+      <!-- Grid 4 Kolom Atas -->
+      <div class="cockpit-grid reveal">
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--N">N · Nitrogen</span>
+            <span class="cockpit-card__status">✓ Optimal</span>
+          </div>
+          <div class="cockpit-card__val">35.5</div>
+          <div class="cockpit-card__unit">mg/kg tanah (N-total)</div>
+          <div class="cockpit-card__name">Pertumbuhan Vegetatif</div>
+          <div class="cockpit-card__desc">Mendorong pembentukan anakan padi dan sintesis klorofil daun hijau pascabanjir.</div>
         </div>
 
-        <div class="panel panel--test reveal" data-delay="1">
-          <h3 class="panel__title">Matriks pengujian — 6 dari 6 lolos</h3>
-          <ul class="tests">
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Akurasi sensor</strong> 7 parameter — galat 5%</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Transmisi LoRa</strong> — terkirim tanpa GSM/WiFi</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Penyimpanan Gateway</strong> — CSV MicroSD tanpa putus</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Sinkronisasi BLE</strong> — dashboard real-time + riwayat</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Antarmuka fisik</strong> — tombol, buzzer, LCD responsif</span>
-            </li>
-            <li>
-              <span class="check" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>Ketahanan sistem</strong> — 14 hari, tanpa korosi</span>
-            </li>
-          </ul>
-          <p class="panel__note">Mode Deep Sleep, suplai panel surya, dan sensor diperiksa berkala sepanjang uji lapangan 18 Juli – 2 Agustus 2026.</p>
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--P">P · Fosfor</span>
+            <span class="cockpit-card__status">✓ Optimal</span>
+          </div>
+          <div class="cockpit-card__val">18.0</div>
+          <div class="cockpit-card__unit">mg/kg tanah (P-tersedia)</div>
+          <div class="cockpit-card__name">Perakaran &amp; Energi Sel</div>
+          <div class="cockpit-card__desc">Mempercepat penembusan akar baru pada lapisan tanah yang sempat tergenang dan memadat.</div>
+        </div>
+
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--K">K · Kalium</span>
+            <span class="cockpit-card__status">✓ Optimal</span>
+          </div>
+          <div class="cockpit-card__val">149.7</div>
+          <div class="cockpit-card__unit">mg/kg tanah (K-dd)</div>
+          <div class="cockpit-card__name">Ketahanan Penyakit</div>
+          <div class="cockpit-card__desc">Mempertebal dinding sel batang padi agar tidak mudah roboh dan kebal serangan jamur pascabanjir.</div>
+        </div>
+
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--pH">pH · Derajat Asam</span>
+            <span class="cockpit-card__status">✓ Netral</span>
+          </div>
+          <div class="cockpit-card__val">6.51</div>
+          <div class="cockpit-card__unit">skala pH (0–14)</div>
+          <div class="cockpit-card__name">Ketersediaan Unsur Hara</div>
+          <div class="cockpit-card__desc">Kunci penyerapan pupuk. Tanah masam pascabanjir (&lt;5.0) mengunci fosfor dan meracuni akar dengan aluminium.</div>
         </div>
       </div>
 
-      <!-- Perbandingan -->
-      <div class="compare reveal">
-        <h3 class="panel__title">Dibandingkan teknologi yang sudah ada</h3>
-        <p class="table-hint">Geser tabel ke samping untuk membandingkan semua kolom.</p>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabel perbandingan fitur Flood2Food">
-          <table>
-            <caption class="sr-only">Perbandingan fitur Flood2Food dengan Soil Test Kit dan IoT konvensional</caption>
+      <!-- Grid 3 Kolom Bawah -->
+      <div class="cockpit-grid cockpit-grid--bottom reveal" data-delay="1">
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--EC">EC · Konduktivitas</span>
+            <span class="cockpit-card__status">✓ Normal</span>
+          </div>
+          <div class="cockpit-card__val">121.0</div>
+          <div class="cockpit-card__unit">µS/cm (daya hantar listrik)</div>
+          <div class="cockpit-card__name">Salinitas &amp; Residu Garam</div>
+          <div class="cockpit-card__desc">Mendeteksi akumulasi garam terlarut dan residu mineral yang terbawa oleh endapan air luapan banjir.</div>
+        </div>
+
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--T">T · Suhu Tanah</span>
+            <span class="cockpit-card__status">✓ Stabil</span>
+          </div>
+          <div class="cockpit-card__val">26.6</div>
+          <div class="cockpit-card__unit">°C (suhu riil rizosfer)</div>
+          <div class="cockpit-card__name">Aktivitas Mikroba Tanah</div>
+          <div class="cockpit-card__desc">Memastikan rizosfer berada pada rentang ideal bagi mikroba pengurai bahan organik tanah sawah.</div>
+        </div>
+
+        <div class="cockpit-card">
+          <div class="cockpit-card__top">
+            <span class="cockpit-card__badge badge--M">M · Kelembapan</span>
+            <span class="cockpit-card__status">✓ Kapasitas Lapang</span>
+          </div>
+          <div class="cockpit-card__val">39.3</div>
+          <div class="cockpit-card__unit">% kandungan air volumetrik</div>
+          <div class="cockpit-card__name">Porositas &amp; Drainase</div>
+          <div class="cockpit-card__desc">Memantau laju infiltrasi air saat sawah mulai dikeringkan bertahap menuju masa pengolahan tanah.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIMULATOR TELEMETRI (INTERAKTIF UTAMA) ============ -->
+  <section class="section section--alt" id="simulator">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Laboratorium Digital</span>
+        <h2>Simulator Telemetri Lapangan Interaktif</h2>
+        <p class="section__lead">
+          Pilih fase waktu di bawah ini untuk melihat langsung bagaimana data sensor berubah dari kondisi kritis saat air baru surut hingga lahan siap ditanami kembali.
+        </p>
+      </div>
+
+      <div class="sim-wrap reveal" id="telemetry-sim">
+        <div class="sim-controls">
+          <div class="sim-selector" role="tablist" aria-label="Pilih skenario hari pemulihan">
+            <button class="sim-pill is-active" id="btn-day1" data-scenario="day1" role="tab" aria-selected="true">Hari ke-1 (Pascabanjir Kritis)</button>
+            <button class="sim-pill" id="btn-day7" data-scenario="day7" role="tab" aria-selected="false">Hari ke-7 (Remediasi Bertahap)</button>
+            <button class="sim-pill" id="btn-day14" data-scenario="day14" role="tab" aria-selected="false">Hari ke-14 (Sawah Siap Tanam)</button>
+          </div>
+          <div class="mono" style="font-size:0.85rem; color:var(--muted-2);">
+            Data Uji Lapangan Pagar Merbau II
+          </div>
+        </div>
+
+        <div class="sim-grid">
+          <!-- Skor Kesehatan Tanah -->
+          <div class="sim-gauge-card">
+            <span class="eyebrow" style="font-size:0.75rem;">Plant Health Index</span>
+            <div class="sim-score-circle" id="sim-circle">
+              <span class="sim-score-val" id="sim-health-score">15</span>
+              <span class="sim-score-unit">%</span>
+            </div>
+            <div class="sim-status-label status--critical" id="sim-status-badge">Kondisi Kritis</div>
+            <p style="font-size:0.82rem; color:var(--muted-2); margin-top:12px;">Skor kesiapan lahan berdasarkan 7 parameter terukur.</p>
+          </div>
+
+          <!-- Parameter Bars -->
+          <div class="sim-bars">
+            <!-- N -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Nitrogen (N)</strong> · Target: 30–50 mg/kg</span>
+                <span class="sim-bar-val" id="sim-val-N" style="color:var(--stat-N)">8.2 mg/kg</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-N" style="--w: 16%; --color: var(--stat-N);"></div>
+              </div>
+            </div>
+
+            <!-- P -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Fosfor (P)</strong> · Target: 15–25 mg/kg</span>
+                <span class="sim-bar-val" id="sim-val-P" style="color:var(--stat-P)">2.1 mg/kg</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-P" style="--w: 10%; --color: var(--stat-P);"></div>
+              </div>
+            </div>
+
+            <!-- K -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Kalium (K)</strong> · Target: 100–160 mg/kg</span>
+                <span class="sim-bar-val" id="sim-val-K" style="color:var(--stat-K)">45.0 mg/kg</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-K" style="--w: 28%; --color: var(--stat-K);"></div>
+              </div>
+            </div>
+
+            <!-- pH -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Derajat Asam (pH)</strong> · Target: 6.0–6.8</span>
+                <span class="sim-bar-val" id="sim-val-pH" style="color:var(--stat-pH)">4.20 pH</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-pH" style="--w: 25%; --color: var(--stat-pH);"></div>
+              </div>
+            </div>
+
+            <!-- EC -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Konduktivitas (EC)</strong> · Target: 100–200 µS/cm</span>
+                <span class="sim-bar-val" id="sim-val-EC" style="color:var(--stat-EC)">380.0 µS/cm</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-EC" style="--w: 90%; --color: var(--stat-EC);"></div>
+              </div>
+            </div>
+
+            <!-- Suhu & Kelembapan -->
+            <div class="sim-bar-item">
+              <div class="sim-bar-meta">
+                <span><strong>Kelembapan &amp; Suhu</strong> · Target: 40–60% | 24–28°C</span>
+                <span class="sim-bar-val" id="sim-val-M" style="color:var(--stat-M)">78.3% · 28.4°C</span>
+              </div>
+              <div class="sim-track">
+                <div class="sim-fill" id="sim-fill-M" style="--w: 80%; --color: var(--stat-M);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rekomendasi Dinamis -->
+        <div class="sim-recom-box" id="sim-recom-box">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <div class="sim-recom-body">
+            <h4 id="sim-recom-title">Tindakan Remediasi Prioritas Hari ke-1 (Status: Kritis)</h4>
+            <p id="sim-recom-desc">
+              Kadar asam akut (pH 4.2) dan kejenuhan air tinggi (78.3%). Lakukan pengatusan parit keliling sawah segera. Taburkan kapur dolomit 300 kg/ha untuk menetralkan racun aluminium sebelum pemberian pupuk dasar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAMPILAN APLIKASI: 5 LAYAR KURASI ============ -->
+  <section class="section" id="tampilan">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Desain Antarmuka</span>
+        <h2>Pengalaman Mobile Berbasis Lapangan</h2>
+        <p class="section__lead">
+          Dibangun dengan Flutter untuk responsivitas tinggi, kontras tinggi yang nyaman dibaca di bawah sinar matahari terik, serta keterbacaan data instan.
+        </p>
+      </div>
+
+      <div class="app-carousel-wrap reveal">
+        <div class="app-carousel" role="region" aria-label="Galeri Layar Aplikasi Flood2Food" tabindex="0">
+          <!-- Screen 1 -->
+          <article class="app-screen-card is-featured">
+            <div class="app-screen-frame">
+              <img src="assets/screens/02_dashboard_screen.png" alt="Layar Dashboard Flood2Food: Plant Health 100%" width="300" height="650" loading="lazy">
+            </div>
+            <div class="app-screen-info">
+              <h4>01 · Dashboard Telemetri</h4>
+              <p>Indikator Health Score dan pembacaan 7 parameter real-time.</p>
+            </div>
+          </article>
+
+          <!-- Screen 2 -->
+          <article class="app-screen-card">
+            <div class="app-screen-frame">
+              <img src="assets/screens/03_tasks_screen.png" alt="Layar Misi Harian dan Gamifikasi" width="300" height="650" loading="lazy">
+            </div>
+            <div class="app-screen-info">
+              <h4>02 · Misi Harian &amp; Gamifikasi</h4>
+              <p>Tugas pemulihan terstruktur dengan poin XP dan level pengelola.</p>
+            </div>
+          </article>
+
+          <!-- Screen 3 -->
+          <article class="app-screen-card">
+            <div class="app-screen-frame">
+              <img src="assets/screens/04_chat_screen.png" alt="Layar Tanya Bimo AI Percakapan" width="300" height="650" loading="lazy">
+            </div>
+            <div class="app-screen-info">
+              <h4>03 · AI Tanya Bimo</h4>
+              <p>Konsultasi agronomi cerdas langsung di dalam genggaman.</p>
+            </div>
+          </article>
+
+          <!-- Screen 4 -->
+          <article class="app-screen-card">
+            <div class="app-screen-frame">
+              <img src="assets/screens/06_sensor_log_screen.png" alt="Layar Riwayat Sensor Log" width="300" height="650" loading="lazy">
+            </div>
+            <div class="app-screen-info">
+              <h4>04 · Log &amp; Riwayat Sensor</h4>
+              <p>Rekapitulasi 256 data pengukuran terverifikasi stempel waktu.</p>
+            </div>
+          </article>
+
+          <!-- Screen 5 -->
+          <article class="app-screen-card">
+            <div class="app-screen-frame">
+              <img src="assets/screens/10_spatial_calibration_screen.png" alt="Layar Kalibrasi Spasial 3 Titik" width="300" height="650" loading="lazy">
+            </div>
+            <div class="app-screen-info">
+              <h4>05 · Kalibrasi Spasial 3 Titik</h4>
+              <p>Pengambilan sampel representatif hulu, tengah, dan hilir petak sawah.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HASIL UJI: DATA ILMIAH BPTP ============ -->
+  <section class="section section--alt" id="hasil">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Validasi Akurasi</span>
+        <h2>Data Ilmiah, Bukan Sekadar Klaim</h2>
+        <p class="section__lead">
+          Hasil kalibrasi sensor Flood2Food terhadap uji laboratorium Balai Pengkajian Teknologi Pertanian (BPTP) Sumatra Utara (Terakreditasi KAN LP-863-IDN) serta matriks uji lapangan 14 hari di Pagar Merbau II.
+        </p>
+      </div>
+
+      <!-- Tabel BPTP -->
+      <div class="bptp-card reveal">
+        <div class="bptp-header">
+          <h3>Hasil Komparasi Sensor vs Uji Lab BPTP Sumut</h3>
+          <span class="bptp-badge">Sertifikasi KAN LP-863-IDN</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data-table">
             <thead>
               <tr>
-                <th scope="col">Fitur</th>
-                <th scope="col" class="hl-col">Flood2Food</th>
-                <th scope="col">Soil Test Kit (PUTS)</th>
-                <th scope="col">IoT konvensional</th>
+                <th scope="col">Parameter</th>
+                <th scope="col">Metode Standar Lab</th>
+                <th scope="col">Nilai Lab BPTP</th>
+                <th scope="col">Nilai Sensor F2F</th>
+                <th scope="col">Galat (Error)</th>
+                <th scope="col">Status Akurasi</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Metode pengukuran</th>
-                <td class="hl-col">Otomatis, real-time &amp; terus-menerus</td>
-                <td>Manual (reaksi kolorimetri)</td>
-                <td>Otomatis, umumnya 1–4 parameter</td>
+                <td><strong>Nitrogen Total (N)</strong></td>
+                <td>Kjeldahl</td>
+                <td class="val-mono">0.160% (35.5 mg/kg)</td>
+                <td class="val-mono">0.154% (34.2 mg/kg)</td>
+                <td class="error-col">3.8%</td>
+                <td><span style="color:var(--emerald); font-weight:600;">✓ Lolos Standar (&lt;5%)</span></td>
               </tr>
               <tr>
-                <th scope="row">Ketahanan sensor</th>
-                <td class="hl-col">Anti-korosi, IP65, stabil di lumpur</td>
-                <td>Reagen sekali pakai</td>
-                <td>Rentan korosi pada lumpur</td>
+                <td><strong>Fosfor Tersedia (P)</strong></td>
+                <td>Spektrofotometri (Bray I)</td>
+                <td class="val-mono">5.57 ppm (18.0 mg/kg)</td>
+                <td class="val-mono">5.42 ppm (17.5 mg/kg)</td>
+                <td class="error-col">2.7%</td>
+                <td><span style="color:var(--emerald); font-weight:600;">✓ Lolos Standar (&lt;5%)</span></td>
               </tr>
               <tr>
-                <th scope="row">Konektivitas data</th>
-                <td class="hl-col">LoRa — tanpa sinyal seluler</td>
-                <td>Pencatatan manual</td>
-                <td>Umumnya WiFi/seluler</td>
+                <td><strong>Kalium (K-dd)</strong></td>
+                <td>AAS (Ammonium Asetat)</td>
+                <td class="val-mono">0.62 me/100g (149.7 mg/kg)</td>
+                <td class="val-mono">0.65 me/100g (157.0 mg/kg)</td>
+                <td class="error-col">4.8%</td>
+                <td><span style="color:var(--emerald); font-weight:600;">✓ Lolos Standar (&lt;5%)</span></td>
               </tr>
               <tr>
-                <th scope="row">Rekomendasi tindakan</th>
-                <td class="hl-col">Otomatis via AI</td>
-                <td>Manual (buku bagan warna)</td>
-                <td>Sebagian besar hanya menampilkan angka</td>
+                <td><strong>Kemasan Tanah (pH)</strong></td>
+                <td>Elektrometri (pH meter 1:1)</td>
+                <td class="val-mono">5.98</td>
+                <td class="val-mono">6.10</td>
+                <td class="error-col">2.0%</td>
+                <td><span style="color:var(--emerald); font-weight:600;">✓ Lolos Standar (&lt;5%)</span></td>
               </tr>
               <tr>
-                <th scope="row">Perolehan data</th>
-                <td class="hl-col">Real-time</td>
-                <td>30–60 menit</td>
-                <td>Real-time (lahan normal)</td>
-              </tr>
-              <tr>
-                <th scope="row">Energi operasional</th>
-                <td class="hl-col">Mandiri — panel surya + baterai</td>
-                <td>Tidak relevan</td>
-                <td>Umumnya bergantung listrik PLN</td>
+                <td><strong>Daya Hantar (EC)</strong></td>
+                <td>Konduktivitimetri</td>
+                <td class="val-mono">5.80 mmho/cm (121 µS/cm)</td>
+                <td class="val-mono">5.70 mmho/cm (119 µS/cm)</td>
+                <td class="error-col">1.7%</td>
+                <td><span style="color:var(--emerald); font-weight:600;">✓ Lolos Standar (&lt;5%)</span></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ============ MANFAAT ============ -->
-  <section class="section section--alt" id="manfaat">
-    <div class="container">
-      <div class="section__head reveal">
-        <p class="eyebrow">Manfaat</p>
-        <h2>Dari petani di lapangan sampai kebijakan pemerintah</h2>
-      </div>
-
-      <div class="cards cards--3">
-        <article class="card reveal">
-          <div class="card__ico card__ico--green" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M12 21c0-5 3-8 8-8-1 5-4 8-8 8zM12 21c0-5-3-8-8-8 1 5 4 8 8 8zM12 21v-6"/><path d="M12 15a4 4 0 0 0 4-4c0-3-4-7-4-7S8 8 8 11a4 4 0 0 0 4 4z"/></svg>
-          </div>
-          <h3>Petani</h3>
-          <p>Menentukan waktu tanam ulang dan dosis pupuk berdasarkan kondisi terukur — menekan risiko gagal panen susulan dan biaya pupuk.</p>
-        </article>
-        <article class="card reveal" data-delay="1">
-          <div class="card__ico card__ico--sky" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M9 4a3 3 0 1 0 6 0 3 3 0 0 0-6 0zM4 20a6 6 0 0 1 12 0M17 8a2.5 2.5 0 1 1 0 5M18.5 20a5 5 0 0 0-3-4.6"/></svg>
-          </div>
-          <h3>Penyuluh (PPL)</h3>
-          <p>Memetakan dan memantau proses pemulihan lahan secara terstruktur, dengan arsip data yang bisa diverifikasi.</p>
-        </article>
-        <article class="card reveal" data-delay="2">
-          <div class="card__ico card__ico--amber" aria-hidden="true">
-            <svg class="ico" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-5h6v5M9 11h.01M15 11h.01"/></svg>
-          </div>
-          <h3>Pemerintah</h3>
-          <p>Basis data kondisi lahan untuk prioritas pemulihan, kebijakan darurat pangan, dan distribusi bantuan yang tepat sasaran.</p>
-        </article>
-      </div>
-
-      <ul class="badges reveal">
-        <li>SDGs 2 · Tanpa Kelaparan</li>
-        <li>SDGs 13 · Penanganan Perubahan Iklim</li>
-        <li>PKM-KC 2026</li>
-        <li>Jurnal SINTA 3 (pengajuan)</li>
-        <li>Paten sederhana (pengajuan)</li>
-        <li>Hak cipta kodingan (pengajuan)</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ DOWNLOAD ============ -->
-  <section class="section" id="download">
-    <div class="container">
-      <div class="download reveal">
-        <div class="download__glow" aria-hidden="true"></div>
-        <div class="download__copy">
-          <p class="eyebrow">Siap dipakai</p>
-          <h2>Unduh aplikasi Flood2Food</h2>
-          <p class="section__lead">
-            Pasang di ponsel Android Anda, hubungkan dengan Gateway <em>Flood2Food_GW</em> lewat Bluetooth,
-            dan pantau kondisi lahan dari gawai — bahkan ketika jaringan seluler tidak tersedia.
-          </p>
-
-          <div class="download__cta">
-            <a class="btn btn--primary btn--lg" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-              Download APK via Google Drive
-            </a>
-            <span class="download__meta">Buka di tab baru · File <code>.apk</code> resmi dari tim Flood2Food</span>
-          </div>
-
-          <ol class="steps">
-            <li><span class="steps__n">1</span><span><strong>Unduh file APK</strong> dari tautan Google Drive di atas.</span></li>
-            <li><span class="steps__n">2</span><span><strong>Buka file</strong> yang sudah terunduh di ponsel Anda.</span></li>
-            <li><span class="steps__n">3</span><span><strong>Izinkan instalasi</strong> dari sumber tidak dikenal bila diminta sistem Android.</span></li>
-            <li><span class="steps__n">4</span><span><strong>Sambungkan Gateway</strong> “Flood2Food_GW” lewat Bluetooth, lalu mulai pantau lahan.</span></li>
-          </ol>
+      <!-- Matriks Pengujian 6/6 Lolos -->
+      <div class="results reveal" data-delay="1">
+        <div class="panel">
+          <h3 class="panel__title">Dinamika Hara Lapangan (Hari ke-1 → Hari ke-14)</h3>
+          <ul class="params">
+            <li class="param">
+              <span class="param__name">Nitrogen (N)</span>
+              <span class="param__flow"><span class="val">24,8</span><span class="arrow">→</span><span class="val val--end">50,1</span> <span class="unit">mg/kg</span></span>
+              <span class="delta delta--up">+102% Pemulihan</span>
+            </li>
+            <li class="param">
+              <span class="param__name">Fosfor (P)</span>
+              <span class="param__flow"><span class="val">14,5</span><span class="arrow">→</span><span class="val val--end">40,2</span> <span class="unit">mg/kg</span></span>
+              <span class="delta delta--up">+177% Bio-tersedia</span>
+            </li>
+            <li class="param">
+              <span class="param__name">Kalium (K)</span>
+              <span class="param__flow"><span class="val">105,2</span><span class="arrow">→</span><span class="val val--end">134,3</span> <span class="unit">mg/kg</span></span>
+              <span class="delta delta--up">+28% Penguatan</span>
+            </li>
+            <li class="param">
+              <span class="param__name">pH Tanah</span>
+              <span class="param__flow"><span class="val">5,34</span><span class="arrow">→</span><span class="val val--end">6,40</span></span>
+              <span class="delta delta--up">+1,06 Poin Netral</span>
+            </li>
+            <li class="param">
+              <span class="param__name">Salinitas / EC</span>
+              <span class="param__flow"><span class="val">360,2</span><span class="arrow">→</span><span class="val val--end">157,8</span> <span class="unit">µS/cm</span></span>
+              <span class="delta delta--down">−56% Pencucian Garam</span>
+            </li>
+            <li class="param">
+              <span class="param__name">Suhu &amp; Kelembapan</span>
+              <span class="param__flow"><span class="val">24–28°C</span><span class="arrow">·</span><span class="val val--end">95% → 60%</span></span>
+              <span class="delta delta--flat">Stabil Aerasi Baik</span>
+            </li>
+          </ul>
         </div>
 
-        <aside class="download__side">
-          <div class="qr">
-            <img src="assets/qr-download.png" alt="Kode QR menuju halaman unduh aplikasi Flood2Food di Google Drive" width="180" height="180" loading="lazy">
-            <p class="qr__caption">Pindai untuk membuka halaman unduh</p>
-          </div>
-          <ul class="specs">
-            <li><span>Platform</span><strong>Android (.apk)</strong></li>
-            <li><span>Sumber</span><strong>Google Drive resmi</strong></li>
-            <li><span>Koneksi</span><strong>Bluetooth LE</strong></li>
-            <li><span>Kompatibel</span><strong>Gateway Flood2Food_GW</strong></li>
+        <div class="panel panel--test">
+          <h3 class="panel__title">Matriks Pengujian Sistem — 6 dari 6 Aspek Lolos</h3>
+          <ul class="tests">
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Akurasi Sensor:</strong> Galat rata-rata ≤5% terverifikasi lab rujukan BPTP Sumut.</span>
+            </li>
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Transmisi LoRa:</strong> Data terkirim mulus hingga radius 10,64 km tanpa WiFi/GSM.</span>
+            </li>
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Logging Gateway:</strong> Data terekam berkala ke MicroSD (CSV) tanpa packet loss.</span>
+            </li>
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Sinkronisasi BLE:</strong> Aplikasi Android menerima telemetri secara real-time.</span>
+            </li>
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Antarmuka Fisik:</strong> Layar LCD 20×4 dan tombol tactile di konsol berfungsi normal.</span>
+            </li>
+            <li>
+              <span class="check"><svg class="ico" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span><strong>Ketahanan 14 Hari:</strong> Probe dan selongsong bebas karat di genangan lumpur sawah.</span>
+            </li>
           </ul>
-        </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TANYA BIMO: ASISTEN AI AGRONOMIS ============ -->
+  <section class="section" id="bimo">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Karakter &amp; AI Asisten</span>
+        <h2>Tanya Bimo — Agronomis di Saku Anda</h2>
+        <p class="section__lead">
+          BIMO bukan sekadar maskot. Karakter ini merepresentasikan asisten AI yang dilatih dengan basis pengetahuan agronomi dan data uji lapangan 14 hari BPTP Sumut.
+        </p>
+      </div>
+
+      <div class="bimo-section-grid reveal">
+        <div class="bimo-mascot-box">
+          <img src="assets/mascot/bimo-front.png" alt="Maskot BIMO 3D Flood2Food" width="400" height="656">
+        </div>
+
+        <div class="bimo-chat-card">
+          <div class="bimo-chat-header">
+            <div class="bimo-header-avatar">
+              <img src="assets/mascot/bimo-avatar.png" alt="Avatar BIMO">
+            </div>
+            <div class="bimo-header-info">
+              <h4>BIMO (Bio-Intelligent Monitoring Officer)</h4>
+              <span>● Online · Siap Analisis Tanah</span>
+            </div>
+          </div>
+
+          <div class="bimo-chat-logs" id="chat-logs">
+            <div class="chat-msg chat-msg--bot">
+              Halo! Saya <strong>Bimo</strong>, asisten agronomi Flood2Food. Tanyakan kondisi lahan sawahmu, kebutuhan pupuk NPK, atau masalah tanah pascabanjir!
+            </div>
+            <div class="chat-msg chat-msg--user">
+              pH sawah saya 4.2 pascabanjir, apa yang harus dilakukan?
+            </div>
+            <div class="chat-msg chat-msg--bot">
+              pH 4.2 menunjukkan kondisi <strong>asam akut</strong> pascabanjir. Tindakan prioritas: aplikasikan <strong>kapur dolomit 300 kg/ha</strong> secara merata saat pengeringan macak-macak. Jangan dulu beri pupuk Urea sebelum pH naik di atas 6.0!
+            </div>
+          </div>
+
+          <!-- Quick Prompts -->
+          <div class="bimo-quick-prompts">
+            <button class="prompt-chip" data-q="Berapa dosis pupuk P untuk sawah pascabanjir?">Dosis Pupuk P</button>
+            <button class="prompt-chip" data-q="Kenapa EC tanah naik setelah banjir?">EC Tinggi</button>
+            <button class="prompt-chip" data-q="Kapan sawah aman ditanami bibit baru?">Waktu Tanam</button>
+            <button class="prompt-chip" data-q="Bagaimana cara kerja transmisi LoRa Flood2Food?">Transmisi LoRa</button>
+          </div>
+
+          <!-- Chat Input -->
+          <form class="bimo-chat-input-row" id="chat-form">
+            <input type="text" class="bimo-chat-input" id="chat-input" placeholder="Ketik pertanyaan agronomi..." autocomplete="off">
+            <button type="submit" class="bimo-chat-send" aria-label="Kirim pertanyaan">
+              <svg class="ico" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TIM PENGEMBANG: ORANG DI BALIK DATA ============ -->
+  <section class="section section--alt" id="tim">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Peneliti &amp; Pengembang</span>
+        <h2>Orang di Balik Data — Tim PKM-KC USU 2026</h2>
+        <p class="section__lead">
+          Kolaborasi lintas disiplin ilmu mahasiswa Universitas Sumatera Utara dari Fakultas Pertanian, FMIPA, Fasilkom-TI, dan Fakultas Vokasi.
+        </p>
+      </div>
+
+      <!-- Banner Foto Tim -->
+      <div class="team-lead-banner reveal">
+        <div class="team-group-img-wrap">
+          <img src="assets/team/dengan-nama.png" alt="Foto Resmi Tim Pengembang Flood2Food dan Dosen Pembimbing USU" width="1180" height="664" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Grid 5 Anggota Mahasiswa -->
+      <div class="team-members-grid reveal" data-delay="1">
+        <div class="member-card">
+          <div class="member-name">M. Ghozi Muzakki</div>
+          <div class="member-nim">NIM 230305048</div>
+          <div class="member-prodi">S-1 Tek. Pangan, FP '23</div>
+          <span class="member-role role--member">Anggota Tim</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-name">Isrok Tenggar Martua</div>
+          <div class="member-nim">NIM 240805059</div>
+          <div class="member-prodi">S-1 Biologi, FMIPA '24</div>
+          <span class="member-role role--member">Anggota Tim</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-name">Syakirah Fathanah</div>
+          <div class="member-nim">NIM 230805053</div>
+          <div class="member-prodi">S-1 Biologi, FMIPA '23</div>
+          <span class="member-role role--member">Anggota Tim</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-name">Athallah M. Maajid</div>
+          <div class="member-nim">NIM 251401040</div>
+          <div class="member-prodi">S-1 Ilmu Komputer, Fasilkom-TI '25</div>
+          <span class="member-role role--software">Software Lead</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-name">Aziqi Arifian Dova</div>
+          <div class="member-nim">NIM 241757008</div>
+          <div class="member-prodi">D-4 Rek. Instrumentasi, F. Vokasi '24</div>
+          <span class="member-role role--hardware">Hardware Lead</span>
+        </div>
+      </div>
+
+      <!-- Dosen Pembimbing Banner -->
+      <div class="advisor-card reveal" data-delay="2">
+        <div class="advisor-info">
+          <h4>Dr. Ir. Zikri Noer, S.Si., M.Si.</h4>
+          <p>Dosen Pembimbing Program Kreativitas Mahasiswa · NIDN 0021019402 · Fakultas Vokasi Universitas Sumatera Utara</p>
+        </div>
+        <div class="mono" style="font-size:0.85rem; color:var(--emerald);">
+          Universitas Sumatera Utara
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UNDUH APLIKASI ============ -->
+  <section class="section" id="download">
+    <div class="container">
+      <div class="download-box reveal">
+        <div class="download-copy">
+          <span class="eyebrow"><span class="eyebrow__dot"></span> Siap Pakai di Lapangan</span>
+          <h2>Unduh Aplikasi Android Flood2Food</h2>
+          <p class="section__lead">
+            Pasang di ponsel Android Anda, hubungkan dengan Gateway <em>Flood2Food_GW</em> via Bluetooth LE, dan pantau pemulihan hara sawah secara instan tanpa biaya langganan.
+          </p>
+
+          <div style="margin-top:28px;">
+            <a class="btn btn--primary btn--lg" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              Download File APK Resmi (Google Drive)
+            </a>
+          </div>
+
+          <div class="install-steps">
+            <div class="install-step">
+              <span class="step-num">1</span>
+              <span><strong>Unduh APK:</strong> Simpan file <code>.apk</code> resmi dari tombol Google Drive di atas ke ponsel Anda.</span>
+            </div>
+            <div class="install-step">
+              <span class="step-num">2</span>
+              <span><strong>Izinkan Pemasangan:</strong> Buka file unduhan dan aktifkan izin sumber tak dikenal bila diminta sistem Android.</span>
+            </div>
+            <div class="install-step">
+              <span class="step-num">3</span>
+              <span><strong>Hubungkan Gateway:</strong> Aktifkan Bluetooth ponsel dan pilih perangkat <em>Flood2Food_GW</em>.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-aside">
+          <div class="qr-frame">
+            <img src="assets/qr-download.png" alt="Kode QR Unduh APK Flood2Food" width="180" height="180">
+            <p>Pindai untuk membuka Google Drive di ponsel</p>
+          </div>
+
+          <ul class="spec-list">
+            <li><span>Kompatibilitas:</span> <strong>Android 8.0 (Oreo) ke atas</strong></li>
+            <li><span>Konektivitas:</span> <strong>Bluetooth 4.2 / 5.0 (BLE)</strong></li>
+            <li><span>Lisensi:</span> <strong>Gratis · PKM-KC 2026</strong></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -570,92 +863,110 @@
   <section class="section section--alt" id="faq">
     <div class="container container--narrow">
       <div class="section__head reveal">
-        <p class="eyebrow">Pertanyaan umum</p>
-        <h2>Sebelum Anda pasang</h2>
+        <span class="eyebrow"><span class="eyebrow__dot"></span> Informasi Lengkap</span>
+        <h2>Pertanyaan yang Sering Diajukan</h2>
       </div>
 
-      <div class="faq reveal">
-        <details>
-          <summary>Apakah fitur ini butuh sinyal seluler atau internet?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Tidak. Transmisi data dari Sensor Node ke Gateway memakai LoRa, dan Gateway ke ponsel memakai Bluetooth LE — keduanya berkerja tanpa jaringan seluler. Internet hanya diperlukan saat mengunduh aplikasi.</p></div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Apakah sistem ini memerlukan kuota internet atau sinyal seluler di sawah?<span class="faq-chevron" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-content">
+            <p>Sama sekali tidak. Pengiriman data dari Sensor Node di sawah ke Gateway di rumah petani menggunakan gelombang radio <strong>LoRa 930 MHz</strong> yang menjangkau hingga 10,64 km. Dari Gateway ke aplikasi ponsel menggunakan <strong>Bluetooth Low Energy (BLE)</strong>. Internet hanya dibutuhkan saat pertama kali mengunduh file APK.</p>
+          </div>
         </details>
-        <details>
-          <summary>Apa saja parameter yang dibaca perangkat?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Tujuh parameter sekaligus: Nitrogen (N), Fosfor (P), Kalium (K), pH, suhu, kelembapan, dan Electrical Conductivity (EC) — seluruhnya lewat satu probe sensor fusion 7-in-1.</p></div>
+
+        <details class="faq-item">
+          <summary>Apakah probe sensor tidak cepat berkarat di lumpur sawah?<span class="faq-chevron" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-content">
+            <p>Probe sensor Flood2Food menggunakan elektroda stainless steel 316 yang dilapisi resin epoksi kedap air IP68. Dalam uji lapangan selama 14 hari penuh di persawahan Pagar Merbau II yang tergenang lumpur aktif, probe terbukti bebas korosi dan nilai pembacaan tetap stabil.</p>
+          </div>
         </details>
-        <details>
-          <summary>Bagaimana cara memasang aplikasinya?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Unduh file APK, buka file tersebut, lalu izinkan instalasi dari sumber tidak dikenal apabila Android meminta. Setelah terpasang, aktifkan Bluetooth dan pilih perangkat “Flood2Food_GW”.</p></div>
+
+        <details class="faq-item">
+          <summary>Bagaimana keakuratan AI Tanya Bimo dalam memberi saran pupuk?<span class="faq-chevron" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-content">
+            <p>AI Tanya Bimo tidak mengarang rekomendasi secara acak. Logika sarannya merujuk langsung pada formula uji tanah Kementan dan data kalibrasi laboratorium BPTP Sumut. Rekomendasi disesuaikan secara real-time dengan status nilai N, P, K, dan pH yang terbaca oleh sensor saat itu.</p>
+          </div>
         </details>
-        <details>
-          <summary>Sudah diuji di lapangan?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Ya. Uji lapangan 14 hari di persawahan Pagar Merbau II (18 Juli – 2 Agustus 2026) dengan kalibrasi bersama Soil Test Kit Kementan dan Laboratorium BPTP Sumatra Utara. Galat pengukuran 5% dan seluruh 6 aspek uji dinyatakan lolos.</p></div>
-        </details>
-        <details>
-          <summary>Untuk siapa teknologi ini ditujukan?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Petani untuk keputusan pemupukan dan waktu tanam, penyuluh pertanian lapangan (PPL) untuk pemetaan pemulihan lahan, serta pemerintah untuk penentuan prioritas dan distribusi bantuan.</p></div>
-        </details>
-        <details>
-          <summary>Berapa biaya penggunaannya?<span class="faq__chev" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq__body"><p>Aplikasi Android dapat diunduh gratis. Perangkat Sensor Node dan Gateway adalah prototipe hasil program Karsa Cipta 2026 yang masih dalam tahap pengembangan lebih lanjut.</p></div>
+
+        <details class="faq-item">
+          <summary>Apakah baterai Sensor Node perlu diganti berkala?<span class="faq-chevron" aria-hidden="true"><svg class="ico" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-content">
+            <p>Tidak. Sensor Node dilengkapi panel surya 10 Wp dan baterai Lithium Iron Phosphate (LiFePO4) 12V 8Ah dengan siklus hidup lebih dari 2.000 kali pengisian. Dengan mode Deep Sleep cerdas, konsumsi daya sangat hemat dan dapat beroperasi mandiri 24 jam sehari terus-menerus tanpa listrik PLN.</p>
+          </div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA AKHIR ============ -->
-  <section class="section cta-final">
+  <!-- ============ CTA PENUTUP ============ -->
+  <section class="section">
     <div class="container">
       <div class="cta-final__inner reveal">
-        <h2>Data yang tepat, di 14 hari pertama yang menentukan.</h2>
-        <p>Unduh Flood2Food dan ubah pemulihan lahan pascabanjir dari perhitungan manual menjadi keputusan berbasis data.</p>
-        <a class="btn btn--primary btn--lg" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-          Download APK
-        </a>
+        <h2>Data yang tepat di 14 hari pertama yang menentukan.</h2>
+        <p>Tinggalkan perkiraan manual. Pantau pemulihan hara sawah pascabanjir secara presisi dengan teknologi IoT cerdas Flood2Food.</p>
+        <div style="margin-top:20px;">
+          <a class="btn btn--primary btn--lg" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            Download APK Resmi Sekarang
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
 </main>
 
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
       <a class="brand" href="#top">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="9" fill="#0F1F17"/><path d="M16 6c4 5 7 8.4 7 12a7 7 0 1 1-14 0c0-3.6 3-7 7-12z" fill="#22C55E"/><path d="M16 24c-2.2-1.4-3-3.4-3-5.6 0-1.6.8-3.3 2-5.2" stroke="#0A100D" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        <span class="brand__avatar" aria-hidden="true">
+          <img src="assets/mascot/bimo-avatar.png" alt="Logo Flood2Food" width="36" height="36">
         </span>
         <span class="brand__name">Flood<span class="brand__accent">2</span>Food</span>
       </a>
-      <p>Sistem monitoring cerdas pemulihan lahan sawah pasca banjir berbasis sensor dan IoT.</p>
-      <p class="footer__prog">Program Kreativitas Mahasiswa — Karsa Cipta 2026<br>Universitas Sumatera Utara</p>
+      <p class="footer-desc">
+        Sistem Cerdas Pemantauan &amp; Percepatan Pemulihan Lahan Sawah Pascabanjir Berbasis Sensor Fusion 7-in-1, Transmisi LoRa, dan AI Tanya Bimo.
+      </p>
+      <p class="footer-badge">
+        Program Kreativitas Mahasiswa — Karsa Cipta (PKM-KC) 2026<br>
+        Universitas Sumatera Utara (USU)
+      </p>
     </div>
 
-    <nav class="footer__col" aria-label="Navigasi footer">
-      <h3>Halaman</h3>
-      <a href="#masalah">Masalah</a>
-      <a href="#sistem">Sistem</a>
-      <a href="#fitur">Fitur</a>
-      <a href="#hasil">Hasil Uji</a>
-      <a href="#faq">FAQ</a>
+    <nav class="footer__col" aria-label="Navigasi Menu Footer">
+      <h4>Navigasi</h4>
+      <a href="#masalah">Masalah Lahan</a>
+      <a href="#sistem">Sistem Arsitektur</a>
+      <a href="#fitur">7 Parameter Tanah</a>
+      <a href="#simulator">Simulator Telemetri</a>
+      <a href="#tampilan">Tampilan Aplikasi</a>
+      <a href="#hasil">Hasil Uji BPTP</a>
+      <a href="#bimo">Tanya Bimo AI</a>
+      <a href="#tim">Tim Peneliti</a>
+      <a href="#faq">Pertanyaan Umum</a>
     </nav>
 
     <div class="footer__col">
-      <h3>Unduh</h3>
-      <a href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">Aplikasi Android (.apk)</a>
-      <a href="laporan%20akhir.pdf" target="_blank" rel="noopener">Laporan akhir (PDF)</a>
-      <p class="footer__note">Sumber data &amp; spesifikasi: Laporan Akhir Flood2Food.</p>
+      <h4>Aset &amp; Dokumentasi</h4>
+      <a href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener">Unduh Aplikasi (.apk)</a>
+      <p style="color:var(--muted-2); font-size:0.84rem; margin-top:8px;">Terakreditasi laboratorium penguji BPTP Sumut (KAN LP-863-IDN). Hak cipta software &amp; desain terdaftar.</p>
     </div>
   </div>
-  <div class="container footer__bottom">
-    <p>© 2026 Tim Flood2Food. Prototipe teruji lapangan.</p>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Tim Peneliti Flood2Food USU · Program Kreativitas Mahasiswa Karsa Cipta (PKM-KC).</p>
+    <p>Dirancang &amp; Dikembangkan dengan Presisi Agronomi.</p>
   </div>
 </footer>
 
+<!-- Sticky CTA on Mobile -->
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
   <a class="btn btn--primary btn--block" href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing" target="_blank" rel="noopener" tabindex="-1">
     <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-    Download APK
+    Download APK Flood2Food
   </a>
 </div>
 
