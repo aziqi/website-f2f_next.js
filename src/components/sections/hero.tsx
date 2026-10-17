@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Sliders, Radio, CheckCircle2 } from "lucide-react";
+import { Download, Cpu, Radio, CheckCircle2 } from "lucide-react";
 import { Reveal, SplitWords } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { motion } from "framer-motion";
@@ -63,11 +63,11 @@ export function Hero() {
 
                 <Magnetic strength={0.15}>
                   <Link
-                    href="#simulator"
+                    href="#sistem"
                     className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-semibold bg-[#0F2E1B] hover:bg-[#153e25] text-white border border-[#A7C7B5]/25 hover:border-[#22C55E]/50 transition-colors"
                   >
-                    <Sliders className="w-4 h-4 text-[#22C55E]" />
-                    <span>Coba Simulator Telemetri</span>
+                    <Cpu className="w-4 h-4 text-[#22C55E]" />
+                    <span>Jelajahi Sistem IoT</span>
                   </Link>
                 </Magnetic>
               </div>

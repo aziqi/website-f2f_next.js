@@ -5,7 +5,6 @@ import { VideoDemo } from "@/components/sections/video-demo";
 import { SoilProblems } from "@/components/sections/soil-problems";
 import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
-import { Simulator } from "@/components/sections/simulator";
 import { AppShowcase } from "@/components/sections/app-showcase";
 import { BptpResults } from "@/components/sections/bptp-results";
 import { Team } from "@/components/sections/team";
@@ -23,7 +22,6 @@ export default function Home() {
         <SoilProblems />
         <IotSystem />
         <Parameters />
-        <Simulator />
         <AppShowcase />
         <BptpResults />
         <Team />

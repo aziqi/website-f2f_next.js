@@ -12,7 +12,6 @@ const navLinks = [
   { href: "#masalah", label: "Masalah" },
   { href: "#sistem", label: "Sistem IoT" },
   { href: "#fitur", label: "7 Parameter" },
-  { href: "#simulator", label: "Simulator" },
   { href: "#tampilan", label: "Aplikasi" },
   { href: "#hasil", label: "Hasil Uji" },
   { href: "#tim", label: "Tim" },

@@ -55,7 +55,6 @@ export function Footer() {
                 <li><Link href="#masalah" className="hover:text-white transition-colors">Masalah Lahan</Link></li>
                 <li><Link href="#sistem" className="hover:text-white transition-colors">Sistem IoT</Link></li>
                 <li><Link href="#fitur" className="hover:text-white transition-colors">7 Parameter</Link></li>
-                <li><Link href="#simulator" className="hover:text-white transition-colors">Simulator</Link></li>
               </ul>
             </div>
             <div>
