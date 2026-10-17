@@ -7,6 +7,7 @@ import { Parameters } from "@/components/sections/parameters";
 import { AppShowcase } from "@/components/sections/app-showcase";
 import { AppDownload } from "@/components/sections/app-download";
 import { Team } from "@/components/sections/team";
+import { Gallery } from "@/components/sections/gallery";
 import { Faq } from "@/components/sections/faq";
 import { Footer } from "@/components/layout/footer";
 
@@ -23,6 +24,7 @@ export default function Home() {
         <AppShowcase />
         <AppDownload />
         <Team />
+        <Gallery />
         <Faq />
       </main>
       <Footer />

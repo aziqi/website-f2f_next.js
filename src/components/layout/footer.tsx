@@ -61,7 +61,7 @@ export function Footer() {
               <ul className="space-y-2">
                 <li><Link href="/#tampilan" className="hover:text-white transition-colors">Aplikasi Mobile</Link></li>
                 <li><Link href="/#tim" className="hover:text-white transition-colors">Tim Peneliti</Link></li>
-                <li><Link href="/galeri" className="text-[#22C55E] hover:text-[#4ade80] font-medium transition-colors">Galeri Dokumentasi</Link></li>
+                <li><Link href="/#galeri" className="text-[#22C55E] hover:text-[#4ade80] font-medium transition-colors">Galeri Dokumentasi</Link></li>
                 <li><Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link></li>
                 <li><Link href="/#mitra" className="hover:text-white transition-colors">Mitra Resmi</Link></li>
               </ul>
