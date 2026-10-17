@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Reveal } from "@/components/motion/reveal";
-import { Smartphone, LayoutDashboard, CheckSquare, MessageSquare, Bluetooth, MapPin, Database } from "lucide-react";
+import { Smartphone, LayoutDashboard, CheckSquare, MessageSquare, Bluetooth, MapPin, Database, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const screens = [
@@ -70,22 +70,98 @@ export function AppShowcase() {
   return (
     <section id="tampilan" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mb-16">
+        {/* Section Header */}
+        <Reveal className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] text-xs font-mono tracking-wide mb-4">
             <Smartphone className="w-3.5 h-3.5" />
-            <span>Tampilan Aplikasi Mobile</span>
+            <span>Tampilan Aplikasi Mobile Android</span>
           </div>
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
-            Antarmuka Ramah Petani dengan Kecerdasan Agronomi
+            Antarmuka Ramah Petani dengan Kecerdasan Buatan AI
           </h2>
           <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
             Didesain intuitif dengan bahasa Indonesia sederhana, tipografi kontras tinggi untuk penggunaan di bawah sinar matahari sawah,
-            dan gamifikasi yang memotivasi percepatan pemulihan lahan.
+            dan kalkulator dosis presisi yang beroperasi tanpa sinyal internet.
           </p>
         </Reveal>
 
-        {/* Interactive App Screen Explorer */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        {/* Mobile Screen Experience (< 1024px) */}
+        <div className="lg:hidden">
+          {/* Horizontal Thumb Scroller Tabs */}
+          <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 mb-6 -mx-4 px-4">
+            {screens.map((item, idx) => {
+              const Icon = item.icon;
+              const isActive = activeTab === idx;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveTab(idx)}
+                  className={`px-3.5 py-2 rounded-2xl text-xs font-mono font-semibold flex items-center gap-2 shrink-0 transition-all ${
+                    isActive
+                      ? "bg-[#22C55E] text-[#081A10] shadow-md shadow-[#22C55E]/20"
+                      : "bg-[#0F2E1B] text-[#A3C2AF] border border-white/5"
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  <span>{item.title}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Centered Phone Preview for Mobile */}
+          <div className="flex flex-col items-center">
+            <div className="relative w-[260px] sm:w-[290px] mb-6">
+              <div className="absolute inset-0 bg-[#22C55E]/15 rounded-[40px] blur-2xl transform scale-95" />
+              <div className="relative rounded-[40px] border-[8px] border-[#13261b] bg-black overflow-hidden shadow-2xl shadow-black/90 ring-1 ring-white/10">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeScreen.id}
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative w-full aspect-[9/19.5]"
+                  >
+                    <Image
+                      src={activeScreen.image}
+                      alt={activeScreen.title}
+                      fill
+                      className="object-cover"
+                      sizes="290px"
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Feature Description Card on Mobile */}
+            <div className="w-full p-5 rounded-2xl bg-[#0F2E1B]/80 border border-white/10 text-center mb-6">
+              <h3 className="font-display font-bold text-lg text-white mb-1">
+                {activeScreen.title}
+              </h3>
+              <div className="text-xs font-mono text-[#F58220] mb-2">{activeScreen.subtitle}</div>
+              <p className="text-xs text-[#A3C2AF] leading-relaxed mb-4">
+                {activeScreen.description}
+              </p>
+              <a
+                href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-nested bg-[#F58220] text-[#081A10] text-xs font-bold py-2 px-4 shadow-lg shadow-[#F58220]/20"
+              >
+                <span>Unduh File APK (.apk)</span>
+                <span className="btn-nested-icon w-6 h-6 bg-black/15">
+                  <Download className="w-3.5 h-3.5 stroke-[2.5]" />
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Screen Experience (≥ 1024px) */}
+        <div className="hidden lg:grid grid-cols-12 gap-10 items-center">
           {/* Left: Tab Selectors */}
           <Reveal delay={0.1} className="lg:col-span-7 space-y-3">
             {screens.map((item, idx) => {
@@ -97,7 +173,7 @@ export function AppShowcase() {
                   onClick={() => setActiveTab(idx)}
                   className={`w-full text-left p-5 rounded-2xl border transition-all duration-200 flex items-start gap-4 ${
                     isActive
-                      ? "bg-[#0F2E1B] border-[#22C55E]/50 shadow-xl shadow-black/40"
+                      ? "bg-[#0F2E1B] border-[#22C55E]/50 shadow-xl shadow-black/40 ring-1 ring-[#22C55E]/20"
                       : "bg-[#0F2E1B]/30 border-white/5 hover:bg-[#0F2E1B]/60 hover:border-white/10"
                   }`}
                 >
@@ -131,9 +207,9 @@ export function AppShowcase() {
 
           {/* Right: Phone Frame Preview */}
           <Reveal delay={0.25} className="lg:col-span-5 flex justify-center">
-            <div className="relative w-[280px] sm:w-[310px]">
-              {/* Outer Phone Shell */}
-              <div className="relative rounded-[40px] border-[8px] border-[#13261b] bg-black overflow-hidden shadow-2xl shadow-black/90 ring-1 ring-white/10">
+            <div className="relative w-[300px] sm:w-[320px]">
+              <div className="absolute inset-0 bg-[#22C55E]/15 rounded-[44px] blur-2xl transform scale-95" />
+              <div className="relative rounded-[44px] border-[10px] border-[#13261b] bg-black overflow-hidden shadow-2xl shadow-black/90 ring-1 ring-white/10">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeScreen.id}
@@ -148,7 +224,7 @@ export function AppShowcase() {
                       alt={activeScreen.title}
                       fill
                       className="object-cover"
-                      sizes="310px"
+                      sizes="320px"
                       priority
                     />
                   </motion.div>
