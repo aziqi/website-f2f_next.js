@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Bagaimana probe sensor 7-in-1 tidak berkarat di lumpur sawah?",
     answer:
-      "Probe sensor menggunakan baja tahan karat austenitik (Stainless Steel 316L) berkualifikasi industri agrikultur dengan pelindung resin epoksi berstandar IP68. Pada pengujian rendam lumpur pascabanjir selama 14 hari penuh di Pagar Merbau II, elektroda tidak mengalami oksidasi maupun korosi galvanik.",
+      "Probe sensor menggunakan baja tahan karat austenitik (Stainless Steel 316L) berkualifikasi industri agrikultur dengan pelindung resin epoksi weatherproof tahan cuaca ekstrem. Pada pengujian rendam lumpur pascabanjir selama 14 hari penuh di Pagar Merbau II, elektroda tidak mengalami oksidasi maupun korosi galvanik.",
   },
   {
     question: "Mengapa memilih transmisi LoRa dibanding seluler GSM atau WiFi?",
@@ -47,16 +47,16 @@ export function Faq() {
           </p>
         </Reveal>
 
-        {/* Accordion List */}
+        {/* Accordion List with Double-Bezel */}
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <Reveal key={faq.question} delay={idx * 0.08}>
-                <div className="rounded-2xl bg-[#0F2E1B]/70 border border-[#A7C7B5]/15 overflow-hidden transition-colors">
+              <Reveal key={faq.question} delay={idx * 0.08} className="bezel-shell">
+                <div className="bezel-core overflow-hidden">
                   <button
                     onClick={() => setOpenIdx(isOpen ? null : idx)}
-                    className="w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none focus:ring-1 focus:ring-[#22C55E]"
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none focus:ring-1 focus:ring-[#22C55E]"
                     aria-expanded={isOpen}
                   >
                     <span className="font-display font-semibold text-base sm:text-lg text-white">
@@ -76,7 +76,7 @@ export function Faq() {
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <div className="px-6 pb-6 text-sm text-[#A3C2AF] leading-relaxed border-t border-white/5 pt-3">
+                        <div className="px-5 sm:px-6 pb-6 text-sm text-[#A3C2AF] leading-relaxed border-t border-white/5 pt-3">
                           {faq.answer}
                         </div>
                       </motion.div>
