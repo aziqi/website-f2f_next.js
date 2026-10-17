@@ -2,7 +2,7 @@
    Flood2Food — Service Worker (Cache-First / Offline Fallback)
    ============================================================ */
 
-const CACHE_NAME = 'flood2food-v2';
+const CACHE_NAME = 'flood2food-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
