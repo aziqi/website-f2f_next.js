@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const APK_DOWNLOAD_URL =
-  "https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing";
+  "https://github.com/aziqi/website-f2f_next.js/releases/download/v1.0.0/flood2food.apk";
 
 const installSteps = [
   {
