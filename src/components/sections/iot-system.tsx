@@ -71,7 +71,7 @@ export function IotSystem() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#F58220] font-bold">·</span>
-                <span><strong>Transceiver:</strong> LoRa E220-400T22D (915 MHz) + Antena Omnidirectional</span>
+                <span><strong>Transceiver:</strong> LoRa E220-900T22D (915 MHz) + Antena Omnidirectional</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#F58220] font-bold">·</span>
@@ -129,9 +129,9 @@ export function IotSystem() {
             </div>
             <div>
               <span className="font-mono text-xs text-[#22C55E]">Modul Hardware Lapangan</span>
-              <h4 className="font-display font-bold text-lg text-white mt-1">Sensor Node 7-in-1 Berpelindung IP68</h4>
+              <h4 className="font-display font-bold text-lg text-white mt-1">Sensor Node 7-in-1</h4>
               <p className="text-xs text-[#A3C2AF] mt-2 leading-relaxed">
-                Dilengkapi box enclosure kedap air, konektor GX16 aviation, dan sensor stainless steel antikorosi yang diuji rendam 14 hari tanpa oksidasi.
+                Dilengkapi box enclosure weatherproof, konektor GX16 aviation, dan sensor stainless steel antikorosi yang diuji rendam 14 hari tanpa oksidasi.
               </p>
             </div>
           </Reveal>
