@@ -79,23 +79,35 @@ export function Navbar() {
         </nav>
 
         {/* CTA Actions */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Magnetic strength={0.2}>
-            <Link
-              href="/#unduh"
-              className="btn-nested hidden sm:inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] text-xs font-semibold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25"
-            >
-              <span>Download APK</span>
-              <span className="btn-nested-icon w-6 h-6 bg-black/15">
-                <Download className="w-3.5 h-3.5 stroke-[2.5]" />
-              </span>
-            </Link>
-          </Magnetic>
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          {/* Mobile Direct Download Icon (Only on mobile < sm, so text never cuts off) */}
+          <Link
+            href="/#unduh"
+            className="sm:hidden w-8 h-8 rounded-full bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] flex items-center justify-center shadow-md shadow-[#F58220]/25 transition-all shrink-0"
+            aria-label="Download APK"
+          >
+            <Download className="w-4 h-4 stroke-[2.5]" />
+          </Link>
+
+          {/* Tablet & Desktop Full Download Button */}
+          <div className="hidden sm:block">
+            <Magnetic strength={0.2}>
+              <Link
+                href="/#unduh"
+                className="btn-nested inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] text-xs font-semibold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25"
+              >
+                <span>Download APK</span>
+                <span className="btn-nested-icon w-6 h-6 bg-black/15">
+                  <Download className="w-3.5 h-3.5 stroke-[2.5]" />
+                </span>
+              </Link>
+            </Magnetic>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+            className="xl:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors shrink-0"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
           >

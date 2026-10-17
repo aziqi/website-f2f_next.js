@@ -13,7 +13,7 @@ import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#081A10] text-[#F4F8F5] selection:bg-[#F58220] selection:text-[#081A10]">
+    <div className="relative min-h-screen bg-[#081A10] text-[#F4F8F5] selection:bg-[#F58220] selection:text-[#081A10] overflow-x-clip">
       <Navbar />
       <main id="main">
         <Hero />

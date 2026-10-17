@@ -51,7 +51,7 @@ export function Gallery() {
   }, [activeImageIndex, handleNext, handlePrev, handleClose]);
 
   return (
-    <section id="galeri" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
+    <section id="galeri" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10] overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#22C55E]/5 rounded-full blur-[140px] pointer-events-none" />
 
