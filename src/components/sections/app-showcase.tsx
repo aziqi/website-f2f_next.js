@@ -212,7 +212,7 @@ export function AppShowcase() {
               {/* Status pill under phone */}
               <div className="mt-4 text-center">
                 <span className="inline-block px-3 py-1 rounded-full text-[11px] font-mono text-[#22C55E] bg-[#22C55E]/10 border border-[#22C55E]/20">
-                  {activeScreen.title} · v1.0.4 Release
+                  {activeScreen.title} · v1.0.0 Release
                 </span>
               </div>
             </div>

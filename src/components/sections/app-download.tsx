@@ -105,7 +105,7 @@ export function AppDownload() {
                   <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#22C55E]/15 text-[#22C55E] border border-[#22C55E]/30">
                       <Cpu className="w-3.5 h-3.5" />
-                      v1.0.4 Release
+                      v1.0.0 Release
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#F58220]/15 text-[#F58220] border border-[#F58220]/30">
                       <Smartphone className="w-3.5 h-3.5" />
