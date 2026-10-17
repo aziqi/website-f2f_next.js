@@ -92,7 +92,7 @@ export function Team() {
             <span>Peneliti &amp; Pengembang</span>
           </div>
           <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
-            Orang di Balik Data — Tim PKM-KC USU 2026
+            Tim PKM-KC USU 2026
           </h2>
           <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
             Kolaborasi lintas disiplin ilmu mahasiswa Universitas Sumatera Utara dari Fakultas Pertanian, FMIPA,
