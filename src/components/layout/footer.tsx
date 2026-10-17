@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#A7C7B5]/10">
           {/* Brand Info */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="#top" className="flex items-center gap-3">
+            <Link href="/#top" className="flex items-center gap-3">
               <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-white/10 p-0.5 border border-white/20">
                 <Image
                   src="/assets/logos/flood2food.png"
@@ -51,18 +51,19 @@ export function Footer() {
             <div>
               <div className="font-mono text-white uppercase tracking-wider text-[11px] mb-3">Navigasi</div>
               <ul className="space-y-2">
-                <li><Link href="#video" className="hover:text-white transition-colors">Video Demo</Link></li>
-                <li><Link href="#sistem" className="hover:text-white transition-colors">Sistem IoT</Link></li>
-                <li><Link href="#fitur" className="hover:text-white transition-colors">7 Parameter</Link></li>
+                <li><Link href="/#video" className="hover:text-white transition-colors">Video Demo</Link></li>
+                <li><Link href="/#sistem" className="hover:text-white transition-colors">Sistem IoT</Link></li>
+                <li><Link href="/#fitur" className="hover:text-white transition-colors">7 Parameter</Link></li>
               </ul>
             </div>
             <div>
               <div className="font-mono text-white uppercase tracking-wider text-[11px] mb-3">Dokumentasi</div>
               <ul className="space-y-2">
-                <li><Link href="#tampilan" className="hover:text-white transition-colors">Aplikasi Mobile</Link></li>
-                <li><Link href="#tim" className="hover:text-white transition-colors">Tim Peneliti</Link></li>
-                <li><Link href="#faq" className="hover:text-white transition-colors">FAQ</Link></li>
-                <li><Link href="#mitra" className="hover:text-white transition-colors">Mitra Resmi</Link></li>
+                <li><Link href="/#tampilan" className="hover:text-white transition-colors">Aplikasi Mobile</Link></li>
+                <li><Link href="/#tim" className="hover:text-white transition-colors">Tim Peneliti</Link></li>
+                <li><Link href="/galeri" className="text-[#22C55E] hover:text-[#4ade80] font-medium transition-colors">Galeri Dokumentasi</Link></li>
+                <li><Link href="/#faq" className="hover:text-white transition-colors">FAQ</Link></li>
+                <li><Link href="/#mitra" className="hover:text-white transition-colors">Mitra Resmi</Link></li>
               </ul>
             </div>
           </div>

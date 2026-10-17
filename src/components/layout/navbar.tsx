@@ -8,12 +8,13 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { href: "#video", label: "Video Demo" },
-  { href: "#sistem", label: "Sistem IoT" },
-  { href: "#fitur", label: "7 Parameter" },
-  { href: "#tampilan", label: "Aplikasi" },
-  { href: "#tim", label: "Tim" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#video", label: "Video Demo" },
+  { href: "/#sistem", label: "Sistem IoT" },
+  { href: "/#fitur", label: "7 Parameter" },
+  { href: "/#tampilan", label: "Aplikasi" },
+  { href: "/galeri", label: "Galeri" },
+  { href: "/#tim", label: "Tim" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -40,7 +41,7 @@ export function Navbar() {
       >
         {/* Brand Logo */}
         <Link
-          href="#top"
+          href="/#top"
           className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full p-0.5"
         >
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white/10 p-1 border border-white/20 group-hover:scale-105 transition-transform duration-200">

@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "@/components/motion/reveal";
-import { Users, Crown, Code2, Zap, Wheat, Dna, GraduationCap } from "lucide-react";
+import { Users, Crown, Code2, Zap, Wheat, Dna, GraduationCap, Camera, ArrowRight } from "lucide-react";
 
 const teamMembers = [
   {
@@ -174,6 +175,33 @@ export function Team() {
             );
           })}
         </div>
+
+        {/* Gallery Teaser Card */}
+        <Reveal delay={0.25} className="mt-8">
+          <div className="relative rounded-2xl bg-gradient-to-r from-[#0F2E1B] via-[#081A10] to-[#0F2E1B] border border-[#22C55E]/30 p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl shadow-black/50 overflow-hidden">
+            <div className="absolute -top-12 -right-12 w-36 h-36 bg-[#22C55E]/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="flex items-center gap-4 text-center sm:text-left relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-[#22C55E]/15 border border-[#22C55E]/30 flex items-center justify-center text-[#22C55E] shrink-0">
+                <Camera className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-display font-bold text-white text-sm sm:text-base">
+                  Dokumentasi Riset Lapangan &amp; Perakitan Sensor
+                </h4>
+                <p className="text-xs text-[#A3C2AF] mt-0.5">
+                  Telusuri 22 foto kegiatan uji coba sensor sawah pascabanjir, perakitan telemetri LoRa, dan riset tim di Deli Serdang.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/galeri"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#22C55E] hover:bg-[#16a34a] text-[#081A10] font-semibold text-xs transition-all shadow-md shrink-0 group relative z-10"
+            >
+              <span>Buka Galeri Foto (22 Dokumentasi)</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
