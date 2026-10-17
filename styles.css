@@ -653,97 +653,7 @@ code, kbd, samp, .mono {
   font-family: var(--font-mono); font-weight: 700; color: var(--emerald);
 }
 
-/* ---------- Tanya Bimo: Agronomis AI Sandbox ---------- */
-.bimo-section-grid {
-  display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px, 5vw, 64px);
-  align-items: center;
-}
-.bimo-mascot-box {
-  text-align: center; position: relative;
-}
-.bimo-mascot-box img {
-  max-height: 480px; width: auto; margin-inline: auto;
-  filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.7));
-  animation: float-bimo 6s ease-in-out infinite;
-}
-@keyframes float-bimo {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
 
-.bimo-chat-card {
-  background: var(--soil-2); border: var(--border-emerald);
-  border-radius: var(--radius-xl); overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  display: flex; flex-direction: column; height: 540px;
-}
-.bimo-chat-header {
-  padding: 16px 22px; background: var(--soil-3);
-  border-bottom: 1px solid rgba(167, 199, 181, 0.12);
-  display: flex; align-items: center; gap: 14px;
-}
-.bimo-header-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 2px solid var(--emerald); overflow: hidden;
-}
-.bimo-header-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.bimo-header-info h4 { font-size: 1.05rem; margin-bottom: 2px; }
-.bimo-header-info span { font-size: 0.8rem; color: var(--emerald); font-weight: 600; }
-
-.bimo-chat-logs {
-  flex: 1; padding: 20px; overflow-y: auto;
-  display: flex; flex-direction: column; gap: 14px;
-  scrollbar-width: thin; scrollbar-color: rgba(34, 197, 94, 0.2) transparent;
-}
-.chat-msg {
-  max-width: 85%; padding: 12px 16px; border-radius: 16px;
-  font-size: 0.93rem; line-height: 1.55;
-}
-.chat-msg--bot {
-  align-self: flex-start; background: var(--soil-3);
-  border: 1px solid rgba(167, 199, 181, 0.14); color: var(--text);
-  border-bottom-left-radius: 4px;
-}
-.chat-msg--user {
-  align-self: flex-end; background: var(--emerald);
-  color: var(--emerald-dark); font-weight: 600;
-  border-bottom-right-radius: 4px;
-}
-
-.bimo-quick-prompts {
-  display: flex; gap: 8px; overflow-x: auto; padding: 10px 18px;
-  background: var(--soil-1); border-top: 1px solid rgba(167, 199, 181, 0.08);
-}
-.prompt-chip {
-  font-size: 0.78rem; font-weight: 600; white-space: nowrap;
-  padding: 6px 12px; border-radius: var(--radius-pill);
-  background: var(--soil-3); border: var(--border); color: var(--muted-1);
-  transition: all 0.18s var(--ease);
-}
-.prompt-chip:hover {
-  background: rgba(34, 197, 94, 0.12); color: var(--emerald);
-  border-color: rgba(34, 197, 94, 0.35);
-}
-
-.bimo-chat-input-row {
-  display: flex; gap: 10px; padding: 14px 18px;
-  background: var(--soil-3); border-top: 1px solid rgba(167, 199, 181, 0.12);
-}
-.bimo-chat-input {
-  flex: 1; background: var(--soil-1); border: var(--border);
-  border-radius: var(--radius-pill); padding: 10px 18px;
-  color: var(--text); font-family: var(--font-body); font-size: 0.92rem;
-}
-.bimo-chat-input:focus {
-  outline: none; border-color: var(--emerald);
-}
-.bimo-chat-send {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--emerald); color: var(--emerald-dark);
-  display: grid; place-items: center; flex: none;
-  transition: transform 0.18s var(--ease);
-}
-.bimo-chat-send:hover { transform: scale(1.06); }
 
 /* ---------- Tim: Orang di Balik Data ---------- */
 .team-lead-banner {
@@ -932,8 +842,6 @@ code, kbd, samp, .mono {
   .hero__stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
   .sim-grid { grid-template-columns: 1fr; }
-  .bimo-section-grid { grid-template-columns: 1fr; }
-  .bimo-mascot-box img { max-height: 320px; }
 
   .download-box { grid-template-columns: 1fr; }
   .proto-grid { grid-template-columns: 1fr; }

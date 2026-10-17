@@ -2,7 +2,7 @@
    Flood2Food — Service Worker (Cache-First / Offline Fallback)
    ============================================================ */
 
-const CACHE_NAME = 'flood2food-v1';
+const CACHE_NAME = 'flood2food-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -10,7 +10,6 @@ const ASSETS_TO_CACHE = [
   './script.js',
   './manifest.json',
   './assets/mascot/bimo-avatar.png',
-  './assets/mascot/bimo-front.png',
   './assets/screens/02_dashboard_screen.png',
   './assets/screens/03_tasks_screen.png',
   './assets/screens/04_chat_screen.png',
@@ -46,20 +45,31 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   if (e.request.method !== 'GET') return;
+
+  // Network-first for navigation requests (HTML)
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request).then((res) => {
+        var copy = res.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, copy));
+        return res;
+      }).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  // Stale-while-revalidate / cache-first for static assets
   e.respondWith(
     caches.match(e.request).then((cached) => {
-      return cached || fetch(e.request).then((res) => {
-        return caches.open(CACHE_NAME).then((cache) => {
-          if (e.request.url.startsWith('http')) {
-            cache.put(e.request, res.clone());
-          }
-          return res;
-        });
-      });
-    }).catch(() => {
-      if (e.request.mode === 'navigate') {
-        return caches.match('./index.html');
-      }
+      var fetchPromise = fetch(e.request).then((networkRes) => {
+        if (networkRes && networkRes.status === 200) {
+          var copy = networkRes.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, copy));
+        }
+        return networkRes;
+      }).catch(() => null);
+
+      return cached || fetchPromise;
     })
   );
 });
