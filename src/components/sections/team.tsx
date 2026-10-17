@@ -114,22 +114,22 @@ export function Team() {
           </div>
         </Reveal>
 
-        {/* 5 Distinct Colorful Team Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+        {/* 5 Distinct Colorful Team Cards (Desktop 5-Col Grid / Mobile Horizontal Snap Deck) */}
+        <div className="flex lg:grid lg:grid-cols-5 gap-4 sm:gap-6 overflow-x-auto no-scrollbar pb-4 mb-12 -mx-4 px-4 lg:mx-0 lg:px-0">
           {teamMembers.map((member, idx) => {
             const Icon = member.icon;
             return (
               <Reveal
                 key={member.name}
                 delay={idx * 0.1}
-                className={`p-6 rounded-3xl bg-[#0F2E1B]/70 border ${member.theme.border} hover:bg-[#0F2E1B] transition-all duration-300 shadow-xl shadow-black/40 flex flex-col justify-between`}
+                className={`min-w-[260px] sm:min-w-[280px] lg:min-w-0 shrink-0 lg:shrink p-6 rounded-3xl bg-[#0F2E1B]/80 border ${member.theme.border} hover:bg-[#0F2E1B] transition-all duration-300 shadow-xl shadow-black/40 flex flex-col justify-between`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className={`w-12 h-12 rounded-2xl ${member.theme.bg} ${member.theme.text} font-mono font-bold flex items-center justify-center text-sm border border-white/10`}>
                       {member.avatar}
                     </div>
-                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold border ${member.theme.badge}`}>
+                    <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold border ${member.theme.badge}`}>
                       <Icon className="w-3 h-3" />
                       {member.role}
                     </span>
@@ -153,23 +153,25 @@ export function Team() {
         </div>
 
         {/* Dosen Pembimbing Banner */}
-        <Reveal delay={0.3} className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0F2E1B] via-[#12361E] to-[#0F2E1B] border border-[#22C55E]/30 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-5">
-            <div className="w-14 h-14 rounded-2xl bg-[#22C55E]/15 border border-[#22C55E]/30 flex items-center justify-center shrink-0 text-[#22C55E]">
-              <GraduationCap className="w-7 h-7" />
+        <Reveal delay={0.3} className="bezel-shell">
+          <div className="bezel-core p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="w-14 h-14 rounded-2xl bg-[#22C55E]/15 border border-[#22C55E]/30 flex items-center justify-center shrink-0 text-[#22C55E]">
+                <GraduationCap className="w-7 h-7" />
+              </div>
+              <div>
+                <span className="font-mono text-xs text-[#22C55E] uppercase tracking-wider block font-semibold">Dosen Pembimbing PKM</span>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-white mt-0.5">
+                  Dr. Ir. Zikri Noer, S.Si., M.Si.
+                </h3>
+                <p className="text-xs text-[#A3C2AF] mt-1">
+                  NIDN 0021019402 · Fakultas Vokasi Universitas Sumatera Utara
+                </p>
+              </div>
             </div>
-            <div>
-              <span className="font-mono text-xs text-[#22C55E] uppercase tracking-wider block">Dosen Pembimbing PKM</span>
-              <h3 className="font-display font-bold text-lg sm:text-xl text-white mt-0.5">
-                Dr. Ir. Zikri Noer, S.Si., M.Si.
-              </h3>
-              <p className="text-xs text-[#A3C2AF] mt-1">
-                NIDN 0021019402 · Fakultas Vokasi Universitas Sumatera Utara
-              </p>
+            <div className="font-mono text-xs text-[#F58220] px-4 py-2 rounded-full bg-black/40 border border-white/10 shrink-0 font-semibold">
+              Universitas Sumatera Utara
             </div>
-          </div>
-          <div className="font-mono text-xs text-[#F58220] px-4 py-2 rounded-full bg-black/40 border border-white/10 shrink-0">
-            Universitas Sumatera Utara
           </div>
         </Reveal>
       </div>
