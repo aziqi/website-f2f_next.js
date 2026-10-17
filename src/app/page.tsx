@@ -9,11 +9,13 @@ import { AppDownload } from "@/components/sections/app-download";
 import { Team } from "@/components/sections/team";
 import { Gallery } from "@/components/sections/gallery";
 import { Faq } from "@/components/sections/faq";
+import { ScrollMotionBlur } from "@/components/motion/scroll-motion-blur";
 import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#081A10] text-[#F4F8F5] selection:bg-[#F58220] selection:text-[#081A10] overflow-x-clip">
+      <ScrollMotionBlur targetSelector="#main" maxBlur={3.8} sensitivity={0.08} />
       <Navbar />
       <main id="main">
         <Hero />
