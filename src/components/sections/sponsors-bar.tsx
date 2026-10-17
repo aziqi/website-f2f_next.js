@@ -45,12 +45,12 @@ const sponsors = [
     height: 1200,
   },
   {
-    name: "PIMNAS",
-    title: "PIMNAS — The Era of Ultimate Excellence",
-    src: "/assets/logos/pimnas.png",
+    name: "PIMNAS 39",
+    title: "PIMNAS 39 — Pekan Ilmiah Mahasiswa Nasional 2026 Universitas Diponegoro",
+    src: "/assets/logos/pimnas-39.png",
     heightClass: "h-9 sm:h-11 lg:h-13",
-    width: 1243,
-    height: 465,
+    width: 1024,
+    height: 334,
   },
   {
     name: "PKM Center USU",

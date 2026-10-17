@@ -10,7 +10,7 @@ const sponsors = [
   { name: "Belmawa", src: "/assets/logos/belmawa.png", width: 70, height: 36 },
   { name: "SIMBELMAWA", src: "/assets/logos/simbelmawa.png", width: 85, height: 36 },
   { name: "USU", src: "/assets/logos/usu.png", width: 36, height: 36 },
-  { name: "PIMNAS", src: "/assets/logos/pimnas.png", width: 95, height: 36 },
+  { name: "PIMNAS 39", src: "/assets/logos/pimnas-39.png", width: 110, height: 36 },
   { name: "PKM Center USU", src: "/assets/logos/pkm-center-usu.png", width: 75, height: 36 },
   { name: "Flood2Food", src: "/assets/logos/flood2food.png", width: 42, height: 36 },
 ];
