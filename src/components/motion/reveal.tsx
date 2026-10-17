@@ -31,7 +31,7 @@ export function Reveal({
       initial={reduce ? false : { opacity: 0, y }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y }}
       transition={{
-        duration: 1,
+        duration: 0.65,
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
@@ -80,7 +80,7 @@ export function SplitWords({
     hidden: { y: "115%" },
     visible: {
       y: "0%",
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -164,7 +164,7 @@ export function RevealLines({
               hidden: { y: "110%" },
               visible: {
                 y: "0%",
-                transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+                transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
               },
             }}
           >
@@ -200,7 +200,7 @@ export function FadeUp({
       className={className}
       initial={reduce ? false : { opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-      transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

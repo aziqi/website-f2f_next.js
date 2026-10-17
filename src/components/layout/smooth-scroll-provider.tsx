@@ -13,9 +13,12 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
     if (prefersReduced || isTouchDevice) return;
 
     const lenis = new Lenis({
-      lerp: 0.15,
+      lerp: 0.1,
+      duration: 1.1,
       smoothWheel: true,
-      wheelMultiplier: 1.2,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      syncTouch: false,
     });
 
     let rafId = 0;
@@ -52,7 +55,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       const el = document.querySelector(id);
       if (el) {
         e.preventDefault();
-        lenis.scrollTo(el as HTMLElement, { offset: -20, duration: 1.4 });
+        lenis.scrollTo(el as HTMLElement, { offset: -20, duration: 1.1 });
       }
     };
     document.addEventListener("click", handleAnchor);

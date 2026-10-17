@@ -15,19 +15,35 @@ import { Footer } from "@/components/layout/footer";
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#081A10] text-[#F4F8F5] selection:bg-[#F58220] selection:text-[#081A10] overflow-x-clip">
-      <ScrollMotionBlur targetSelector="#main" maxBlur={3.8} sensitivity={0.08} />
+      {/* GPU-Composited Fixed Background Layer (Zero paint overhead during scroll) */}
+      <div className="bg-canvas-fixed" aria-hidden="true" />
+      <ScrollMotionBlur targetSelector="#main" maxBlur={2.2} sensitivity={0.06} />
       <Navbar />
-      <main id="main">
+      <main id="main" className="relative z-10">
         <Hero />
         <SponsorsBar />
         <VideoDemo />
-        <IotSystem />
-        <Parameters />
-        <AppShowcase />
-        <AppDownload />
-        <Team />
-        <Gallery />
-        <Faq />
+        <div className="section-optimized">
+          <IotSystem />
+        </div>
+        <div className="section-optimized">
+          <Parameters />
+        </div>
+        <div className="section-optimized">
+          <AppShowcase />
+        </div>
+        <div className="section-optimized">
+          <AppDownload />
+        </div>
+        <div className="section-optimized">
+          <Team />
+        </div>
+        <div className="section-optimized">
+          <Gallery />
+        </div>
+        <div className="section-optimized">
+          <Faq />
+        </div>
       </main>
       <Footer />
     </div>
