@@ -5,6 +5,7 @@ import { VideoDemo } from "@/components/sections/video-demo";
 import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
 import { AppShowcase } from "@/components/sections/app-showcase";
+import { AppDownload } from "@/components/sections/app-download";
 import { Team } from "@/components/sections/team";
 import { Faq } from "@/components/sections/faq";
 import { Footer } from "@/components/layout/footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <IotSystem />
         <Parameters />
         <AppShowcase />
+        <AppDownload />
         <Team />
         <Faq />
       </main>
