@@ -6,7 +6,6 @@ import { SoilProblems } from "@/components/sections/soil-problems";
 import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
 import { AppShowcase } from "@/components/sections/app-showcase";
-import { BptpResults } from "@/components/sections/bptp-results";
 import { Team } from "@/components/sections/team";
 import { Faq } from "@/components/sections/faq";
 import { Footer } from "@/components/layout/footer";
@@ -23,7 +22,6 @@ export default function Home() {
         <IotSystem />
         <Parameters />
         <AppShowcase />
-        <BptpResults />
         <Team />
         <Faq />
       </main>

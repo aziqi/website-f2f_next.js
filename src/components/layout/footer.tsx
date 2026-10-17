@@ -61,7 +61,6 @@ export function Footer() {
               <div className="font-mono text-white uppercase tracking-wider text-[11px] mb-3">Dokumentasi</div>
               <ul className="space-y-2">
                 <li><Link href="#tampilan" className="hover:text-white transition-colors">Aplikasi Mobile</Link></li>
-                <li><Link href="#hasil" className="hover:text-white transition-colors">Hasil Uji BPTP</Link></li>
                 <li><Link href="#tim" className="hover:text-white transition-colors">Tim Peneliti</Link></li>
                 <li><Link href="#faq" className="hover:text-white transition-colors">FAQ</Link></li>
                 <li><Link href="#mitra" className="hover:text-white transition-colors">Mitra Resmi</Link></li>
