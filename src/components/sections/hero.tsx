@@ -47,6 +47,7 @@ export function Hero() {
             </Reveal>
 
             {/* CTA Buttons */}
+            {/* CTA Buttons */}
             <Reveal delay={0.4}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Magnetic strength={0.25}>
@@ -54,67 +55,75 @@ export function Hero() {
                     href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-sm font-semibold bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] shadow-xl shadow-[#F58220]/25 hover:shadow-[#F58220]/40 transition-all duration-200"
+                    className="btn-nested bg-gradient-to-r from-[#F58220] via-[#F58220] to-[#E06D10] text-[#081A10] font-bold text-sm tracking-wide shadow-xl shadow-[#F58220]/25 hover:shadow-[#F58220]/45"
                   >
-                    <Download className="w-4 h-4 stroke-[2.5]" />
                     <span>Download APK Flood2Food</span>
+                    <span className="btn-nested-icon bg-black/15 text-[#081A10]">
+                      <Download className="w-4 h-4 stroke-[2.5]" />
+                    </span>
                   </a>
                 </Magnetic>
 
                 <Magnetic strength={0.15}>
                   <Link
                     href="#sistem"
-                    className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full text-sm font-semibold bg-[#0F2E1B] hover:bg-[#153e25] text-white border border-[#A7C7B5]/25 hover:border-[#22C55E]/50 transition-colors"
+                    className="btn-nested bg-[#0F2E1B]/80 hover:bg-[#153e25] text-white border border-[#A7C7B5]/25 hover:border-[#22C55E]/50 text-sm font-semibold"
                   >
-                    <Cpu className="w-4 h-4 text-[#22C55E]" />
                     <span>Jelajahi Sistem IoT</span>
+                    <span className="btn-nested-icon bg-white/10 text-[#22C55E]">
+                      <Cpu className="w-4 h-4" />
+                    </span>
                   </Link>
                 </Magnetic>
               </div>
             </Reveal>
 
-            {/* Key Metric Stats Grid */}
+            {/* Key Metric Stats Grid: Responsive Deck */}
             <Reveal delay={0.5} className="w-full mt-12 pt-8 border-t border-[#A7C7B5]/15">
-              <dl className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
-                <div>
-                  <dt className="font-mono text-3xl sm:text-4xl font-bold text-white leading-none">
+              {/* Desktop 4-Col Grid / Mobile Horizontal Snap Deck */}
+              <div className="flex md:grid md:grid-cols-4 gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+                <div className="min-w-[140px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
+                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none">
                     7
-                  </dt>
-                  <dd className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
+                  </div>
+                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
                     Parameter Tanah
-                  </dd>
+                  </div>
                 </div>
-                <div>
-                  <dt className="font-mono text-3xl sm:text-4xl font-bold text-white leading-none flex items-baseline gap-1">
-                    10,64 <span className="text-sm font-sans text-[#22C55E]">km</span>
-                  </dt>
-                  <dd className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
+
+                <div className="min-w-[155px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
+                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
+                    10,64 <span className="text-xs font-sans text-[#22C55E]">km</span>
+                  </div>
+                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
                     Jangkauan LoRa
-                  </dd>
+                  </div>
                 </div>
-                <div>
-                  <dt className="font-mono text-3xl sm:text-4xl font-bold text-white leading-none flex items-baseline gap-1">
-                    5<span className="text-sm font-sans text-[#22C55E]">%</span>
-                  </dt>
-                  <dd className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
-                    Maksimum Galat BPTP
-                  </dd>
+
+                <div className="min-w-[155px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
+                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
+                    ≤5<span className="text-xs font-sans text-[#22C55E]">%</span>
+                  </div>
+                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
+                    Maks. Galat BPTP
+                  </div>
                 </div>
-                <div>
-                  <dt className="font-mono text-3xl sm:text-4xl font-bold text-white leading-none flex items-baseline gap-1">
-                    14 <span className="text-sm font-sans text-[#F58220]">hari</span>
-                  </dt>
-                  <dd className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
+
+                <div className="min-w-[140px] md:min-w-0 p-4 rounded-2xl bg-[#0F2E1B]/50 border border-white/5 flex flex-col justify-between shrink-0 md:shrink">
+                  <div className="font-mono text-2xl sm:text-3xl font-bold text-white leading-none flex items-baseline gap-1">
+                    14 <span className="text-xs font-sans text-[#F58220]">hari</span>
+                  </div>
+                  <div className="mt-2 text-xs font-medium text-[#A3C2AF] tracking-wide">
                     Uji Tanpa Korosi
-                  </dd>
+                  </div>
                 </div>
-              </dl>
+              </div>
             </Reveal>
           </div>
 
           {/* Right Column: 3D Mockup with Floating Telemetry Chips */}
-          <div className="lg:col-span-5 flex justify-center relative">
-            <Reveal delay={0.25} className="relative w-[300px] sm:w-[320px]">
+          <div className="lg:col-span-5 flex justify-center relative mt-6 lg:mt-0">
+            <Reveal delay={0.25} className="relative w-[280px] sm:w-[320px]">
               {/* Glow Aura */}
               <div className="absolute inset-0 bg-[#22C55E]/15 rounded-[44px] blur-2xl transform scale-95" />
 
@@ -134,10 +143,10 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-3 -left-6 sm:-left-10 bg-[#0F2E1B]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-4 py-2 flex items-center gap-2.5 shadow-xl shadow-black/60 z-20"
+                className="absolute -top-3 left-0 sm:-left-8 bg-[#081A10]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
               >
-                <Radio className="w-4 h-4 text-[#38BDF8] animate-pulse" />
-                <span className="text-xs font-medium text-white tracking-wide">
+                <Radio className="w-3.5 h-3.5 text-[#38BDF8] animate-pulse" />
+                <span className="text-[11px] sm:text-xs font-medium text-white tracking-wide">
                   LoRa Aktif · 10,64 km
                 </span>
               </motion.div>
@@ -146,10 +155,10 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-3 -right-6 sm:-right-8 bg-[#0F2E1B]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-4 py-2 flex items-center gap-2.5 shadow-xl shadow-black/60 z-20"
+                className="absolute -bottom-3 right-0 sm:-right-8 bg-[#081A10]/95 backdrop-blur-md border border-[#A7C7B5]/30 rounded-full px-3.5 py-1.5 sm:px-4 sm:py-2 flex items-center gap-2 shadow-xl shadow-black/60 z-20"
               >
-                <CheckCircle2 className="w-4 h-4 text-[#22C55E]" />
-                <span className="text-xs font-medium text-white tracking-wide">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#22C55E]" />
+                <span className="text-[11px] sm:text-xs font-medium text-white tracking-wide">
                   Galat Ukur ≤5% BPTP
                 </span>
               </motion.div>

@@ -32,20 +32,20 @@ export function Navbar() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#081A10]/90 backdrop-blur-md border-b border-[#A7C7B5]/15 py-3 shadow-xl shadow-black/40"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none">
+      <div
+        className={`max-w-6xl mx-auto flex items-center justify-between pointer-events-auto rounded-full transition-all duration-300 px-3 sm:px-5 py-2 sm:py-2.5 border ${
+          isScrolled
+            ? "bg-[#081A10]/95 backdrop-blur-xl border-[#22C55E]/30 shadow-2xl shadow-black/80 ring-1 ring-white/10"
+            : "bg-[#081A10]/80 backdrop-blur-md border-white/15 shadow-xl shadow-black/40"
+        }`}
+      >
         {/* Brand Logo */}
         <Link
           href="#top"
-          className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-lg p-1"
+          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full p-0.5"
         >
-          <div className="relative w-9 h-9 rounded-xl overflow-hidden bg-white/10 p-1 border border-white/20 group-hover:scale-105 transition-transform duration-200">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white/10 p-1 border border-white/20 group-hover:scale-105 transition-transform duration-200">
             <Image
               src="/assets/logos/flood2food.png"
               alt="Logo Flood2Food"
@@ -55,7 +55,7 @@ export function Navbar() {
               priority
             />
           </div>
-          <span className="font-display font-bold text-xl sm:text-2xl tracking-tight text-white">
+          <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white">
             Flood<span className="text-[#F58220]">2</span>Food
           </span>
           <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-medium tracking-wide bg-[#F58220]/20 text-[#F58220] border border-[#F58220]/30">
@@ -65,14 +65,14 @@ export function Navbar() {
 
         {/* Desktop Nav Links */}
         <nav
-          className="hidden xl:flex items-center gap-1 bg-[#0F2E1B]/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10"
+          className="hidden xl:flex items-center gap-0.5 bg-black/30 px-3 py-1 rounded-full border border-white/10"
           aria-label="Navigasi Utama"
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 text-xs font-medium text-[#A3C2AF] hover:text-white hover:bg-white/5 rounded-full transition-colors"
+              className="px-3 py-1 text-xs font-medium text-[#A3C2AF] hover:text-white hover:bg-white/10 rounded-full transition-colors"
             >
               {link.label}
             </Link>
@@ -80,27 +80,29 @@ export function Navbar() {
         </nav>
 
         {/* CTA Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Magnetic strength={0.2}>
             <a
               href="https://drive.google.com/file/d/1jhWta2ZYSled7e52_J57GJ2Pi7ih6qtr/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] shadow-lg shadow-[#F58220]/25 hover:shadow-[#F58220]/40 transition-all duration-200"
+              className="btn-nested hidden sm:inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] text-xs font-semibold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25"
             >
-              <Download className="w-4 h-4 stroke-[2.5]" />
               <span>Download APK</span>
+              <span className="btn-nested-icon w-6 h-6 bg-black/15">
+                <Download className="w-3.5 h-3.5 stroke-[2.5]" />
+              </span>
             </a>
           </Magnetic>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
+            className="xl:hidden p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
@@ -113,7 +115,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="xl:hidden bg-[#081A10]/98 border-b border-white/10 px-6 py-6 overflow-hidden"
+            className="xl:hidden max-w-6xl mx-auto mt-2 pointer-events-auto rounded-3xl bg-[#081A10]/98 border border-white/15 px-6 py-6 overflow-hidden shadow-2xl backdrop-blur-2xl"
           >
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
