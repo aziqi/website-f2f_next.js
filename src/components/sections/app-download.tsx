@@ -20,7 +20,9 @@ import {
 } from "lucide-react";
 
 const APK_DOWNLOAD_URL =
-  "https://github.com/aziqi/website-f2f_next.js/releases/download/v1.0.0/flood2food.apk";
+  "https://github.com/aziqi/Flood2Food/releases/download/v1.0.0/Flood2Food-arm64-v8a-release.apk";
+const GITHUB_RELEASE_URL =
+  "https://github.com/aziqi/Flood2Food/releases/tag/v1.0.0";
 
 const installSteps = [
   {
@@ -110,7 +112,7 @@ export function AppDownload() {
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#F58220]/15 text-[#F58220] border border-[#F58220]/30">
                       <Smartphone className="w-3.5 h-3.5" />
-                      Android 8.0 s.d. 17
+                      Android 8.0+ (ARM64)
                     </span>
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30">
                       <Bluetooth className="w-3.5 h-3.5" />
@@ -145,7 +147,7 @@ export function AppDownload() {
                     <button
                       onClick={handleCopyLink}
                       className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-md"
-                      aria-label="Salin tautan unduhan Google Drive"
+                      aria-label="Salin tautan unduhan APK Flood2Food"
                     >
                       {copied ? (
                         <>
@@ -272,12 +274,12 @@ export function AppDownload() {
                   </div>
 
                   <a
-                    href={APK_DOWNLOAD_URL}
+                    href={GITHUB_RELEASE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-mono text-[#22C55E] hover:text-[#4ade80] transition-colors"
                   >
-                    <span>Buka Tautan Google Drive Langsung</span>
+                    <span>Buka Halaman GitHub Release Langsung</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
