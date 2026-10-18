@@ -11,7 +11,7 @@
   [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
   [![PKM-KC](https://img.shields.io/badge/Program-PKM--KC_2026-F58220?style=for-the-badge)](https://simbelmawa.kemdikbud.go.id/)
   [![PIMNAS 39](https://img.shields.io/badge/Menuju-PIMNAS_39-22C55E?style=for-the-badge)](#mitra--dukungan-resmi)
-  [![Release](https://img.shields.io/badge/Release-v1.0.0_APK-F58220?style=for-the-badge&logo=android&logoColor=white)](https://github.com/aziqi/website-f2f_next.js/releases/tag/v1.0.0)
+  [![Release](https://img.shields.io/badge/Release-v1.0.0_APK-F58220?style=for-the-badge&logo=android&logoColor=white)](https://github.com/aziqi/Flood2Food/releases/tag/v1.0.0)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
   <p align="center">
