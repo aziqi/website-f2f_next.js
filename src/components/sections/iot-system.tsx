@@ -130,7 +130,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Voltage Regulator", value: "LM2596 Step-Down (5.0V)" },
       { label: "Autonomi Baterai", value: "> 5 Hari Mendung Penuh" },
     ],
-    hotspot: { top: "6%", left: "48%" },
+    hotspot: { top: "60%", left: "47%" },
   },
   {
     id: 2,
@@ -145,7 +145,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Proteksi Kabel", value: "Cable Gland PG7 Waterproof" },
       { label: "Mounting Frame", value: "Tiang Besi Galvanis Anti-Karat" },
     ],
-    hotspot: { top: "28%", left: "54%" },
+    hotspot: { top: "28%", left: "48%" },
   },
   {
     id: 3,
@@ -160,7 +160,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Daya Pancar", value: "+22 dBm (160 mW)" },
       { label: "Jangkauan Uji", value: "10,64 km Line-of-Sight" },
     ],
-    hotspot: { top: "18%", left: "74%" },
+    hotspot: { top: "4%", left: "23%" },
   },
   {
     id: 4,
@@ -175,7 +175,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Flash / SRAM", value: "4 MB Flash / 520 KB SRAM" },
       { label: "Pemrograman", value: "Native C++ Non-Blocking" },
     ],
-    hotspot: { top: "37%", left: "38%" },
+    hotspot: { top: "43%", left: "52%" },
   },
   {
     id: 5,
@@ -190,7 +190,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Konsumsi Standby", value: "< 1 mA (Ultra Deep Sleep)" },
       { label: "Duty Cycle", value: "Aktif 15 dtk / Siklus 30 mnt" },
     ],
-    hotspot: { top: "45%", left: "58%" },
+    hotspot: { top: "52.5%", left: "44%" },
   },
   {
     id: 6,
@@ -205,7 +205,7 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Redundansi Baca", value: "3x Sampling Median Filter" },
       { label: "Kekebalan Derau", value: "Immune to EMI & Ground Loop" },
     ],
-    hotspot: { top: "54%", left: "42%" },
+    hotspot: { top: "74%", left: "33%" },
   },
   {
     id: 7,
@@ -220,22 +220,22 @@ const SENSOR_NODE_COMPONENTS: AnatomyItem[] = [
       { label: "Antarmuka Lokal", value: "LCD 20x4 Karakter + Buzzer" },
       { label: "Backup Data", value: "Autosave data_npk.csv" },
     ],
-    hotspot: { top: "64%", left: "48%" },
+    hotspot: { top: "39%", left: "47.4%" },
   },
   {
     id: 8,
     pinNumber: "08",
-    title: "Probe Sensor 7-in-1 Heavy-Duty",
-    badge: "Stainless Steel 316L Uji 14 Hari",
+    title: "Tiang Penyangga Besi & Rangka Dudukan Kokoh",
+    badge: "Rangka Baja Galvanis Heavy-Duty",
     badgeColor: "text-[#22C55E] bg-[#22C55E]/10 border-[#22C55E]/30",
-    desc: "Probe elektroda baja tahan karat austenitik SS316L dengan enkapsulasi resin epoksi tahan lumpur pascabanjir korosif. Teruji rendam 14 hari nonstop tanpa oksidasi. Mengukur N, P, K, pH, EC, Suhu, Kelembaban, dan Salinitas.",
+    desc: "Rangka struktur baja galvanis kokoh sebagai penopang stasiun sensor di lahan sawah agar tahan terhadap terpaan angin kencang, genangan banjir aktif, dan getaran mekanik lingkungan ekstrem.",
     specs: [
-      { label: "Material Elektroda", value: "Stainless Steel 316L Heavy" },
-      { label: "Enkapsulasi", value: "Resin Epoksi Kedap Air IP68" },
-      { label: "Parameter Ukur", value: "N, P, K, pH, EC, Temp, MC, Sal" },
-      { label: "Uji Lumpur", value: "14 Hari di Pagar Merbau II Bebas Korosi" },
+      { label: "Material Rangka", value: "Baja Las Galvanis Tahan Karat" },
+      { label: "Ketinggian Tiang", value: "1,5 Meter Bebas Genangan Air" },
+      { label: "Dudukan Boks", value: "Bracket Baut Baja Stainless M8" },
+      { label: "Stabilitas", value: "Tahan Angin Kencang & Gempa Ringan" },
     ],
-    hotspot: { top: "88%", left: "48%" },
+    hotspot: { top: "89%", left: "48%" },
   },
 ];
 
@@ -660,7 +660,7 @@ export function IotSystem() {
                     setLightboxData({
                       src: "/assets/sensor-node-clean.png",
                       title: "Sensor Node 7-in-1 Stasiun Lapangan",
-                      subtitle: "Box IP65 Outdoor, Panel Surya 10 Wp, GX16 Aviation Socket, & Probe SS316L",
+                      subtitle: "Pintu Boks Terbuka: Layar LCD Biru, PCB ESP32 Type-C, Modul LoRa, Baterai LiFePO4, & Soket GX16",
                       type: "node",
                     })
                   }
@@ -702,7 +702,7 @@ export function IotSystem() {
                           setLightboxData({
                             src: "/assets/sensor-node-clean.png",
                             title: "Sensor Node 7-in-1 Stasiun Lapangan",
-                            subtitle: "Box IP65 Outdoor, Panel Surya 10 Wp, GX16 Aviation Socket, & Probe SS316L",
+                            subtitle: "Pintu Boks Terbuka: Layar LCD Biru, PCB ESP32 Type-C, Modul LoRa, Baterai LiFePO4, & Soket GX16",
                             type: "node",
                           })
                         }
