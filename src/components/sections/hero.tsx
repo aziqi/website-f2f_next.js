@@ -1,61 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Github, Instagram, Radio, Cpu, Clock, Zap } from "lucide-react";
+import { Download, Github, Instagram } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-
-interface MetricCounterProps {
-  prefix?: string;
-  target: number;
-  suffix?: string;
-  decimals?: number;
-  label: string;
-  sublabel: string;
-  icon: typeof Radio;
-}
-
-function MetricCounter({ prefix = "", target, suffix = "", decimals = 0, label, sublabel, icon: Icon }: MetricCounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-    const duration = 1800;
-    const startTime = performance.now();
-    const update = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // easeOutExpo for technical snap feel
-      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setCount(eased * target);
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    };
-    const frameId = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(frameId);
-  }, [isInView, target]);
-
-  return (
-    <div ref={ref} className="flex flex-col p-3 rounded-lg bg-[#0F2E1B]/50 border border-[#A7C7B5]/15 backdrop-blur-sm">
-      <div className="flex items-center gap-1.5 text-[#22C55E] text-xs font-mono uppercase tracking-wider mb-1">
-        <Icon className="w-3.5 h-3.5" />
-        <span>{label}</span>
-      </div>
-      <div className="font-mono text-xl sm:text-2xl font-black text-white tabular-nums tracking-tight">
-        {prefix}
-        {count.toFixed(decimals)}
-        <span className="text-[#F58220] text-sm sm:text-base ml-1 font-semibold">{suffix}</span>
-      </div>
-      <span className="text-[11px] text-[#A3C2AF]/70 font-mono mt-0.5">{sublabel}</span>
-    </div>
-  );
-}
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 export function Hero() {
   const mouseX = useMotionValue(0);
@@ -121,47 +71,8 @@ export function Hero() {
               </p>
             </Reveal>
 
-            {/* KPI Metric Counter Strip */}
-            <Reveal delay={0.3} className="w-full mt-6">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-2xl">
-                <MetricCounter
-                  target={10.64}
-                  suffix="km"
-                  decimals={2}
-                  label="Jangkauan"
-                  sublabel="LoRa SX1262 LoS"
-                  icon={Radio}
-                />
-                <MetricCounter
-                  target={7}
-                  suffix="Param"
-                  decimals={0}
-                  label="Sensor"
-                  sublabel="Fusion SS316L"
-                  icon={Cpu}
-                />
-                <MetricCounter
-                  target={14}
-                  suffix="Hari"
-                  decimals={0}
-                  label="Siklus"
-                  sublabel="Pantau Remediasi"
-                  icon={Clock}
-                />
-                <MetricCounter
-                  prefix="< "
-                  target={2}
-                  suffix="dtk"
-                  decimals={0}
-                  label="Latensi"
-                  sublabel="AI Edge Offline"
-                  icon={Zap}
-                />
-              </div>
-            </Reveal>
-
             {/* CTA Buttons */}
-            <Reveal delay={0.4}>
+            <Reveal delay={0.3}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Magnetic strength={0.25}>
                   <Link
