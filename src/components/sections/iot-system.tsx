@@ -913,7 +913,7 @@ export function IotSystem() {
                     setLightboxData({
                       src: "/assets/gateway-clean.png",
                       title: "Gateway Portabel & BLE Bridge",
-                      subtitle: "Antena E220 915 MHz, Layar LCD 20x4, MicroSD Card FAT32, & BLE 5.0 Nordic UART",
+                      subtitle: "Layar LCD 20x4 I2C Blue Backlight, Tombol Navigasi Taktil, Antena LoRa 915 MHz, & BLE 5.0",
                       type: "gateway",
                     })
                   }
@@ -1061,49 +1061,12 @@ export function IotSystem() {
                           setLightboxData({
                             src: "/assets/gateway-clean.png",
                             title: "Gateway Portabel & BLE Bridge",
-                            subtitle: "Antena E220 915 MHz, Layar LCD 20x4, MicroSD Card FAT32, & BLE 5.0 Nordic UART",
+                            subtitle: "Layar LCD 20x4 I2C Blue Backlight, Tombol Navigasi Taktil, Antena LoRa 915 MHz, & BLE 5.0",
                             type: "gateway",
                           })
                         }
                       />
                     </motion.div>
-
-                    {/* Interactive Hotspot Pins (01 to 07) */}
-                    {GATEWAY_COMPONENTS.map((comp) => {
-                      const isActive = activeGatewayHotspot === comp.id;
-                      return (
-                        <button
-                          key={comp.id}
-                          type="button"
-                          onClick={() => setActiveGatewayHotspot(comp.id)}
-                          style={{ top: comp.hotspot.top, left: comp.hotspot.left }}
-                          className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group/pin transition-transform ${
-                            isActive ? "scale-125 z-30" : "hover:scale-110"
-                          }`}
-                          aria-label={`Lihat modul ${comp.pinNumber}: ${comp.title}`}
-                        >
-                          <div
-                            className={`relative flex items-center justify-center w-7 h-7 rounded-full font-mono text-[11px] font-bold transition-all shadow-lg ${
-                              isActive
-                                ? "bg-[#F58220] text-[#081A10] ring-4 ring-[#F58220]/40 shadow-[#F58220]/50"
-                                : "bg-[#081A10] text-[#F58220] border-2 border-[#F58220]/60 hover:bg-[#F58220]/20"
-                            }`}
-                          >
-                            <span>{comp.pinNumber}</span>
-                            <span
-                              className={`absolute inset-0 rounded-full border border-[#F58220] ${
-                                isActive ? "animate-ping opacity-75" : "opacity-0 group-hover/pin:opacity-40"
-                              }`}
-                            />
-                          </div>
-
-                          {/* Tooltip on Hover */}
-                          <div className="hidden group-hover/pin:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-md bg-[#081A10] border border-[#F58220]/40 text-[10px] font-mono text-white whitespace-nowrap shadow-xl pointer-events-none z-30">
-                            {comp.pinNumber}. {comp.title}
-                          </div>
-                        </button>
-                      );
-                    })}
                   </div>
 
                   {/* Click to Expand Prompt */}
@@ -1111,27 +1074,6 @@ export function IotSystem() {
                     <Maximize2 className="w-3 h-3 text-[#F58220]" />
                     <span>Klik foto untuk Fullscreen</span>
                   </div>
-                </div>
-
-                {/* Hotspot Quick Selector Pills (Mobile Friendly) */}
-                <div className="w-full mt-4 flex flex-wrap gap-1.5 justify-center">
-                  {GATEWAY_COMPONENTS.map((comp) => {
-                    const isActive = activeGatewayHotspot === comp.id;
-                    return (
-                      <button
-                        key={comp.id}
-                        type="button"
-                        onClick={() => setActiveGatewayHotspot(comp.id)}
-                        className={`px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
-                          isActive
-                            ? "bg-[#F58220] text-[#081A10] font-bold shadow-md shadow-[#F58220]/20"
-                            : "bg-white/5 text-[#A3C2AF] hover:bg-white/10 border border-white/5"
-                        }`}
-                      >
-                        Pin {comp.pinNumber}
-                      </button>
-                    );
-                  })}
                 </div>
               </div>
             </div>
