@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { VolumeX } from "lucide-react";
+import { VolumeX, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useBackgroundMusic } from "./background-music-provider";
 
@@ -14,7 +14,7 @@ export function MusicToggleButton({
   variant = "navbar-pill",
   className = "",
 }: MusicToggleButtonProps) {
-  const { isPlaying, toggleMusic } = useBackgroundMusic();
+  const { isPlaying, isLoading, toggleMusic } = useBackgroundMusic();
 
   // 1. Variant HERO PILL (untuk Hero Section Header, sejajar Download, Instagram, GitHub)
   if (variant === "hero-pill") {
@@ -39,7 +39,7 @@ export function MusicToggleButton({
                 : "bg-white/10 text-white/50 border-white/10"
             }`}
           >
-            {isPlaying ? "ON" : "OFF"}
+            {isLoading ? "..." : isPlaying ? "ON" : "OFF"}
           </span>
         </div>
         <span
@@ -49,7 +49,9 @@ export function MusicToggleButton({
               : "bg-white/10 group-hover:bg-white/20 text-[#A3C2AF] group-hover:text-white"
           }`}
         >
-          {isPlaying ? (
+          {isLoading ? (
+            <Loader2 className="w-4 h-4 animate-spin text-[#22C55E]" />
+          ) : isPlaying ? (
             <div className="flex items-end justify-center gap-[2.5px] h-3.5 w-3.5">
               <motion.span
                 animate={{ height: ["20%", "85%", "40%", "100%", "20%"] }}
@@ -101,7 +103,9 @@ export function MusicToggleButton({
                 : "bg-white/5 text-[#A3C2AF]"
             }`}
           >
-            {isPlaying ? (
+            {isLoading ? (
+              <Loader2 className="w-3.5 h-3.5 animate-spin text-[#22C55E]" />
+            ) : isPlaying ? (
               <div className="flex items-end justify-center gap-[2px] h-3 w-3">
                 <motion.span
                   animate={{ height: ["20%", "90%", "40%", "100%", "20%"] }}
@@ -137,7 +141,7 @@ export function MusicToggleButton({
                 : "bg-white/5 border-white/10 text-white/50"
             }`}
           >
-            {isPlaying ? "Memutar" : "Senyap"}
+            {isLoading ? "Memuat..." : isPlaying ? "Memutar" : "Senyap"}
           </span>
         </div>
       </button>
@@ -159,7 +163,9 @@ export function MusicToggleButton({
         title={isPlaying ? "Matikan Musik Latar" : "Putar Musik Latar (Flood2Food)"}
       >
         <span className="pointer-events-none absolute inset-x-2 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-        {isPlaying ? (
+        {isLoading ? (
+          <Loader2 className="w-3.5 h-3.5 animate-spin text-[#22C55E] relative z-10" />
+        ) : isPlaying ? (
           <div className="flex items-end justify-center gap-[2.5px] h-3.5 w-3.5 relative z-10">
             <motion.span
               animate={{ height: ["20%", "85%", "40%", "100%", "20%"] }}
@@ -206,7 +212,9 @@ export function MusicToggleButton({
       <span className="pointer-events-none absolute inset-x-2 top-0.5 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
       {/* Visualizer / Icon */}
-      {isPlaying ? (
+      {isLoading ? (
+        <Loader2 className="w-3.5 h-3.5 animate-spin text-[#22C55E] relative z-10 shrink-0" />
+      ) : isPlaying ? (
         <div className="flex items-end justify-center gap-[2px] h-3.5 w-3 relative z-10 shrink-0">
           <motion.span
             animate={{ height: ["20%", "85%", "40%", "100%", "20%"] }}
@@ -230,7 +238,7 @@ export function MusicToggleButton({
 
       {/* Label Text */}
       <span className="relative z-10 text-[11px] sm:text-xs font-semibold tracking-tight">
-        Musik
+        {isLoading ? "Memuat..." : "Musik"}
       </span>
 
       {/* Status Dot / Indicator */}

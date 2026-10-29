@@ -11,6 +11,7 @@ import React, {
 
 interface BackgroundMusicContextType {
   isPlaying: boolean;
+  isLoading: boolean;
   toggleMusic: () => void;
   playMusic: () => Promise<void>;
   pauseMusic: () => void;
@@ -19,11 +20,9 @@ interface BackgroundMusicContextType {
 
 const BackgroundMusicContext = createContext<BackgroundMusicContextType | null>(null);
 
-const TARGET_VOLUME = 0.35; // Suara latar ambient yang nyaman (35%)
-const FADE_INTERVAL_MS = 30; // Interval perubahan volume
-const FADE_IN_STEP = TARGET_VOLUME / (1000 / FADE_INTERVAL_MS); // 1 detik fade in
-const FADE_OUT_STEP = TARGET_VOLUME / (400 / FADE_INTERVAL_MS); // 400ms fade out
+const TARGET_VOLUME = 0.35; // Suara latar ambient yang seimbang (35%)
 const STORAGE_KEY = "f2f_music_preference";
+const AUDIO_URL = "/assets/audio/music-flood2food.mp3";
 
 export function BackgroundMusicProvider({
   children,
@@ -31,76 +30,52 @@ export function BackgroundMusicProvider({
   children: React.ReactNode;
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const fadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const blobUrlRef = useRef<string | null>(null);
+  const isPlayingRef = useRef<boolean>(false);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
+
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasInteracted, setHasInteracted] = useState<boolean>(false);
   const wasPlayingRef = useRef<boolean>(false);
 
-  // Bersihkan timer fade jika sedang berjalan
-  const clearFade = useCallback(() => {
-    if (fadeIntervalRef.current) {
-      clearInterval(fadeIntervalRef.current);
-      fadeIntervalRef.current = null;
-    }
-  }, []);
-
-  // Fade In volume audio secara mulus
-  const fadeIn = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    clearFade();
-
-    fadeIntervalRef.current = setInterval(() => {
-      if (!audio) return clearFade();
-      if (audio.volume < TARGET_VOLUME - FADE_IN_STEP) {
-        audio.volume = Math.min(TARGET_VOLUME, audio.volume + FADE_IN_STEP);
-      } else {
-        audio.volume = TARGET_VOLUME;
-        clearFade();
-      }
-    }, FADE_INTERVAL_MS);
-  }, [clearFade]);
-
-  // Fade Out volume audio secara mulus lalu pause
-  const fadeOutAndPause = useCallback(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    clearFade();
-
-    fadeIntervalRef.current = setInterval(() => {
-      if (!audio) return clearFade();
-      if (audio.volume > FADE_OUT_STEP) {
-        audio.volume = Math.max(0, audio.volume - FADE_OUT_STEP);
-      } else {
-        audio.volume = 0;
-        audio.pause();
-        clearFade();
-      }
-    }, FADE_INTERVAL_MS);
-  }, [clearFade]);
-
+  // Fungsi pemutaran langsung (Zero-Latency Instant Play)
   const playMusic = useCallback(async () => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    setHasInteracted(true);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(STORAGE_KEY, "playing");
+    }
+
+    // Pastikan volume langsung pada level target (tanpa hening buatan)
+    audio.volume = TARGET_VOLUME;
+
     try {
-      setHasInteracted(true);
-      if (typeof window !== "undefined") {
-        localStorage.setItem(STORAGE_KEY, "playing");
+      // Jika audio belum memiliki data yang cukup, tandai isLoading
+      if (audio.readyState < 3) {
+        setIsLoading(true);
       }
 
-      audio.volume = 0;
-      await audio.play();
-      setIsPlaying(true);
-      wasPlayingRef.current = true;
-      fadeIn();
-    } catch {
-      // Browser Autoplay Policy menolak pemutaran tanpa gestur pengguna
-      setIsPlaying(false);
-      wasPlayingRef.current = false;
-    }
-  }, [fadeIn]);
+      playPromiseRef.current = audio.play();
+      await playPromiseRef.current;
 
+      setIsPlaying(true);
+      isPlayingRef.current = true;
+      wasPlayingRef.current = true;
+      setIsLoading(false);
+    } catch {
+      setIsPlaying(false);
+      isPlayingRef.current = false;
+      wasPlayingRef.current = false;
+      setIsLoading(false);
+    } finally {
+      playPromiseRef.current = null;
+    }
+  }, []);
+
+  // Fungsi penghentian langsung (Zero-Latency Instant Pause)
   const pauseMusic = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -111,9 +86,21 @@ export function BackgroundMusicProvider({
     }
 
     setIsPlaying(false);
+    isPlayingRef.current = false;
     wasPlayingRef.current = false;
-    fadeOutAndPause();
-  }, [fadeOutAndPause]);
+    setIsLoading(false);
+
+    // Jika pemutaran sedang dalam proses inisialisasi promise, tunggu lalu pause
+    if (playPromiseRef.current) {
+      playPromiseRef.current
+        .then(() => {
+          audio.pause();
+        })
+        .catch(() => {});
+    } else {
+      audio.pause();
+    }
+  }, []);
 
   const toggleMusic = useCallback(() => {
     if (isPlaying) {
@@ -123,18 +110,65 @@ export function BackgroundMusicProvider({
     }
   }, [isPlaying, playMusic, pauseMusic]);
 
-  // Inisialisasi audio dan sinkronisasi preferensi
+  // Inisialisasi Eager Preloading & In-Memory RAM Caching
   useEffect(() => {
-    const audio = new Audio("/assets/audio/music-flood2food.mp3");
+    // 1. Inisialisasi elemen HTMLAudio dengan preload="auto" dan buffering agresif
+    const audio = new Audio(AUDIO_URL);
     audio.loop = true;
-    audio.preload = "metadata";
-    audio.volume = 0;
+    audio.preload = "auto";
+    audio.volume = TARGET_VOLUME;
     audioRef.current = audio;
 
-    // Periksa preferensi sebelumnya di localStorage
+    // Paksa peramban untuk langsung mengunduh dan men-decode buffer audio di latar belakang
+    audio.load();
+
+    // Listener event audio untuk status responsif
+    const handleWaiting = () => {
+      if (isPlayingRef.current) setIsLoading(true);
+    };
+    const handlePlaying = () => {
+      setIsLoading(false);
+      setIsPlaying(true);
+      isPlayingRef.current = true;
+    };
+    const handleCanPlay = () => {
+      setIsLoading(false);
+    };
+    const handlePause = () => {
+      setIsPlaying(false);
+      isPlayingRef.current = false;
+    };
+
+    audio.addEventListener("waiting", handleWaiting);
+    audio.addEventListener("playing", handlePlaying);
+    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("pause", handlePause);
+
+    // 2. In-Memory Blob Caching: Unduh ke RAM agar pemutaran 100% lokal & bebas latency jaringan
+    fetch(AUDIO_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("Gagal mengambil audio");
+        return res.blob();
+      })
+      .then((blob) => {
+        const objectUrl = URL.createObjectURL(blob);
+        blobUrlRef.current = objectUrl;
+
+        // Jika saat ini audio sedang tidak memutar, alihkan sumber ke Blob URL di memori RAM
+        if (audioRef.current && !isPlayingRef.current) {
+          const currentTime = audioRef.current.currentTime;
+          audioRef.current.src = objectUrl;
+          audioRef.current.currentTime = currentTime;
+          audioRef.current.load();
+        }
+      })
+      .catch(() => {
+        // Fallback tetap menggunakan URL publik jika fetch terhambat
+      });
+
+    // 3. Sinkronisasi preferensi pemutaran sebelumnya
     const savedPref = localStorage.getItem(STORAGE_KEY);
     if (savedPref === "playing") {
-      // Tunggu interaksi pertama pengguna untuk memenuhi kebijakan autoplay
       const handleFirstGesture = () => {
         void playMusic();
         window.removeEventListener("pointerdown", handleFirstGesture);
@@ -145,10 +179,10 @@ export function BackgroundMusicProvider({
       window.addEventListener("keydown", handleFirstGesture, { once: true });
     }
 
-    // Tangani perpindahan tab (Page Visibility API)
+    // 4. Tangani perpindahan tab (Page Visibility API)
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        if (isPlaying && audioRef.current) {
+        if (isPlayingRef.current && audioRef.current) {
           wasPlayingRef.current = true;
           audioRef.current.pause();
         }
@@ -162,19 +196,27 @@ export function BackgroundMusicProvider({
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      clearFade();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      audio.removeEventListener("waiting", handleWaiting);
+      audio.removeEventListener("playing", handlePlaying);
+      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("pause", handlePause);
+
+      if (blobUrlRef.current) {
+        URL.revokeObjectURL(blobUrlRef.current);
+      }
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
       }
     };
-  }, [playMusic, isPlaying, clearFade]);
+  }, [playMusic]);
 
   return (
     <BackgroundMusicContext.Provider
       value={{
         isPlaying,
+        isLoading,
         toggleMusic,
         playMusic,
         pauseMusic,

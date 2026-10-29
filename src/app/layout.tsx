@@ -53,6 +53,15 @@ export default function RootLayout({
       lang="id"
       className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable}`}
     >
+      <head>
+        <link
+          rel="preload"
+          href="/assets/audio/music-flood2food.mp3"
+          as="fetch"
+          type="audio/mpeg"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="min-h-screen bg-[#081A10] text-[#F4F8F5] antialiased selection:bg-[#F58220] selection:text-[#081A10]">
         <SmoothScrollProvider>
           <BackgroundMusicProvider>{children}</BackgroundMusicProvider>
