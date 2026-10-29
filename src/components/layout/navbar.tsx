@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Download, Menu, X, Github, Instagram } from "lucide-react";
 import { Magnetic } from "@/components/motion/magnetic";
@@ -88,18 +87,8 @@ export function Navbar() {
         <Link
           href="/#top"
           onClick={() => setActiveSection("")}
-          className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full p-0.5"
+          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full px-2 py-0.5 transition-transform hover:scale-105"
         >
-          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white/10 p-1 border border-white/20 group-hover:scale-105 transition-transform duration-200">
-            <Image
-              src="/assets/logos/flood2food.png"
-              alt="Logo Flood2Food"
-              fill
-              className="object-contain"
-              sizes="36px"
-              priority
-            />
-          </div>
           <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white">
             Flood<span className="text-[#F58220]">2</span>Food
           </span>
