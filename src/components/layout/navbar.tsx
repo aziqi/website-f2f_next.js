@@ -8,27 +8,71 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { href: "/#video", label: "Video Demo" },
-  { href: "/#sistem", label: "Sistem IoT" },
-  { href: "/#fitur", label: "7 Parameter" },
-  { href: "/#tampilan", label: "Aplikasi" },
-  { href: "/#dokumen", label: "Dokumen" },
-  { href: "/#tim", label: "Tim" },
-  { href: "/#galeri", label: "Galeri" },
-  { href: "/#faq", label: "FAQ" },
+  { id: "video", href: "/#video", label: "Video Demo" },
+  { id: "sistem", href: "/#sistem", label: "Sistem IoT" },
+  { id: "fitur", href: "/#fitur", label: "7 Parameter" },
+  { id: "tampilan", href: "/#tampilan", label: "Aplikasi" },
+  { id: "dokumen", href: "/#dokumen", label: "Dokumen" },
+  { id: "tim", href: "/#tim", label: "Tim" },
+  { id: "galeri", href: "/#galeri", label: "Galeri" },
+  { id: "faq", href: "/#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
+  const [activeSection, setActiveSection] = useState<string>("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // If close to top, clear active section
+      if (window.scrollY < 120) {
+        setActiveSection("");
+        return;
+      }
+
+      // If scrolled to bottom of page, highlight the last section (FAQ)
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 80
+      ) {
+        setActiveSection("faq");
+      }
     };
+
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // IntersectionObserver for robust section detection
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      const intersecting = entries.filter((entry) => entry.isIntersecting);
+      if (intersecting.length > 0) {
+        // Pick the intersecting section closest to the top
+        const sorted = [...intersecting].sort(
+          (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+        );
+        if (sorted[0]?.target.id && window.scrollY >= 120) {
+          setActiveSection(sorted[0].target.id);
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "-20% 0px -55% 0px",
+      threshold: [0, 0.2, 0.5],
+    });
+
+    navLinks.forEach((link) => {
+      const el = document.getElementById(link.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -43,6 +87,7 @@ export function Navbar() {
         {/* Brand Logo */}
         <Link
           href="/#top"
+          onClick={() => setActiveSection("")}
           className="flex items-center gap-2.5 group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full p-0.5"
         >
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white/10 p-1 border border-white/20 group-hover:scale-105 transition-transform duration-200">
@@ -58,30 +103,56 @@ export function Navbar() {
           <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white">
             Flood<span className="text-[#F58220]">2</span>Food
           </span>
-          <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-medium tracking-wide bg-[#F58220]/20 text-[#F58220] border border-[#F58220]/30">
-            PKM-KC USU
-          </span>
         </Link>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links Dock with Animated Sliding Pill */}
         <nav
-          className="hidden xl:flex items-center gap-0.5 bg-black/30 px-3 py-1 rounded-full border border-white/10"
+          className="hidden xl:flex items-center gap-1 bg-black/40 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-inner"
           aria-label="Navigasi Utama"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="px-3 py-1 text-xs font-medium text-[#A3C2AF] hover:text-white hover:bg-white/10 rounded-full transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <Link
+                key={link.id}
+                href={link.href}
+                onClick={() => setActiveSection(link.id)}
+                className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-200 flex items-center ${
+                  isActive
+                    ? "text-white font-semibold"
+                    : "text-[#A3C2AF] hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-active-pill"
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-[#22C55E]/20 via-[#16a34a]/30 to-[#22C55E]/20 border border-[#22C55E]/50 shadow-[0_0_12px_rgba(34,197,94,0.3)]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 32,
+                    }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center">
+                  {isActive && (
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0, opacity: 0 }}
+                      className="w-1.5 h-1.5 rounded-full bg-[#22C55E] shadow-[0_0_8px_#22C55E] mr-1.5 shrink-0 animate-pulse"
+                    />
+                  )}
+                  {link.label}
+                </span>
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* CTA Actions */}
+        {/* CTA Actions Group */}
         <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-          {/* Mobile Direct Download Icon (Only on mobile < sm, so text never cuts off) */}
+          {/* Mobile Direct Download Icon (Only on mobile < sm) */}
           <Link
             href="/#unduh"
             className="sm:hidden w-8 h-8 rounded-full bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] flex items-center justify-center shadow-md shadow-[#F58220]/25 transition-all shrink-0"
@@ -119,7 +190,7 @@ export function Navbar() {
             <Magnetic strength={0.2}>
               <Link
                 href="/#unduh"
-                className="btn-nested inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] text-xs font-semibold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25"
+                className="btn-nested inline-flex bg-gradient-to-r from-[#F58220] to-[#E06D10] hover:from-[#FF9030] hover:to-[#ea7310] text-[#081A10] text-xs font-bold py-1.5 px-3.5 shadow-lg shadow-[#F58220]/25 hover:shadow-[#F58220]/40 transition-all rounded-full"
               >
                 <span>Download APK</span>
                 <span className="btn-nested-icon w-6 h-6 bg-black/15">
@@ -145,24 +216,45 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="xl:hidden max-w-6xl mx-auto mt-2 pointer-events-auto rounded-3xl bg-[#081A10]/98 border border-white/15 px-6 py-6 overflow-hidden shadow-2xl backdrop-blur-2xl"
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="xl:hidden max-w-6xl mx-auto mt-2 pointer-events-auto rounded-3xl bg-[#081A10]/98 border border-white/15 p-5 overflow-hidden shadow-2xl backdrop-blur-2xl ring-1 ring-white/10"
           >
-            <div className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm font-medium text-[#A3C2AF] hover:text-[#F58220] hover:bg-white/5 rounded-lg transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="grid grid-cols-2 gap-2 mt-2">
+            <div className="flex flex-col gap-1.5">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <Link
+                    key={link.id}
+                    href={link.href}
+                    onClick={() => {
+                      setActiveSection(link.id);
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex items-center justify-between px-3.5 py-2.5 text-sm font-medium rounded-xl transition-all ${
+                      isActive
+                        ? "bg-[#22C55E]/15 border border-[#22C55E]/40 text-white font-semibold shadow-[0_0_12px_rgba(34,197,94,0.15)]"
+                        : "text-[#A3C2AF] hover:text-white hover:bg-white/5 border border-transparent"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {isActive && (
+                        <span className="w-2 h-2 rounded-full bg-[#22C55E] shadow-[0_0_8px_#22C55E] animate-pulse" />
+                      )}
+                      <span>{link.label}</span>
+                    </div>
+                    {isActive && (
+                      <span className="text-[10px] uppercase font-mono tracking-wider text-[#22C55E] bg-[#22C55E]/10 px-2 py-0.5 rounded-full border border-[#22C55E]/20">
+                        Aktif
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+
+              <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
                 <a
                   href="https://www.instagram.com/flood2food"
                   target="_blank"
@@ -184,10 +276,11 @@ export function Navbar() {
                   <span>GitHub</span>
                 </a>
               </div>
+
               <Link
                 href="/#unduh"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-[#F58220] text-[#081A10] shadow-md shadow-[#F58220]/20"
+                className="mt-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold bg-gradient-to-r from-[#F58220] to-[#E06D10] text-[#081A10] shadow-md shadow-[#F58220]/25 font-bold"
               >
                 <Download className="w-4 h-4 stroke-[2.5]" />
                 <span>Download APK Flood2Food</span>
