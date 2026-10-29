@@ -26,6 +26,21 @@ const faqs = [
     answer:
       "Ya, 100% offline-first. Gateway terhubung langsung ke smartphone petani melalui Bluetooth Low Energy (BLE). Seluruh basis pengetahuan agronomi dan kalkulasi dosis remediasi pupuk diproses langsung di perangkat (on-device engine) tanpa memerlukan sinyal internet.",
   },
+  {
+    question: "Bagaimana AI Tanya Bimo menghitung takaran pupuk dan amelioran secara presisi?",
+    answer:
+      "AI Tanya Bimo mengintegrasikan data 7 parameter dengan formula standar rekomendasi Balai Pengkajian Teknologi Pertanian (BPTP). Formula kebutuhan dolomit dihitung menggunakan persamaan: (6.5 - pH_terbaca) × 1.7 × luas_lahan (ha) × faktor_tekstur_tanah, yang dikorelasikan secara simultan dengan ketersediaan N, P, K dan kadar salinitas (EC) untuk mencegah pemupukan berlebih.",
+  },
+  {
+    question: "Apa keunggulan Sensor Node 7-in-1 dibanding sensor agrikultur konvensional?",
+    answer:
+      "Sensor portabel konvensional rata-rata hanya mengukur 1 hingga 3 parameter terpisah, rentan oksidasi asam lumpur, dan memerlukan pengkabelan USB ke laptop. Sensor Node Flood2Food menyatukan 7 parameter kimia-fisika dalam satu probe monolitik SS316L dengan protokol industri RS485 Modbus RTU dan jangkauan telemetri radio 10,64 km.",
+  },
+  {
+    question: "Apakah data pemulihan sawah petani tersimpan secara privat?",
+    answer:
+      "Sistem mengusung prinsip zero-cloud dependency. Data telemetri dicatat secara lokal pada kartu microSD gateway berformat FAT32 dan basis data SQLite on-device di smartphone petani, memastikan kepemilikan data 100% di tangan kelompok tani tanpa risiko downtime server luar.",
+  },
 ];
 
 export function Faq() {
