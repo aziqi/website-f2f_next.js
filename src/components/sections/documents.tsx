@@ -58,6 +58,14 @@ const documents: DocumentData[] = [
 
 export function Documents() {
   const [activeDoc, setActiveDoc] = useState<DocumentData | null>(null);
+  const [viewMode, setViewMode] = useState<"pdf" | "preview">("pdf");
+  const [isPdfLoading, setIsPdfLoading] = useState(true);
+
+  const handleOpenDoc = useCallback((doc: DocumentData) => {
+    setActiveDoc(doc);
+    setViewMode("pdf");
+    setIsPdfLoading(true);
+  }, []);
 
   const handleClose = useCallback(() => {
     setActiveDoc(null);
@@ -221,7 +229,7 @@ export function Documents() {
 
                   <div className="flex flex-wrap items-center gap-2.5">
                     <button
-                      onClick={() => setActiveDoc(documents[0])}
+                      onClick={() => handleOpenDoc(documents[0])}
                       className="btn-nested inline-flex bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] font-bold text-xs sm:text-sm py-2.5 px-4 shadow-lg shadow-[#F58220]/20 group transition-all cursor-pointer"
                     >
                       <span>Lihat Pratinjau PDF</span>
@@ -350,7 +358,7 @@ export function Documents() {
 
                   <div className="flex flex-wrap items-center gap-2.5">
                     <button
-                      onClick={() => setActiveDoc(documents[1])}
+                      onClick={() => handleOpenDoc(documents[1])}
                       className="btn-nested inline-flex bg-[#22C55E] hover:bg-[#16a34a] text-[#081A10] font-bold text-xs sm:text-sm py-2.5 px-4 shadow-lg shadow-[#22C55E]/20 group transition-all cursor-pointer"
                     >
                       <span>Baca Manual Book (PDF)</span>
@@ -406,8 +414,8 @@ export function Documents() {
               className="relative w-full max-w-5xl h-[92vh] flex flex-col rounded-3xl bg-[#081A10] border border-white/20 shadow-2xl overflow-hidden"
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between px-5 py-3.5 bg-black/50 border-b border-white/15">
-                <div className="flex items-center gap-3 overflow-hidden">
+              <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-black/50 border-b border-white/15">
+                <div className="flex items-center gap-3 overflow-hidden min-w-0">
                   <span className="w-8 h-8 rounded-lg bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] flex items-center justify-center shrink-0">
                     <FileCheck2 className="w-4 h-4" />
                   </span>
@@ -421,8 +429,32 @@ export function Documents() {
                   </div>
                 </div>
 
-                {/* Modal Header Action Buttons */}
+                {/* Modal Header Action Buttons & Mode Switcher */}
                 <div className="flex items-center gap-2 shrink-0">
+                  {/* Mode Switcher Tabs */}
+                  <div className="flex items-center p-1 rounded-xl bg-white/10 border border-white/10">
+                    <button
+                      onClick={() => setViewMode("pdf")}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        viewMode === "pdf"
+                          ? "bg-[#22C55E] text-[#081A10] font-bold shadow-sm"
+                          : "text-[#A3C2AF] hover:text-white"
+                      }`}
+                    >
+                      📄 Mode PDF
+                    </button>
+                    <button
+                      onClick={() => setViewMode("preview")}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                        viewMode === "preview"
+                          ? "bg-[#22C55E] text-[#081A10] font-bold shadow-sm"
+                          : "text-[#A3C2AF] hover:text-white"
+                      }`}
+                    >
+                      🖼️ Pratinjau HD
+                    </button>
+                  </div>
+
                   <a
                     href={activeDoc.pdfUrl}
                     target="_blank"
@@ -452,13 +484,68 @@ export function Documents() {
                 </div>
               </div>
 
-              {/* Modal Body: Embedded PDF Stage */}
+              {/* Modal Body: Embedded PDF Stage with Shimmer & Fallback */}
               <div className="relative flex-1 w-full bg-[#0a1a12] overflow-hidden">
-                <iframe
-                  src={`${activeDoc.pdfUrl}#toolbar=1&navpanes=1&view=FitH`}
-                  title={activeDoc.title}
-                  className="w-full h-full border-0 bg-white"
-                />
+                {viewMode === "pdf" ? (
+                  <div className="relative w-full h-full bg-[#0a1a12]">
+                    {isPdfLoading && (
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#081A10]/95 backdrop-blur-sm">
+                        <div className="w-10 h-10 border-2 border-[#22C55E]/20 border-t-[#22C55E] rounded-full animate-spin mb-3" />
+                        <p className="text-xs font-mono text-[#A3C2AF] animate-pulse">Memuat dokumen resmi...</p>
+                        <p className="text-[11px] text-white/40 mt-1">Jika browser Anda membatasi PDF, beralih ke tab &quot;Pratinjau HD&quot;</p>
+                      </div>
+                    )}
+                    <object
+                      data={`${activeDoc.pdfUrl}#toolbar=1&navpanes=1&view=FitH`}
+                      type="application/pdf"
+                      className="w-full h-full border-0 bg-white"
+                      onLoad={() => setIsPdfLoading(false)}
+                    >
+                      <iframe
+                        src={`${activeDoc.pdfUrl}#toolbar=1&navpanes=1&view=FitH`}
+                        title={activeDoc.title}
+                        className="w-full h-full border-0 bg-white"
+                        onLoad={() => setIsPdfLoading(false)}
+                      />
+                    </object>
+                  </div>
+                ) : (
+                  <div className="relative w-full h-full flex flex-col items-center justify-start p-4 sm:p-6 overflow-y-auto bg-[#071710]">
+                    <div className="w-full max-w-xl text-center mb-5 p-4 rounded-2xl bg-[#0F2E1B]/60 border border-[#22C55E]/20 shadow-lg">
+                      <p className="text-xs text-[#A3C2AF] leading-relaxed mb-3">
+                        Pratinjau visual beresolusi tinggi. Anda dapat membuka atau mengunduh dokumen resmi {activeDoc.totalPages} dalam format PDF asli.
+                      </p>
+                      <div className="flex flex-wrap items-center justify-center gap-2.5">
+                        <a
+                          href={activeDoc.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#22C55E] text-[#081A10] text-xs font-bold hover:bg-[#16a34a] transition-all shadow-md"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          <span>Buka PDF di Tab Baru</span>
+                        </a>
+                        <a
+                          href={activeDoc.pdfUrl}
+                          download={activeDoc.downloadFilename}
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold transition-all"
+                        >
+                          <Download className="w-3.5 h-3.5" />
+                          <span>Unduh File</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="relative w-full max-w-2xl aspect-[1/1.414] rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black/40 mb-6">
+                      <Image
+                        src={activeDoc.previewImg}
+                        alt={activeDoc.title}
+                        fill
+                        className="object-contain"
+                        priority
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Modal Mobile Helper Bar */}
@@ -470,7 +557,7 @@ export function Documents() {
                   rel="noopener noreferrer"
                   className="text-[#22C55E] font-semibold underline underline-offset-2"
                 >
-                  Buka Viewer Penuh
+                  Buka Tab Penuh
                 </a>
               </div>
             </motion.div>
