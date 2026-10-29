@@ -78,7 +78,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none">
       <div
-        className={`relative max-w-6xl mx-auto flex items-center justify-between pointer-events-auto rounded-full transition-all duration-300 px-3.5 sm:px-6 py-2 sm:py-2.5 overflow-hidden ${
+        className={`relative max-w-7xl mx-auto flex items-center justify-between pointer-events-auto rounded-full transition-all duration-300 px-3.5 sm:px-6 py-2 sm:py-2.5 overflow-hidden ${
           isScrolled
             ? "bg-[#05140D]/80 backdrop-blur-2xl backdrop-saturate-150 border border-[#22C55E]/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85),inset_0_1.5px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(34,197,94,0.3),0_0_30px_rgba(34,197,94,0.18)] ring-1 ring-white/10"
             : "bg-[#06170E]/55 backdrop-blur-xl backdrop-saturate-150 border border-white/20 shadow-[0_20px_45px_-10px_rgba(0,0,0,0.65),inset_0_1.5px_1px_rgba(255,255,255,0.35),inset_0_-1px_1px_rgba(34,197,94,0.2),0_0_20px_rgba(34,197,94,0.12)]"
@@ -93,16 +93,16 @@ export function Navbar() {
         <Link
           href="/#top"
           onClick={() => setActiveSection("")}
-          className="relative z-10 flex items-center group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full px-2 py-0.5 transition-transform hover:scale-105"
+          className="relative z-10 flex items-center group focus:outline-none focus:ring-2 focus:ring-[#F58220] rounded-full px-2 py-0.5 transition-transform hover:scale-105 shrink-0"
         >
-          <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+          <span className="font-display font-bold text-lg sm:text-xl tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] whitespace-nowrap">
             Flood<span className="text-[#F58220] drop-shadow-[0_0_12px_rgba(245,130,32,0.4)]">2</span>Food
           </span>
         </Link>
 
         {/* Desktop Nav Links Dock with Animated Sliding Pill */}
         <nav
-          className="hidden xl:flex items-center gap-1 bg-black/45 backdrop-blur-xl p-1 rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.6)] relative z-10"
+          className="hidden xl:flex items-center gap-0.5 2xl:gap-1 bg-black/45 backdrop-blur-xl p-1 rounded-full border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.6)] relative z-10 whitespace-nowrap shrink-0"
           aria-label="Navigasi Utama"
         >
           {navLinks.map((link) => {
@@ -112,7 +112,7 @@ export function Navbar() {
                 key={link.id}
                 href={link.href}
                 onClick={() => setActiveSection(link.id)}
-                className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-200 flex items-center ${
+                className={`relative px-2.5 xl:px-3 py-1.5 text-xs font-medium rounded-full transition-colors duration-200 flex items-center whitespace-nowrap shrink-0 ${
                   isActive
                     ? "text-white font-semibold"
                     : "text-[#A3C2AF] hover:text-white hover:bg-white/5"
@@ -129,7 +129,7 @@ export function Navbar() {
                     }}
                   />
                 )}
-                <span className="relative z-10 flex items-center">
+                <span className="relative z-10 flex items-center whitespace-nowrap">
                   {isActive && (
                     <motion.span
                       initial={{ scale: 0, opacity: 0 }}
@@ -220,7 +220,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="xl:hidden max-w-6xl mx-auto mt-2 pointer-events-auto rounded-3xl bg-[#06170E]/85 backdrop-blur-2xl backdrop-saturate-150 border border-[#22C55E]/30 p-5 overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.25),0_0_25px_rgba(34,197,94,0.15)] ring-1 ring-white/10"
+            className="xl:hidden max-w-7xl mx-auto mt-2 pointer-events-auto rounded-3xl bg-[#06170E]/85 backdrop-blur-2xl backdrop-saturate-150 border border-[#22C55E]/30 p-5 overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.25),0_0_25px_rgba(34,197,94,0.15)] ring-1 ring-white/10"
           >
             <div className="flex flex-col gap-1.5">
               {navLinks.map((link) => {
