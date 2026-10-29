@@ -1,9 +1,6 @@
 "use client";
 
 import { Reveal } from "@/components/motion/reveal";
-import { Play, ExternalLink, Radio, Cpu, Sparkles } from "lucide-react";
-
-const YOUTUBE_VIDEO_URL = "https://youtu.be/JC81Xr8ajPM";
 
 export function VideoDemo() {
   return (
@@ -37,32 +34,6 @@ export function VideoDemo() {
                 className="w-full h-full border-0"
               />
             </div>
-          </div>
-
-          {/* Under-Player Metadata & CTA Hub */}
-          <div className="mt-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-[#A3C2AF]">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 font-mono text-white">
-                <Play className="w-3.5 h-3.5 text-[#F58220] fill-[#F58220]" />
-                <span>Desa Pagar Merbau II, Deli Serdang</span>
-              </span>
-              <span className="hidden sm:inline text-white/30">•</span>
-              <span className="inline-flex items-center gap-1.5 font-mono text-[#22C55E]">
-                <Radio className="w-3.5 h-3.5" />
-                <span>LoRa 915 MHz (Radius 10,64 km)</span>
-              </span>
-            </div>
-
-            <a
-              href={YOUTUBE_VIDEO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#F58220] hover:bg-[#ea7310] text-[#081A10] font-bold text-xs transition-all shadow-md group shrink-0"
-              title="Tonton video resolusi penuh di YouTube"
-            >
-              <span>Tonton di YouTube</span>
-              <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-            </a>
           </div>
         </Reveal>
       </div>
