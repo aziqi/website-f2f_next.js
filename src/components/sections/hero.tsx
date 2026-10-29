@@ -1,13 +1,84 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Github, Instagram } from "lucide-react";
+import { Download, Github, Instagram, Radio, Cpu, Clock, Zap } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
-import { motion } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
+
+interface MetricCounterProps {
+  prefix?: string;
+  target: number;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+  sublabel: string;
+  icon: typeof Radio;
+}
+
+function MetricCounter({ prefix = "", target, suffix = "", decimals = 0, label, sublabel, icon: Icon }: MetricCounterProps) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  useEffect(() => {
+    if (!isInView) return;
+    const duration = 1800;
+    const startTime = performance.now();
+    const update = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutExpo for technical snap feel
+      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(eased * target);
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    };
+    const frameId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frameId);
+  }, [isInView, target]);
+
+  return (
+    <div ref={ref} className="flex flex-col p-3 rounded-lg bg-[#0F2E1B]/50 border border-[#A7C7B5]/15 backdrop-blur-sm">
+      <div className="flex items-center gap-1.5 text-[#22C55E] text-xs font-mono uppercase tracking-wider mb-1">
+        <Icon className="w-3.5 h-3.5" />
+        <span>{label}</span>
+      </div>
+      <div className="font-mono text-xl sm:text-2xl font-black text-white tabular-nums tracking-tight">
+        {prefix}
+        {count.toFixed(decimals)}
+        <span className="text-[#F58220] text-sm sm:text-base ml-1 font-semibold">{suffix}</span>
+      </div>
+      <span className="text-[11px] text-[#A3C2AF]/70 font-mono mt-0.5">{sublabel}</span>
+    </div>
+  );
+}
 
 export function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 120, damping: 14 });
+  const springY = useSpring(mouseY, { stiffness: 120, damping: 14 });
+
+  const rotateX = useTransform(springY, [-150, 150], [10, -10]);
+  const rotateY = useTransform(springX, [-150, 150], [-10, 10]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <section id="top" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden border-b border-[#A7C7B5]/10">
       {/* Background radial atmosphere */}
@@ -20,11 +91,16 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-7 flex flex-col items-start">
-            {/* PIMNAS Ribbon Badge */}
+            {/* PIMNAS Ribbon Badge with animated rotating border */}
             <Reveal delay={0.1}>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-[#F58220] text-xs font-mono tracking-wide mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#F58220] animate-pulse" />
-                <span>PIMNAS 2026 · PKM-KC Universitas Sumatera Utara</span>
+              <div className="relative inline-flex p-[1px] rounded-full overflow-hidden mb-6 group">
+                <span className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#081A10_0%,#F58220_50%,#22C55E_100%)] opacity-80" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#081A10] text-xs font-mono tracking-wide relative z-10 border border-[#A7C7B5]/15">
+                  <span className="w-2 h-2 rounded-full bg-[#F58220] animate-pulse" />
+                  <span className="text-[#F58220] font-semibold">PIMNAS 39</span>
+                  <span className="text-white/30">/</span>
+                  <span className="text-[#A3C2AF]">PKM-KC Universitas Sumatera Utara</span>
+                </div>
               </div>
             </Reveal>
 
@@ -37,12 +113,51 @@ export function Hero() {
             </p>
 
             {/* Lead description */}
-            <Reveal delay={0.3}>
-              <p className="mt-6 text-base sm:text-lg text-[#A3C2AF] max-w-2xl leading-relaxed">
+            <Reveal delay={0.2}>
+              <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] max-w-2xl leading-relaxed">
                 Flood2Food membaca <strong>7 parameter tanah sekaligus</strong> melalui sensor fusion antikorosi tahan lumpur.
                 Datanya dikirimkan <strong>tanpa sinyal seluler</strong> lewat transmisi LoRa sejauh 10,64 km, lalu dianalisis oleh{" "}
                 <strong>AI Tanya Bimo</strong> di aplikasi Android untuk menentukan dosis remediasi presisi.
               </p>
+            </Reveal>
+
+            {/* KPI Metric Counter Strip */}
+            <Reveal delay={0.3} className="w-full mt-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-2xl">
+                <MetricCounter
+                  target={10.64}
+                  suffix="km"
+                  decimals={2}
+                  label="Jangkauan"
+                  sublabel="LoRa SX1262 LoS"
+                  icon={Radio}
+                />
+                <MetricCounter
+                  target={7}
+                  suffix="Param"
+                  decimals={0}
+                  label="Sensor"
+                  sublabel="Fusion SS316L"
+                  icon={Cpu}
+                />
+                <MetricCounter
+                  target={14}
+                  suffix="Hari"
+                  decimals={0}
+                  label="Siklus"
+                  sublabel="Pantau Remediasi"
+                  icon={Clock}
+                />
+                <MetricCounter
+                  prefix="< "
+                  target={2}
+                  suffix="dtk"
+                  decimals={0}
+                  label="Latensi"
+                  sublabel="AI Edge Offline"
+                  icon={Zap}
+                />
+              </div>
             </Reveal>
 
             {/* CTA Buttons */}
@@ -94,31 +209,42 @@ export function Hero() {
 
           </div>
 
-          {/* Right Column: 3D Mascot "Si Bimo" with Ambient Halo & Interactive Badges */}
+          {/* Right Column: 3D Interactive Mascot "Si Bimo" with Ambient Halo & 3D Tilt */}
           <div className="lg:col-span-5 flex justify-center items-center relative mt-8 lg:mt-0">
             <Reveal delay={0.25} className="relative w-[300px] sm:w-[360px] lg:w-[410px] flex flex-col items-center">
-              {/* Dual Glow Ambient Aura (Emerald + Solar Marigold) */}
+              {/* Dual Glow Ambient Aura */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] h-[340px] sm:h-[400px] bg-gradient-to-tr from-[#22C55E]/20 via-[#F58220]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
               {/* Floating Pedestal Ground Shadow */}
               <div className="absolute -bottom-3 w-48 sm:w-64 h-8 bg-black/60 rounded-full blur-md" />
 
-              {/* Mascot Animated Floating Container */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full"
+              {/* 3D Tilt Wrapper */}
+              <div
+                style={{ perspective: 1000 }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="w-full cursor-pointer"
               >
-                <Image
-                  src="/assets/mascot/cheerful-buffalo-mascot.png"
-                  alt="Maskot Si Bimo Flood2Food: Kerbau Cerdas Bertenaga Surya dan Kecerdasan Buatan Agronomi"
-                  width={600}
-                  height={800}
-                  className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)] select-none pointer-events-none"
-                  priority
-                />
-              </motion.div>
-
+                <motion.div
+                  style={{
+                    rotateX,
+                    rotateY,
+                    transformStyle: "preserve-3d",
+                  }}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative z-10 w-full"
+                >
+                  <Image
+                    src="/assets/mascot/cheerful-buffalo-mascot.png"
+                    alt="Maskot Si Bimo Flood2Food: Kerbau Cerdas Bertenaga Surya dan Kecerdasan Buatan Agronomi"
+                    width={600}
+                    height={800}
+                    className="w-full h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.65)] select-none pointer-events-none"
+                    priority
+                  />
+                </motion.div>
+              </div>
             </Reveal>
           </div>
         </div>
@@ -126,3 +252,4 @@ export function Hero() {
     </section>
   );
 }
+
