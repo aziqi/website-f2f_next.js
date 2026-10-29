@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Cpu,
   Github,
+  BookOpen,
 } from "lucide-react";
 
 const APK_DOWNLOAD_URL =
@@ -142,6 +143,17 @@ export function AppDownload() {
                       <span className="btn-nested-icon w-8 h-8 rounded-full bg-black/15 flex items-center justify-center">
                         <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
                       </span>
+                    </a>
+
+                    <a
+                      href="/docs/Manual-Book-Flood2Food.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-white/15 bg-white/5 hover:bg-[#22C55E]/15 hover:border-[#22C55E]/40 text-white text-xs sm:text-sm font-semibold transition-all cursor-pointer shadow-md"
+                      title="Baca Buku Panduan Lengkap Flood2Food (PDF)"
+                    >
+                      <BookOpen className="w-4 h-4 text-[#22C55E]" />
+                      <span>Manual Book (PDF)</span>
                     </a>
 
                     <button
