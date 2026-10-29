@@ -9,6 +9,8 @@ const sponsors = [
   { name: "Diktisaintek Berdampak", src: "/assets/logos/diktisaintek-berdampak.png", width: 105, height: 30 },
   { name: "Belmawa", src: "/assets/logos/belmawa.png", width: 70, height: 36 },
   { name: "SIMBELMAWA", src: "/assets/logos/simbelmawa.png", width: 85, height: 36 },
+  { name: "PKM", src: "/assets/logos/pkm.png", width: 64, height: 36 },
+  { name: "PIMNAS", src: "/assets/logos/pimnas.png", width: 95, height: 36 },
   { name: "USU", src: "/assets/logos/usu.png", width: 36, height: 36 },
   { name: "PIMNAS 39", src: "/assets/logos/pimnas-39.png", width: 110, height: 36 },
   { name: "PKM Center USU", src: "/assets/logos/pkm-center-usu.png", width: 75, height: 36 },
@@ -154,7 +156,7 @@ export function Footer() {
             <span className="w-8 h-0.5 bg-[#22C55E]/50 rounded-full" />
           </div>
           <div className="w-full max-w-5xl bg-white rounded-2xl py-6 px-6 sm:px-10 shadow-xl border border-white/40 ring-1 ring-black/5">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center">
               {sponsors.map((item) => (
                 <div key={item.name} className="relative select-none hover:scale-105 transition-transform flex items-center justify-center w-full h-11 sm:h-12 px-2">
                   <Image

@@ -33,6 +33,20 @@ const sponsors = [
     height: 647,
   },
   {
+    name: "PKM",
+    title: "Program Kreativitas Mahasiswa (PKM) Kemendiktisaintek RI",
+    src: "/assets/logos/pkm.png",
+    width: 683,
+    height: 385,
+  },
+  {
+    name: "PIMNAS",
+    title: "PIMNAS — The Era of Ultimate Excellence",
+    src: "/assets/logos/pimnas.png",
+    width: 825,
+    height: 309,
+  },
+  {
     name: "USU",
     title: "Universitas Sumatera Utara (USU)",
     src: "/assets/logos/usu.png",
