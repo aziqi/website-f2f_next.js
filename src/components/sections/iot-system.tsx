@@ -708,44 +708,6 @@ export function IotSystem() {
                         }
                       />
                     </motion.div>
-
-                    {/* Interactive Hotspot Pins (01 to 08) */}
-                    {SENSOR_NODE_COMPONENTS.map((comp) => {
-                      const isActive = activeNodeHotspot === comp.id;
-                      return (
-                        <button
-                          key={comp.id}
-                          type="button"
-                          onClick={() => setActiveNodeHotspot(comp.id)}
-                          style={{ top: comp.hotspot.top, left: comp.hotspot.left }}
-                          className={`absolute -translate-x-1/2 -translate-y-1/2 z-20 group/pin transition-transform ${
-                            isActive ? "scale-125 z-30" : "hover:scale-110"
-                          }`}
-                          aria-label={`Lihat modul ${comp.pinNumber}: ${comp.title}`}
-                        >
-                          <div
-                            className={`relative flex items-center justify-center w-7 h-7 rounded-full font-mono text-[11px] font-bold transition-all shadow-lg ${
-                              isActive
-                                ? "bg-[#22C55E] text-[#081A10] ring-4 ring-[#22C55E]/40 shadow-[#22C55E]/50"
-                                : "bg-[#081A10] text-[#22C55E] border-2 border-[#22C55E]/60 hover:bg-[#22C55E]/20"
-                            }`}
-                          >
-                            <span>{comp.pinNumber}</span>
-                            {/* Pulsing ring */}
-                            <span
-                              className={`absolute inset-0 rounded-full border border-[#22C55E] ${
-                                isActive ? "animate-ping opacity-75" : "opacity-0 group-hover/pin:opacity-40"
-                              }`}
-                            />
-                          </div>
-
-                          {/* Tooltip on Hover */}
-                          <div className="hidden group-hover/pin:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 rounded-md bg-[#081A10] border border-[#22C55E]/40 text-[10px] font-mono text-white whitespace-nowrap shadow-xl pointer-events-none z-30">
-                            {comp.pinNumber}. {comp.title}
-                          </div>
-                        </button>
-                      );
-                    })}
                   </div>
 
                   {/* Click to Expand Prompt */}
@@ -753,27 +715,6 @@ export function IotSystem() {
                     <Maximize2 className="w-3 h-3 text-[#22C55E]" />
                     <span>Klik foto untuk Fullscreen</span>
                   </div>
-                </div>
-
-                {/* Hotspot Quick Selector Pills (Mobile Friendly) */}
-                <div className="w-full mt-4 flex flex-wrap gap-1.5 justify-center">
-                  {SENSOR_NODE_COMPONENTS.map((comp) => {
-                    const isActive = activeNodeHotspot === comp.id;
-                    return (
-                      <button
-                        key={comp.id}
-                        type="button"
-                        onClick={() => setActiveNodeHotspot(comp.id)}
-                        className={`px-2.5 py-1 rounded-lg text-[10px] font-mono transition-all ${
-                          isActive
-                            ? "bg-[#22C55E] text-[#081A10] font-bold shadow-md shadow-[#22C55E]/20"
-                            : "bg-white/5 text-[#A3C2AF] hover:bg-white/10 border border-white/5"
-                        }`}
-                      >
-                        Pin {comp.pinNumber}
-                      </button>
-                    );
-                  })}
                 </div>
               </div>
 
