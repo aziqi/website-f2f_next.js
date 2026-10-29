@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Download, Github, Instagram } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
+import { MusicToggleButton } from "@/components/audio/music-toggle-button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 export function Hero() {
@@ -114,6 +115,10 @@ export function Hero() {
                       <Github className="w-4 h-4" />
                     </span>
                   </a>
+                </Magnetic>
+
+                <Magnetic strength={0.15}>
+                  <MusicToggleButton variant="hero-pill" />
                 </Magnetic>
               </div>
             </Reveal>

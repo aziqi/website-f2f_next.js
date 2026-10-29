@@ -180,8 +180,10 @@ export function Navbar() {
             <Github className="w-3.5 h-3.5" />
           </a>
 
-          {/* Liquid Glass Ambient Music Controller Button */}
-          <MusicToggleButton variant="compact" />
+          {/* Liquid Glass Ambient Music Controller Pill */}
+          <Magnetic strength={0.2}>
+            <MusicToggleButton variant="navbar-pill" />
+          </Magnetic>
 
           {/* Tablet & Desktop Liquid Amber Download Button */}
           <div className="hidden sm:block">
