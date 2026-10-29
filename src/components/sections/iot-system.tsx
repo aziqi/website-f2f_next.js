@@ -453,7 +453,7 @@ const SOIL_PARAMETERS: SoilParameterItem[] = [
   },
 ];
 
-// --- KOMPONEN ANATOMI SOIL MULTI-PARAMETER SENSOR 7-IN-1 (5 MODUL) ---
+// --- KOMPONEN ANATOMI SOIL MULTI-PARAMETER SENSOR 7-IN-1 (3 MODUL) ---
 const SOIL_SENSOR_COMPONENTS: AnatomyItem[] = [
   {
     id: 1,
@@ -499,36 +499,6 @@ const SOIL_SENSOR_COMPONENTS: AnatomyItem[] = [
       { label: "Format Output", value: "16-Bit Unsigned Integer (Big-Endian)" },
     ],
     hotspot: { top: "48%", left: "54%" },
-  },
-  {
-    id: 4,
-    pinNumber: "04",
-    title: "Konektor GX16 Aviation & Cable Gland PG7",
-    badge: "Quick-Release · IP67 Metal Lock",
-    badgeColor: "text-[#F58220] bg-[#F58220]/10 border-[#F58220]/30",
-    desc: "Kabel transmisi berpelindung 4-core (VCC, GND, RS485-A, RS485-B) dengan pengunci Cable Gland PG7 dan konektor metalik GX16 Aviation 4-Pin pada ujung boks sensor. Memungkinkan instalasi plug-and-play di lapangan tanpa solder.",
-    specs: [
-      { label: "Tipe Konektor", value: "GX16 Aviation 4-Pin Thread-Locked" },
-      { label: "Proteksi Kabel", value: "Cable Gland PG7 + Karet Silikon Seal" },
-      { label: "Tipe Kabel", value: "4-Core Shielded PU Anti-Koyak (2m)" },
-      { label: "Pinout", value: "Pin 1: VCC, Pin 2: GND, Pin 3: A+, Pin 4: B-" },
-    ],
-    hotspot: { top: "16%", left: "43%" },
-  },
-  {
-    id: 5,
-    pinNumber: "05",
-    title: "Manajemen Daya MOSFET IRLZ44N (Ultra-Low Power)",
-    badge: "Deep Sleep < 1 mA · 98% Saving",
-    badgeColor: "text-[#84CC16] bg-[#84CC16]/10 border-[#84CC16]/30",
-    desc: "Ditenagai melalui transistor logic-level MOSFET IRLZ44N pada Sensor Node yang memutus pasokan arus sensor saat mode Deep Sleep. Sensor hanya dinyalakan selama 3-5 detik saat pengambilan sampel, menjaga efisiensi baterai LiFePO4 hingga > 5 hari cuaca mendung.",
-    specs: [
-      { label: "Sakelar Daya", value: "IRLZ44N N-Channel Logic-Level MOSFET" },
-      { label: "Arus Siaga", value: "< 1 mA (Total Node Deep Sleep)" },
-      { label: "Arus Operasi", value: "~40 mA @ 12V (Aktif 5 Detik)" },
-      { label: "Interval Siklus", value: "Sampling Tiap 20–30 Menit" },
-    ],
-    hotspot: { top: "28%", left: "47%" },
   },
 ];
 
@@ -1282,39 +1252,6 @@ export function IotSystem() {
                           })
                         }
                       />
-
-                      {/* Interactive Hotspot Pins Overlaid on the Sensor Body */}
-                      {SOIL_SENSOR_COMPONENTS.map((comp) => {
-                        const isActive = activeSoilHotspot === comp.id;
-                        return (
-                          <button
-                            key={comp.id}
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setActiveSoilHotspot(comp.id);
-                            }}
-                            style={{ top: comp.hotspot.top, left: comp.hotspot.left }}
-                            className="absolute -translate-x-1/2 -translate-y-1/2 group/pin z-20 focus:outline-none"
-                            aria-label={`Lihat modul ${comp.title}`}
-                          >
-                            <span className="relative flex h-7 w-7 items-center justify-center">
-                              {isActive && (
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#84CC16] opacity-75" />
-                              )}
-                              <span
-                                className={`relative inline-flex items-center justify-center rounded-full h-6 w-6 font-mono text-[11px] font-bold border transition-all shadow-md ${
-                                  isActive
-                                    ? "bg-[#84CC16] text-[#081A10] border-white scale-110 shadow-[#84CC16]/50"
-                                    : "bg-black/80 text-[#84CC16] border-[#84CC16]/60 hover:scale-105"
-                                }`}
-                              >
-                                {comp.pinNumber}
-                              </span>
-                            </span>
-                          </button>
-                        );
-                      })}
                     </motion.div>
                   </div>
 
@@ -1335,7 +1272,7 @@ export function IotSystem() {
               {/* Right 7 Cols: Component Breakdown (Desktop Grid + Mobile Swipeable Carousel) */}
               <div className="lg:col-span-7">
                 {/* Desktop/Tablet Grid View */}
-                <div className="hidden sm:grid sm:grid-cols-2 gap-3.5">
+                <div className="hidden sm:grid sm:grid-cols-1 md:grid-cols-3 gap-3.5">
                   {SOIL_SENSOR_COMPONENTS.map((comp) => {
                     const isActive = activeSoilHotspot === comp.id;
                     return (
