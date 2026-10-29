@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
+import { BackgroundMusicProvider } from "@/components/audio/background-music-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,7 +54,9 @@ export default function RootLayout({
       className={`${inter.variable} ${jakarta.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-screen bg-[#081A10] text-[#F4F8F5] antialiased selection:bg-[#F58220] selection:text-[#081A10]">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <BackgroundMusicProvider>{children}</BackgroundMusicProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

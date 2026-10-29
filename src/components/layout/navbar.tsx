@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Download, Menu, X, Github, Instagram } from "lucide-react";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatePresence, motion } from "framer-motion";
+import { MusicToggleButton } from "@/components/audio/music-toggle-button";
 
 const navLinks = [
   { id: "video", href: "/#video", label: "Video Demo" },
@@ -179,6 +180,9 @@ export function Navbar() {
             <Github className="w-3.5 h-3.5" />
           </a>
 
+          {/* Liquid Glass Ambient Music Controller Button */}
+          <MusicToggleButton variant="compact" />
+
           {/* Tablet & Desktop Liquid Amber Download Button */}
           <div className="hidden sm:block">
             <Magnetic strength={0.25}>
@@ -248,7 +252,12 @@ export function Navbar() {
                 );
               })}
 
-              <div className="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-white/10">
+              {/* Music Controller in Mobile Drawer */}
+              <div className="mt-2 pt-2 border-t border-white/10">
+                <MusicToggleButton variant="row" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 mt-2">
                 <a
                   href="https://www.instagram.com/flood2food"
                   target="_blank"
