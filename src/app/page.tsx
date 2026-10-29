@@ -6,6 +6,7 @@ import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
 import { AppShowcase } from "@/components/sections/app-showcase";
 import { AppDownload } from "@/components/sections/app-download";
+import { Documents } from "@/components/sections/documents";
 import { Team } from "@/components/sections/team";
 import { Gallery } from "@/components/sections/gallery";
 import { Faq } from "@/components/sections/faq";
@@ -32,6 +33,9 @@ export default function Home() {
         </div>
         <div className="section-optimized">
           <AppDownload />
+        </div>
+        <div className="section-optimized">
+          <Documents />
         </div>
         <div className="section-optimized">
           <Team />
