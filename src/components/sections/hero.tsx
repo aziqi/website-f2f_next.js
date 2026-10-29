@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Cpu, Github } from "lucide-react";
+import { Download, Github, Instagram } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
 import { motion } from "framer-motion";
@@ -61,15 +61,18 @@ export function Hero() {
                 </Magnetic>
 
                 <Magnetic strength={0.15}>
-                  <Link
-                    href="#sistem"
-                    className="btn-nested bg-[#0F2E1B]/80 hover:bg-[#153e25] text-white border border-[#A7C7B5]/25 hover:border-[#22C55E]/50 text-sm font-semibold"
+                  <a
+                    href="https://www.instagram.com/flood2food"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-nested bg-gradient-to-r from-[#E1306C]/15 via-[#C13584]/20 to-[#833AB4]/15 hover:from-[#E1306C]/30 hover:to-[#833AB4]/30 text-white border border-[#E1306C]/40 hover:border-[#E1306C]/70 text-sm font-semibold shadow-lg shadow-[#E1306C]/10 transition-all group"
+                    title="Instagram Resmi @flood2food"
                   >
-                    <span>Jelajahi Sistem IoT</span>
-                    <span className="btn-nested-icon bg-white/10 text-[#22C55E]">
-                      <Cpu className="w-4 h-4" />
+                    <span>Instagram</span>
+                    <span className="btn-nested-icon bg-[#E1306C]/20 group-hover:bg-[#E1306C]/30 text-[#E1306C] transition-colors">
+                      <Instagram className="w-4 h-4" />
                     </span>
-                  </Link>
+                  </a>
                 </Magnetic>
 
                 <Magnetic strength={0.15}>
