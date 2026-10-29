@@ -201,9 +201,22 @@ export function Documents() {
 
                 {/* Bottom Trust & Actions */}
                 <div className="pt-4 border-t border-[#A7C7B5]/10 space-y-4">
-                  <div className="flex items-center gap-2 text-xs text-[#22C55E]">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>Disahkan secara elektronik oleh Balai Besar Sertifikasi Elektronik (BSrE)</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-[#22C55E]">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
+                      <span>Disahkan secara elektronik oleh Balai Besar Sertifikasi Elektronik (BSrE)</span>
+                    </div>
+                    <a
+                      href="https://pdki-indonesia.dgip.go.id/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#22C55E]/10 hover:bg-[#22C55E]/20 border border-[#22C55E]/30 text-[11px] font-mono text-[#22C55E] transition-colors shrink-0"
+                      title="Verifikasi status ciptaan di Pangkalan Data Kekayaan Intelektual Kemenkumham RI"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] animate-pulse" />
+                      <span>Verifikasi Online PDKI</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2.5">
