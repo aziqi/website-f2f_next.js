@@ -24,6 +24,10 @@ import {
   Bluetooth,
   Activity,
   CheckCircle2,
+  Droplets,
+  Thermometer,
+  Gauge,
+  Sparkles,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -348,16 +352,198 @@ const GATEWAY_COMPONENTS: AnatomyItem[] = [
   },
 ];
 
+// --- DATA 7 PARAMETER TANAH EMPIRIS ---
+interface SoilParameterItem {
+  id: string;
+  name: string;
+  symbol: string;
+  unit: string;
+  range: string;
+  resolution: string;
+  accuracy: string;
+  register: string;
+  formula: string;
+  importance: string;
+}
+
+const SOIL_PARAMETERS: SoilParameterItem[] = [
+  {
+    id: "n",
+    name: "Nitrogen Tanah",
+    symbol: "N",
+    unit: "mg/kg",
+    range: "0 – 1999 mg/kg",
+    resolution: "1 mg/kg",
+    accuracy: "±2% F.S.",
+    register: "0x0000",
+    formula: "N_avail = Reg[0] / 1.0",
+    importance: "Ketersediaan hara makro utama untuk memicu regenerasi anakan dan pembentukan klorofil daun padi pascabanjir.",
+  },
+  {
+    id: "p",
+    name: "Fosfor Tersedia",
+    symbol: "P",
+    unit: "mg/kg",
+    range: "0 – 1999 mg/kg",
+    resolution: "1 mg/kg",
+    accuracy: "±2% F.S.",
+    register: "0x0001",
+    formula: "P_avail = Reg[1] / 1.0",
+    importance: "Mendorong perangsangan perakaran baru padi pada tanah sawah yang terpadatkan oleh endapan sedimen lumpur.",
+  },
+  {
+    id: "k",
+    name: "Kalium Tanah",
+    symbol: "K",
+    unit: "mg/kg",
+    range: "0 – 1999 mg/kg",
+    resolution: "1 mg/kg",
+    accuracy: "±2% F.S.",
+    register: "0x0002",
+    formula: "K_avail = Reg[2] / 1.0",
+    importance: "Memperkuat dinding sel batang padi agar tidak rebah dan meningkatkan resistensi terhadap serangan patogen jamur.",
+  },
+  {
+    id: "ph",
+    name: "Derajat Keasaman Tanah",
+    symbol: "pH",
+    unit: "pH",
+    range: "3.00 – 9.00 pH",
+    resolution: "0.01 pH",
+    accuracy: "±0.05 pH",
+    register: "0x0003",
+    formula: "pH = Reg[3] / 100.0",
+    importance: "Menentukan kalkulasi dosis kapur pertanian (Dolomit CaCO3·MgCO3) ketika keasaman sawah anjlok di bawah ambang normal.",
+  },
+  {
+    id: "ec",
+    name: "Konduktivitas Listrik (EC)",
+    symbol: "EC",
+    unit: "µS/cm",
+    range: "0 – 20000 µS/cm",
+    resolution: "1 µS/cm",
+    accuracy: "±2% F.S.",
+    register: "0x0004",
+    formula: "EC = Reg[4] · K_probe",
+    importance: "Indeks akumulasi garam dan salinitas lumpur pascabanjir yang berisiko menyebabkan keracunan osmotik perakaran.",
+  },
+  {
+    id: "temp",
+    name: "Suhu Lapisan Tanah",
+    symbol: "ST",
+    unit: "°C",
+    range: "-40.0 – +80.0 °C",
+    resolution: "0.1 °C",
+    accuracy: "±0.5 °C",
+    register: "0x0005",
+    formula: "Temp = Reg[5] / 10.0",
+    importance: "Mengontrol laju metabolisme mikroba tanah dan efektivitas penyerapan pupuk kimia pada temperatur sawah tropis.",
+  },
+  {
+    id: "moisture",
+    name: "Kelembapan Volumetrik",
+    symbol: "MC",
+    unit: "% VWC",
+    range: "0.0 – 100.0 %",
+    resolution: "0.1 %",
+    accuracy: "±2% (0–50%)",
+    register: "0x0006",
+    formula: "VWC = Reg[6] / 10.0",
+    importance: "Memantau tingkat kejenuhan air tanah pascagenangan banjir untuk panduan irigasi berselang (intermittent).",
+  },
+];
+
+// --- KOMPONEN ANATOMI SOIL MULTI-PARAMETER SENSOR 7-IN-1 (5 MODUL) ---
+const SOIL_SENSOR_COMPONENTS: AnatomyItem[] = [
+  {
+    id: 1,
+    pinNumber: "01",
+    title: "4-Pin Probes Stainless Steel Anti-Korosi",
+    badge: "SS316L Heavy · Induksi Magnetik",
+    badgeColor: "text-[#84CC16] bg-[#84CC16]/10 border-[#84CC16]/30",
+    desc: "Batang elektroda 4-pin dari baja tahan karat SS316L kelas industri (panjang 70 mm) dioptimasi untuk pembacaan induksi medan magnetik terkalibrasi. Tahan rendaman lumpur asam sawah pascabanjir hingga 14 hari tanpa oksidasi atau degradasi akurasi.",
+    specs: [
+      { label: "Material Probe", value: "Stainless Steel 316L Industrial" },
+      { label: "Panjang Jarum", value: "70 mm (Zona Perakaran Aktif)" },
+      { label: "Ketahanan Lingkungan", value: "Tahan Rendaman Lumpur 14 Hari" },
+      { label: "Metode Ukur", value: "Magnetic Induction & Diff Impedance" },
+    ],
+    hotspot: { top: "76%", left: "58%" },
+  },
+  {
+    id: 2,
+    pinNumber: "02",
+    title: "Housing Waterproof IP68 Black Epoxy Resin",
+    badge: "IP68 Submersible Enclosure",
+    badgeColor: "text-[#22C55E] bg-[#22C55E]/10 border-[#22C55E]/30",
+    desc: "Selungkup polimer rekayasa hitam dengan enkapsulasi resin epoksi berdensitas tinggi vakum penuh. Menjamin 100% kedap air, tahan tekanan lumpur sawah, dan melindungi sirkuit ADC internal dari kelembapan ekstrem.",
+    specs: [
+      { label: "Tingkat Proteksi", value: "IP68 Submersible (Kedap Air)" },
+      { label: "Bahan Selungkup", value: "Black Engineered Polymer + Resin Epoksi" },
+      { label: "Suhu Operasi", value: "-40°C ~ +85°C" },
+      { label: "Dimensi Bodi", value: "115 × 45 × 15 mm" },
+    ],
+    hotspot: { top: "43%", left: "52%" },
+  },
+  {
+    id: 3,
+    pinNumber: "03",
+    title: "Label Parameter & Konfigurasi Pabrik",
+    badge: "7 Parameter Modbus RTU",
+    badgeColor: "text-[#38BDF8] bg-[#38BDF8]/10 border-[#38BDF8]/30",
+    desc: "Label identifikasi biru transduser menandai pengukuran 7 parameter tanah simultan (N, P, K, pH, EC, Temp, Moisture). Terintegrasi dengan firmware decoding Modbus RTU yang membaca 7 holding register dalam sekali transmisi.",
+    specs: [
+      { label: "Holding Registers", value: "0x0000 – 0x0006 (7 Registers)" },
+      { label: "Waktu Respon", value: "< 1.0 Detik per Siklus" },
+      { label: "Standar Uji", value: "Kalibrasi Kimia Tanah Balittanah" },
+      { label: "Format Output", value: "16-Bit Unsigned Integer (Big-Endian)" },
+    ],
+    hotspot: { top: "48%", left: "54%" },
+  },
+  {
+    id: 4,
+    pinNumber: "04",
+    title: "Konektor GX16 Aviation & Cable Gland PG7",
+    badge: "Quick-Release · IP67 Metal Lock",
+    badgeColor: "text-[#F58220] bg-[#F58220]/10 border-[#F58220]/30",
+    desc: "Kabel transmisi berpelindung 4-core (VCC, GND, RS485-A, RS485-B) dengan pengunci Cable Gland PG7 dan konektor metalik GX16 Aviation 4-Pin pada ujung boks sensor. Memungkinkan instalasi plug-and-play di lapangan tanpa solder.",
+    specs: [
+      { label: "Tipe Konektor", value: "GX16 Aviation 4-Pin Thread-Locked" },
+      { label: "Proteksi Kabel", value: "Cable Gland PG7 + Karet Silikon Seal" },
+      { label: "Tipe Kabel", value: "4-Core Shielded PU Anti-Koyak (2m)" },
+      { label: "Pinout", value: "Pin 1: VCC, Pin 2: GND, Pin 3: A+, Pin 4: B-" },
+    ],
+    hotspot: { top: "16%", left: "43%" },
+  },
+  {
+    id: 5,
+    pinNumber: "05",
+    title: "Manajemen Daya MOSFET IRLZ44N (Ultra-Low Power)",
+    badge: "Deep Sleep < 1 mA · 98% Saving",
+    badgeColor: "text-[#84CC16] bg-[#84CC16]/10 border-[#84CC16]/30",
+    desc: "Ditenagai melalui transistor logic-level MOSFET IRLZ44N pada Sensor Node yang memutus pasokan arus sensor saat mode Deep Sleep. Sensor hanya dinyalakan selama 3-5 detik saat pengambilan sampel, menjaga efisiensi baterai LiFePO4 hingga > 5 hari cuaca mendung.",
+    specs: [
+      { label: "Sakelar Daya", value: "IRLZ44N N-Channel Logic-Level MOSFET" },
+      { label: "Arus Siaga", value: "< 1 mA (Total Node Deep Sleep)" },
+      { label: "Arus Operasi", value: "~40 mA @ 12V (Aktif 5 Detik)" },
+      { label: "Interval Siklus", value: "Sampling Tiap 20–30 Menit" },
+    ],
+    hotspot: { top: "28%", left: "47%" },
+  },
+];
+
 export function IotSystem() {
   const [activePacketIndex, setActivePacketIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<"lora" | "csv" | "ble">("lora");
   const [activeNodeHotspot, setActiveNodeHotspot] = useState<number>(1);
   const [activeGatewayHotspot, setActiveGatewayHotspot] = useState<number>(1);
+  const [activeSoilHotspot, setActiveSoilHotspot] = useState<number>(1);
+  const [activeSoilParamTab, setActiveSoilParamTab] = useState<string>("n");
   const [lightboxData, setLightboxData] = useState<{
     src: string;
     title: string;
     subtitle: string;
-    type: "node" | "gateway";
+    type: "node" | "gateway" | "sensor";
   } | null>(null);
 
   useEffect(() => {
@@ -1022,6 +1208,353 @@ export function IotSystem() {
         </Reveal>
 
         {/* ========================================================================= */}
+        {/* STEP 3 - SHOWCASE C: SOIL MULTI-PARAMETER SENSOR RS485 7-IN-1            */}
+        {/* ========================================================================= */}
+        <Reveal delay={0.28} className="mb-24">
+          <div className="rounded-3xl bg-[#05130A] border border-[#84CC16]/30 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+            {/* Top Deck Banner */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-[#84CC16]/20 gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#84CC16]/15 border border-[#84CC16]/30 text-xs font-mono font-bold text-[#84CC16] mb-2">
+                  <span className="w-2 h-2 rounded-full bg-[#84CC16] animate-pulse" />
+                  <span>SHOWCASE C · TRANSDUSER TANAH MULTI-PARAMETER RS485 7-IN-1</span>
+                </div>
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                  Sensor Multi-Parameter Tanah 7-in-1 (Industrial Grade)
+                </h3>
+                <p className="text-xs sm:text-sm text-[#A3C2AF] mt-1">
+                  Transduser 4-Pin Stainless Steel tahan korosi lumpur pascabanjir, bus diferensial Modbus RTU, &amp; manajemen daya MOSFET IRLZ44N.
+                </p>
+              </div>
+
+              {/* Quick Info Badge */}
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxData({
+                      src: "/assets/soil-sensor-7in1.png",
+                      title: "Soil Multi-Parameter Sensor RS485 7-in-1",
+                      subtitle: "4-Pin Stainless Steel 316L, Housing Waterproof IP68, Cable Gland PG7, & Soket GX16 Aviation",
+                      type: "sensor",
+                    })
+                  }
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#84CC16]/15 hover:bg-[#84CC16]/25 text-[#84CC16] border border-[#84CC16]/30 text-xs font-mono font-bold transition-all"
+                  title="Klik untuk membuka Fullscreen Lightbox"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Inspeksi High-Res</span>
+                </button>
+              </div>
+            </div>
+
+            {/* 12-Column Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              {/* Left 5 Cols: Massive Sensor Photo Pedestal with Interactive Hotspots */}
+              <div className="lg:col-span-5 flex flex-col items-center">
+                <div className="relative w-full min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#0e2410]/60 to-black/90 border border-[#84CC16]/20 flex items-center justify-center p-6 overflow-hidden group">
+                  {/* Radial Spotlight Glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#84CC16]/25 via-[#22C55E]/05 to-transparent pointer-events-none" />
+
+                  {/* Blueprint Grid Lines Background */}
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#84cc160a_1px,transparent_1px),linear-gradient(to_bottom,#84cc160a_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+                  {/* High-Res Image with Gentle Floating Animation */}
+                  <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[520px] flex items-center justify-center">
+                    <motion.div
+                      animate={{ y: [0, -6, 0] }}
+                      transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
+                      className="relative w-full h-full flex items-center justify-center"
+                    >
+                      <Image
+                        src="/assets/soil-sensor-7in1.png"
+                        alt="Soil Multi-Parameter Sensor RS485 7-in-1 Transparan"
+                        fill
+                        className="object-contain drop-shadow-[0_20px_50px_rgba(132,204,22,0.22)] select-none cursor-pointer"
+                        sizes="(max-width: 1024px) 100vw, 420px"
+                        priority
+                        onClick={() =>
+                          setLightboxData({
+                            src: "/assets/soil-sensor-7in1.png",
+                            title: "Soil Multi-Parameter Sensor RS485 7-in-1",
+                            subtitle: "4-Pin Stainless Steel 316L, Housing Waterproof IP68, Cable Gland PG7, & Soket GX16 Aviation",
+                            type: "sensor",
+                          })
+                        }
+                      />
+
+                      {/* Interactive Hotspot Pins Overlaid on the Sensor Body */}
+                      {SOIL_SENSOR_COMPONENTS.map((comp) => {
+                        const isActive = activeSoilHotspot === comp.id;
+                        return (
+                          <button
+                            key={comp.id}
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveSoilHotspot(comp.id);
+                            }}
+                            style={{ top: comp.hotspot.top, left: comp.hotspot.left }}
+                            className="absolute -translate-x-1/2 -translate-y-1/2 group/pin z-20 focus:outline-none"
+                            aria-label={`Lihat modul ${comp.title}`}
+                          >
+                            <span className="relative flex h-7 w-7 items-center justify-center">
+                              {isActive && (
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#84CC16] opacity-75" />
+                              )}
+                              <span
+                                className={`relative inline-flex items-center justify-center rounded-full h-6 w-6 font-mono text-[11px] font-bold border transition-all shadow-md ${
+                                  isActive
+                                    ? "bg-[#84CC16] text-[#081A10] border-white scale-110 shadow-[#84CC16]/50"
+                                    : "bg-black/80 text-[#84CC16] border-[#84CC16]/60 hover:scale-105"
+                                }`}
+                              >
+                                {comp.pinNumber}
+                              </span>
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </motion.div>
+                  </div>
+
+                  {/* Quick Status Bar */}
+                  <div className="absolute bottom-3 left-3 text-[10px] font-mono text-[#A3C2AF]/80 flex items-center gap-1.5 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#84CC16] animate-pulse" />
+                    <span>Modbus RTU · 9600 Baud · RS485 Bus</span>
+                  </div>
+
+                  {/* Click to Expand Prompt */}
+                  <div className="absolute bottom-3 right-3 text-[10px] font-mono text-[#A3C2AF]/70 flex items-center gap-1.5 bg-black/60 px-2.5 py-1 rounded-full border border-white/10 pointer-events-none">
+                    <Maximize2 className="w-3 h-3 text-[#84CC16]" />
+                    <span>Klik foto untuk Fullscreen</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right 7 Cols: Component Breakdown (Desktop Grid + Mobile Swipeable Carousel) */}
+              <div className="lg:col-span-7">
+                {/* Desktop/Tablet Grid View */}
+                <div className="hidden sm:grid sm:grid-cols-2 gap-3.5">
+                  {SOIL_SENSOR_COMPONENTS.map((comp) => {
+                    const isActive = activeSoilHotspot === comp.id;
+                    return (
+                      <div
+                        key={comp.id}
+                        onClick={() => setActiveSoilHotspot(comp.id)}
+                        className={`p-4 rounded-xl cursor-pointer transition-all border ${
+                          isActive
+                            ? "bg-[#16290C] border-[#84CC16] shadow-lg shadow-[#84CC16]/15 scale-[1.01]"
+                            : "bg-black/40 border-white/5 hover:border-[#84CC16]/30 hover:bg-white/[0.02]"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span
+                            className={`w-6 h-6 rounded-md flex items-center justify-center font-mono text-xs font-bold ${
+                              isActive ? "bg-[#84CC16] text-[#081A10]" : "bg-white/10 text-[#84CC16]"
+                            }`}
+                          >
+                            {comp.pinNumber}
+                          </span>
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${comp.badgeColor}`}>
+                            {comp.badge}
+                          </span>
+                        </div>
+
+                        <h4 className="font-display font-bold text-sm text-white mb-1.5">{comp.title}</h4>
+                        <p className="text-[11px] text-[#A3C2AF] leading-relaxed mb-3 line-clamp-3">{comp.desc}</p>
+
+                        {/* Specs Mini Table */}
+                        <div className="space-y-1 pt-2 border-t border-white/5 font-mono text-[10px]">
+                          {comp.specs.slice(0, 2).map((s, idx) => (
+                            <div key={idx} className="flex justify-between text-[#A3C2AF]">
+                              <span className="text-[#A3C2AF]/60">{s.label}:</span>
+                              <span className="text-white font-semibold">{s.value}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mobile Horizontal Swipeable Carousel (< 768px) */}
+                <div className="sm:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 pt-1 scrollbar-thin">
+                  {SOIL_SENSOR_COMPONENTS.map((comp) => {
+                    const isActive = activeSoilHotspot === comp.id;
+                    return (
+                      <div
+                        key={comp.id}
+                        onClick={() => setActiveSoilHotspot(comp.id)}
+                        className={`min-w-[270px] max-w-[280px] snap-center p-4 rounded-xl border shrink-0 transition-all ${
+                          isActive
+                            ? "bg-[#16290C] border-[#84CC16] shadow-md shadow-[#84CC16]/15"
+                            : "bg-black/50 border-white/10"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <span
+                            className={`w-6 h-6 rounded-md flex items-center justify-center font-mono text-xs font-bold ${
+                              isActive ? "bg-[#84CC16] text-[#081A10]" : "bg-white/10 text-[#84CC16]"
+                            }`}
+                          >
+                            {comp.pinNumber}
+                          </span>
+                          <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${comp.badgeColor}`}>
+                            {comp.badge}
+                          </span>
+                        </div>
+
+                        <h4 className="font-display font-bold text-sm text-white mb-1">{comp.title}</h4>
+                        <p className="text-[11px] text-[#A3C2AF] leading-relaxed mb-2.5">{comp.desc}</p>
+
+                        <div className="space-y-1 pt-2 border-t border-white/5 font-mono text-[10px]">
+                          {comp.specs.map((s, idx) => (
+                            <div key={idx} className="flex justify-between text-[#A3C2AF]">
+                              <span className="text-[#A3C2AF]/60">{s.label}:</span>
+                              <span className="text-white font-semibold">{s.value}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Active Highlight Focus Detail Card */}
+                {(() => {
+                  const activeComp = SOIL_SENSOR_COMPONENTS.find((c) => c.id === activeSoilHotspot);
+                  if (!activeComp) return null;
+                  return (
+                    <div className="mt-4 p-4 rounded-xl bg-black/60 border border-[#84CC16]/30 font-mono text-xs text-[#A3C2AF] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div>
+                        <span className="text-[#84CC16] font-bold">Fokus Komponen {activeComp.pinNumber}:</span>{" "}
+                        <span className="text-white font-semibold">{activeComp.title}</span> — {activeComp.specs[0].label}:{" "}
+                        <span className="text-[#84CC16]">{activeComp.specs[0].value}</span>
+                      </div>
+                      <span className="text-[10px] text-[#A3C2AF]/60 shrink-0">Proteksi: Enkapsulasi Resin Vakum IP68</span>
+                    </div>
+                  );
+                })()}
+              </div>
+            </div>
+
+            {/* Bottom Full-Width Bento Grid: 7-in-1 Soil Parameters Matrix */}
+            <div className="mt-10 pt-8 border-t border-[#84CC16]/20">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#84CC16]/10 border border-[#84CC16]/20 text-[11px] font-mono text-[#84CC16] font-bold mb-1.5">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>7 PARAMETER EMPIRIS TERUKUR SEREMPAK</span>
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-display font-bold text-white">
+                    Matriks Spesifikasi 7 Parameter Tanah Sawah
+                  </h4>
+                </div>
+                <div className="text-xs font-mono text-[#A3C2AF]/70">
+                  Interface: <span className="text-[#84CC16] font-semibold">MAX485 Differential Transceiver</span>
+                </div>
+              </div>
+
+              {/* 7 Parameter Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {SOIL_PARAMETERS.map((param) => {
+                  const isSelected = activeSoilParamTab === param.id;
+                  return (
+                    <div
+                      key={param.id}
+                      onClick={() => setActiveSoilParamTab(param.id)}
+                      className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
+                        isSelected
+                          ? "bg-[#16290C] border-[#84CC16] shadow-md shadow-[#84CC16]/20"
+                          : "bg-black/40 border-white/5 hover:border-[#84CC16]/30 hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="px-2 py-0.5 rounded-md bg-white/10 font-mono text-xs font-bold text-[#84CC16]">
+                          {param.symbol}
+                        </span>
+                        <span className="font-mono text-[10px] text-[#A3C2AF]/60 bg-black/50 px-2 py-0.5 rounded border border-white/5">
+                          Reg: {param.register}
+                        </span>
+                      </div>
+                      <div className="text-xs font-display font-bold text-white mb-0.5">{param.name}</div>
+                      <div className="text-sm font-mono font-bold text-[#84CC16] tabular-nums mb-2">{param.range}</div>
+                      <div className="text-[10px] font-mono text-[#A3C2AF]/70 space-y-0.5 pt-1.5 border-t border-white/5">
+                        <div className="flex justify-between">
+                          <span>Resolusi:</span>
+                          <span className="text-white">{param.resolution}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Akurasi:</span>
+                          <span className="text-white">{param.accuracy}</span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {/* 8th Slot: Protocol & Power Feature Card */}
+                <div className="p-3.5 rounded-xl border border-[#F58220]/30 bg-[#25170B]/50 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="px-2 py-0.5 rounded-md bg-[#F58220]/20 font-mono text-xs font-bold text-[#F58220]">
+                        PWR
+                      </span>
+                      <span className="font-mono text-[10px] text-[#F58220] bg-black/50 px-2 py-0.5 rounded border border-[#F58220]/20">
+                        IRLZ44N
+                      </span>
+                    </div>
+                    <div className="text-xs font-display font-bold text-white mb-0.5">Deep Sleep Power Gating</div>
+                    <p className="text-[11px] text-[#A3C2AF] leading-relaxed">
+                      Sensor diputus arusnya selama deep sleep ESP32 (<span className="text-[#84CC16] font-mono font-bold">&lt; 1 mA</span>), hanya diaktifkan 5 detik tiap siklus 20–30 menit.
+                    </p>
+                  </div>
+                  <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-[#F58220]">
+                    <span>Efisiensi Energi:</span>
+                    <span className="font-bold">98% Lebih Hemat</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Modbus RTU Protocol Raw Hex Frame Inspector */}
+              <div className="mt-4 p-4 rounded-xl bg-black/70 border border-[#84CC16]/25 font-mono text-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 mb-2 border-b border-white/10">
+                  <div className="flex items-center gap-2 text-[#84CC16] font-bold">
+                    <Terminal className="w-3.5 h-3.5" />
+                    <span>Modbus RTU over RS485 Differential Frame Decoder</span>
+                  </div>
+                  <div className="text-[10px] text-[#A3C2AF]/70">
+                    Baud Rate: 9600 · Data Bits: 8 · Stop: 1 · Parity: None
+                  </div>
+                </div>
+
+                <div className="space-y-1.5 text-[11px]">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <span className="px-2 py-0.5 rounded bg-[#84CC16]/15 text-[#84CC16] text-[10px] font-bold shrink-0">
+                      TX REQUEST
+                    </span>
+                    <span className="text-[#84CC16] font-bold">01 03 00 00 00 07 04 08</span>
+                    <span className="text-[#A3C2AF]/60 text-[10px]">
+                      (Slave: 0x01, Function: 0x03 Read Holding, Start: 0x0000, Count: 7 Regs, CRC16: 0x0408)
+                    </span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <span className="px-2 py-0.5 rounded bg-[#38BDF8]/15 text-[#38BDF8] text-[10px] font-bold shrink-0">
+                      RX RESPONSE
+                    </span>
+                    <span className="text-white font-semibold">01 03 0E 00 8E 00 12 00 D3 02 0C 03 7A 01 25 02 E6 A4 F1</span>
+                    <span className="text-[#A3C2AF]/60 text-[10px]">
+                      (14 Data Bytes: N=142, P=18, K=211, pH=5.24, EC=890, Temp=29.3°C, MC=74.2%)
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* ========================================================================= */}
         {/* STEP 4: INTERACTIVE TELEMETRY CONSOLE (3 MODES TOGGLE)                     */}
         {/* ========================================================================= */}
         <Reveal delay={0.3} className="mb-12">
@@ -1191,7 +1724,13 @@ export function IotSystem() {
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl max-h-[90vh] rounded-3xl bg-[#05130A] border border-[#22C55E]/40 p-6 sm:p-8 flex flex-col items-center justify-between shadow-2xl overflow-hidden"
+              className={`relative w-full max-w-4xl max-h-[90vh] rounded-3xl bg-[#05130A] p-6 sm:p-8 flex flex-col items-center justify-between shadow-2xl overflow-hidden border ${
+                lightboxData.type === "sensor"
+                  ? "border-[#84CC16]/40"
+                  : lightboxData.type === "gateway"
+                  ? "border-[#F58220]/40"
+                  : "border-[#22C55E]/40"
+              }`}
             >
               {/* Close Button */}
               <button
@@ -1205,7 +1744,15 @@ export function IotSystem() {
 
               {/* Modal Header */}
               <div className="w-full text-center mb-4">
-                <span className="px-3 py-1 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-xs font-mono text-[#22C55E] font-bold">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
+                    lightboxData.type === "sensor"
+                      ? "bg-[#84CC16]/15 border-[#84CC16]/30 text-[#84CC16]"
+                      : lightboxData.type === "gateway"
+                      ? "bg-[#F58220]/15 border-[#F58220]/30 text-[#F58220]"
+                      : "bg-[#22C55E]/15 border-[#22C55E]/30 text-[#22C55E]"
+                  }`}
+                >
                   INSPEKSI RESOLUSI TINGGI
                 </span>
                 <h3 className="font-display font-bold text-xl sm:text-2xl text-white mt-2">
@@ -1220,6 +1767,8 @@ export function IotSystem() {
                   className={`absolute inset-0 rounded-2xl pointer-events-none ${
                     lightboxData.type === "node"
                       ? "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#22C55E]/20 to-transparent"
+                      : lightboxData.type === "sensor"
+                      ? "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#84CC16]/25 via-[#22C55E]/10 to-transparent"
                       : "bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#F58220]/20 to-transparent"
                   }`}
                 />
