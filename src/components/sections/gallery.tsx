@@ -71,8 +71,8 @@ export function Gallery() {
           </p>
         </Reveal>
 
-        {/* Pure Image Density Grid without text labels */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+        {/* Dynamic CSS Multi-Column Masonry preserving natural aspect ratios */}
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 lg:gap-5 space-y-3 sm:space-y-4 lg:space-y-5">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.src}
@@ -81,22 +81,29 @@ export function Gallery() {
               viewport={{ once: true, margin: "120px" }}
               transition={{ duration: 0.35, delay: (index % 4) * 0.04 }}
               onClick={() => setActiveImageIndex(index)}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/40 border border-white/10 hover:border-[#22C55E]/60 transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-[#22C55E]/15 cursor-pointer"
+              className="break-inside-avoid group relative rounded-2xl overflow-hidden bg-black/40 border border-white/10 hover:border-[#22C55E]/60 transition-all duration-300 shadow-md hover:shadow-2xl hover:shadow-[#22C55E]/15 cursor-pointer"
             >
               <Image
                 src={item.src}
-                alt={`Dokumentasi Riset Flood2Food ${index + 1}`}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                alt={item.title}
+                width={item.width}
+                height={item.height}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 loading={index < 8 ? "eager" : "lazy"}
               />
 
-              {/* Minimal Clean Hover Overlay without any text */}
-              <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="w-10 h-10 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300 shadow-lg">
-                  <Maximize2 className="w-4 h-4 text-[#22C55E]" />
-                </span>
+              {/* Minimal Clean Hover Overlay */}
+              <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-3 sm:p-4">
+                <div className="flex justify-end">
+                  <span className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center text-white scale-90 group-hover:scale-100 transition-transform duration-300 shadow-lg">
+                    <Maximize2 className="w-3.5 h-3.5 text-[#22C55E]" />
+                  </span>
+                </div>
+                <div>
+                  <div className="text-[10px] font-mono text-[#22C55E] uppercase tracking-wider">{item.category}</div>
+                  <div className="text-white text-xs font-semibold line-clamp-1">{item.title}</div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -111,7 +118,7 @@ export function Gallery() {
               </span>
               <div className="text-left">
                 <div className="text-white text-xs sm:text-sm font-semibold">Ikuti Dokumentasi Riset di Instagram</div>
-                <div className="text-[#A3C2AF] text-[11px] font-mono">Story lapangan, pengujian alat, &amp; info terkini</div>
+                <div className="text-[#A3C2AF] text-[11px] font-mono">Story lapangan, pengujian alat, & info terkini</div>
               </div>
             </div>
             <a
@@ -177,15 +184,15 @@ export function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.25 }}
-                className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center p-2"
+                className="relative max-w-5xl max-h-[75vh] w-full h-full flex items-center justify-center p-2"
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
                     src={activeItem.src}
-                    alt={`Dokumentasi Riset Flood2Food ${activeImageIndex + 1}`}
+                    alt={activeItem.title}
                     width={activeItem.width || 1600}
                     height={activeItem.height || 1200}
-                    className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-2xl shadow-2xl border border-white/10"
+                    className="max-w-full max-h-[75vh] w-auto h-auto object-contain rounded-2xl shadow-2xl border border-white/10"
                     priority
                   />
                 </div>
@@ -201,8 +208,17 @@ export function Gallery() {
               </button>
             </div>
 
-            {/* Bottom Balance Spacer */}
-            <div className="h-6" />
+            {/* Modal Informative Caption */}
+            <div
+              className="w-full max-w-3xl mx-auto px-5 py-3 bg-black/70 rounded-2xl border border-white/10 backdrop-blur-md text-center text-xs text-[#A3C2AF] z-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-white font-semibold text-sm">{activeItem.title}</div>
+              <div className="text-[11px] text-[#22C55E] font-mono mt-0.5">
+                {activeItem.location ? `${activeItem.location} · ` : ""}{activeItem.category}
+              </div>
+              <p className="mt-1 text-white/80 text-xs leading-relaxed">{activeItem.description}</p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
