@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Download, Menu, X, Github } from "lucide-react";
+import { Download, Menu, X, Github, Instagram } from "lucide-react";
 import { Magnetic } from "@/components/motion/magnetic";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/#sistem", label: "Sistem IoT" },
   { href: "/#fitur", label: "7 Parameter" },
   { href: "/#tampilan", label: "Aplikasi" },
+  { href: "/#dokumen", label: "Dokumen" },
   { href: "/#tim", label: "Tim" },
   { href: "/#galeri", label: "Galeri" },
   { href: "/#faq", label: "FAQ" },
@@ -79,7 +80,7 @@ export function Navbar() {
         </nav>
 
         {/* CTA Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           {/* Mobile Direct Download Icon (Only on mobile < sm, so text never cuts off) */}
           <Link
             href="/#unduh"
@@ -88,6 +89,18 @@ export function Navbar() {
           >
             <Download className="w-4 h-4 stroke-[2.5]" />
           </Link>
+
+          {/* Instagram Official Link Button */}
+          <a
+            href="https://www.instagram.com/flood2food"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-8 h-8 rounded-full bg-white/5 hover:bg-[#E1306C]/20 hover:border-[#E1306C]/50 border border-white/15 text-[#A3C2AF] hover:text-[#E1306C] flex items-center justify-center transition-all shrink-0"
+            aria-label="Instagram Resmi Flood2Food"
+            title="Instagram: @flood2food"
+          >
+            <Instagram className="w-4 h-4" />
+          </a>
 
           {/* GitHub Repository Link Button */}
           <a
@@ -149,16 +162,28 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <a
-                href="https://github.com/aziqi/Flood2Food"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-colors"
-              >
-                <Github className="w-4 h-4" />
-                <span>GitHub: aziqi/Flood2Food</span>
-              </a>
+              <div className="grid grid-cols-2 gap-2 mt-2">
+                <a
+                  href="https://www.instagram.com/flood2food"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold bg-[#E1306C]/10 hover:bg-[#E1306C]/20 border border-[#E1306C]/30 text-[#E1306C] transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                  <span>@flood2food</span>
+                </a>
+                <a
+                  href="https://github.com/aziqi/Flood2Food"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-colors"
+                >
+                  <Github className="w-4 h-4" />
+                  <span>GitHub</span>
+                </a>
+              </div>
               <Link
                 href="/#unduh"
                 onClick={() => setMobileMenuOpen(false)}
@@ -174,3 +199,4 @@ export function Navbar() {
     </header>
   );
 }
+

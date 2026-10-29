@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Reveal } from "@/components/motion/reveal";
-import { Camera, X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { Camera, X, ChevronLeft, ChevronRight, Maximize2, Instagram, ExternalLink } from "lucide-react";
 import { galleryItems, type GalleryItem } from "@/data/gallery";
 
 export function Gallery() {
@@ -101,6 +101,30 @@ export function Gallery() {
             </motion.div>
           ))}
         </div>
+
+        {/* Instagram Follow Callout Strip */}
+        <Reveal delay={0.2} className="mt-10 sm:mt-14 flex justify-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md max-w-xl w-full justify-between">
+            <div className="flex items-center gap-3.5">
+              <span className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center text-white shadow-lg shadow-[#DD2A7B]/20 shrink-0">
+                <Instagram className="w-5 h-5" />
+              </span>
+              <div className="text-left">
+                <div className="text-white text-xs sm:text-sm font-semibold">Ikuti Dokumentasi Riset di Instagram</div>
+                <div className="text-[#A3C2AF] text-[11px] font-mono">Story lapangan, pengujian alat, &amp; info terkini</div>
+              </div>
+            </div>
+            <a
+              href="https://www.instagram.com/flood2food"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#E1306C] hover:bg-[#c1275d] text-white text-xs font-semibold shadow-md transition-all shrink-0 w-full sm:w-auto"
+            >
+              <span>@flood2food</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </Reveal>
       </div>
 
       {/* Interactive Full-Screen Lightbox Modal */}
