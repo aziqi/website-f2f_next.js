@@ -51,28 +51,28 @@ export function Gallery() {
   }, [activeImageIndex, handleNext, handlePrev, handleClose]);
 
   return (
-    <section id="galeri" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10] overflow-hidden">
+    <section id="galeri" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10] overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#22C55E]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <Reveal className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="max-w-3xl mb-8 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <Camera className="w-3.5 h-3.5" />
             <span>Dokumentasi Riset &amp; Pengujian Lapangan</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Dokumentasi Riset Lapangan &amp; Perakitan Sensor
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Telusuri 22 dokumentasi komprehensif pengujian sensor sawah pascabanjir di Pagar Merbau II Deli Serdang,
             kalibrasi telemetri LoRa jarak jauh, hingga perakitan sensor node mandiri.
           </p>
         </Reveal>
 
         {/* Dynamic CSS Multi-Column Masonry preserving natural aspect ratios */}
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 lg:gap-5 space-y-3 sm:space-y-4 lg:space-y-5">
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-2 sm:gap-4 lg:gap-5 space-y-2 sm:space-y-4 lg:space-y-5">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.src}
@@ -110,7 +110,7 @@ export function Gallery() {
         </div>
 
         {/* Instagram Follow Callout Strip */}
-        <Reveal delay={0.2} className="mt-10 sm:mt-14 flex justify-center">
+        <Reveal delay={0.2} className="mt-8 sm:mt-14 flex justify-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md max-w-xl w-full justify-between">
             <div className="flex items-center gap-3.5">
               <span className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] flex items-center justify-center text-white shadow-lg shadow-[#DD2A7B]/20 shrink-0">

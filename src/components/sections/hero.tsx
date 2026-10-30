@@ -30,7 +30,7 @@ export function Hero() {
   };
 
   return (
-    <section id="top" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden border-b border-[#A7C7B5]/10">
+    <section id="top" className="relative pt-20 pb-10 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 overflow-hidden border-b border-[#A7C7B5]/10">
       {/* Background radial atmosphere */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#22C55E]/10 rounded-full blur-[120px]" />
@@ -38,12 +38,12 @@ export function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           {/* Left Column: Copy & Actions */}
           <div className="lg:col-span-7 flex flex-col items-start">
             {/* PIMNAS Ribbon Badge with animated rotating border */}
             <Reveal delay={0.1}>
-              <div className="relative inline-flex p-[1px] rounded-full overflow-hidden mb-6 group">
+              <div className="relative inline-flex p-[1px] rounded-full overflow-hidden mb-4 sm:mb-6 group">
                 <span className="absolute inset-[-1000%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#081A10_0%,#F58220_50%,#22C55E_100%)] opacity-80" />
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#081A10] text-xs font-mono tracking-wide relative z-10 border border-[#A7C7B5]/15">
                   <span className="w-2 h-2 rounded-full bg-[#F58220] animate-pulse" />
@@ -55,16 +55,16 @@ export function Hero() {
             </Reveal>
 
             {/* Main Headline */}
-            <h1 className="font-display font-black text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-none text-white">
+            <h1 className="font-display font-black text-3xl sm:text-6xl lg:text-8xl tracking-tight leading-none text-white">
               Flood<span className="text-[#F58220] drop-shadow-[0_0_35px_rgba(245,130,32,0.45)]">2</span>Food
             </h1>
-            <p className="mt-4 text-lg sm:text-xl font-semibold text-[#22C55E] tracking-tight">
+            <p className="mt-2.5 sm:mt-4 text-sm sm:text-xl font-semibold text-[#22C55E] tracking-tight">
               Sistem Cerdas Pemulihan Lahan Sawah Pascabanjir
             </p>
 
             {/* Lead description */}
             <Reveal delay={0.2}>
-              <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] max-w-2xl leading-relaxed">
+              <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] max-w-2xl leading-relaxed">
                 Flood2Food membaca <strong>7 parameter tanah sekaligus</strong> melalui sensor fusion antikorosi tahan lumpur.
                 Datanya dikirimkan <strong>tanpa sinyal seluler</strong> lewat transmisi LoRa sejauh 10,64 km, lalu dianalisis oleh{" "}
                 <strong>AI Tanya Bimo</strong> di aplikasi Android untuk menentukan dosis remediasi presisi.
@@ -73,11 +73,11 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <Reveal delay={0.3}>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-5 sm:mt-8 flex flex-wrap items-center gap-2.5 sm:gap-4">
                 <Magnetic strength={0.25}>
                   <Link
                     href="#unduh"
-                    className="btn-nested bg-gradient-to-r from-[#F58220] via-[#F58220] to-[#E06D10] text-[#081A10] font-bold text-sm tracking-wide shadow-xl shadow-[#F58220]/25 hover:shadow-[#F58220]/45"
+                    className="btn-nested bg-gradient-to-r from-[#F58220] via-[#F58220] to-[#E06D10] text-[#081A10] font-bold text-xs sm:text-sm tracking-wide shadow-xl shadow-[#F58220]/25 hover:shadow-[#F58220]/45"
                   >
                     <span>Download APK Flood2Food</span>
                     <span className="btn-nested-icon bg-black/15 text-[#081A10]">
@@ -91,7 +91,7 @@ export function Hero() {
                     href="https://www.instagram.com/flood2food"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-nested bg-gradient-to-r from-[#E1306C]/15 via-[#C13584]/20 to-[#833AB4]/15 hover:from-[#E1306C]/30 hover:to-[#833AB4]/30 text-white border border-[#E1306C]/40 hover:border-[#E1306C]/70 text-sm font-semibold shadow-lg shadow-[#E1306C]/10 transition-all group"
+                    className="btn-nested bg-gradient-to-r from-[#E1306C]/15 via-[#C13584]/20 to-[#833AB4]/15 hover:from-[#E1306C]/30 hover:to-[#833AB4]/30 text-white border border-[#E1306C]/40 hover:border-[#E1306C]/70 text-xs sm:text-sm font-semibold shadow-lg shadow-[#E1306C]/10 transition-all group"
                     title="Instagram Resmi @flood2food"
                   >
                     <span>Instagram</span>
@@ -106,7 +106,7 @@ export function Hero() {
                     href="https://github.com/aziqi/Flood2Food"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-nested bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/30 text-sm font-semibold"
+                    className="btn-nested bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/30 text-xs sm:text-sm font-semibold"
                     title="Lihat Repositori Resmi di GitHub"
                   >
                     <span>GitHub</span>
@@ -121,13 +121,13 @@ export function Hero() {
           </div>
 
           {/* Right Column: 3D Interactive Mascot "Si Bimo" with Ambient Halo & 3D Tilt */}
-          <div className="lg:col-span-5 flex justify-center items-center relative mt-8 lg:mt-0">
-            <Reveal delay={0.25} className="relative w-[300px] sm:w-[360px] lg:w-[410px] flex flex-col items-center">
+          <div className="lg:col-span-5 flex justify-center items-center relative mt-4 lg:mt-0">
+            <Reveal delay={0.25} className="relative w-[180px] sm:w-[320px] lg:w-[410px] flex flex-col items-center">
               {/* Dual Glow Ambient Aura */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[340px] h-[340px] sm:h-[400px] bg-gradient-to-tr from-[#22C55E]/20 via-[#F58220]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] sm:w-[340px] h-[200px] sm:h-[400px] bg-gradient-to-tr from-[#22C55E]/20 via-[#F58220]/15 to-transparent rounded-full blur-3xl pointer-events-none" />
 
               {/* Floating Pedestal Ground Shadow */}
-              <div className="absolute -bottom-3 w-48 sm:w-64 h-8 bg-black/60 rounded-full blur-md" />
+              <div className="absolute -bottom-3 w-36 sm:w-64 h-6 sm:h-8 bg-black/60 rounded-full blur-md" />
 
               {/* 3D Tilt Wrapper */}
               <div

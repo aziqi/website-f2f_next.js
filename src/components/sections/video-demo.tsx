@@ -4,17 +4,17 @@ import { Reveal } from "@/components/motion/reveal";
 
 export function VideoDemo() {
   return (
-    <section id="video" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0A2216] to-[#081A10]">
+    <section id="video" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0A2216] to-[#081A10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
             <span>Video Prototipe Fungsional · PKM-KC USU 2026</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Bukti Nyata Pengujian Prototipe Fungsional di Persawahan Pagar Merbau II
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Saksikan demonstrasi langsung prototipe fungsional Flood2Food saat beroperasi di genangan lumpur sawah pascabanjir —
             mulai dari pembacaan 7 parameter tanah sekaligus, transmisi LoRa mandiri tanpa sinyal seluler hingga radius 10,64 km,
             serta sinkronisasi data telemetri real-time ke aplikasi Android.

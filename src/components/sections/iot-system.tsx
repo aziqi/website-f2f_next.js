@@ -537,7 +537,7 @@ export function IotSystem() {
   return (
     <section
       id="sistem"
-      className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0B2416] to-[#081A10] overflow-hidden"
+      className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0B2416] to-[#081A10] overflow-hidden"
     >
       {/* Background Decorative Mesh & Radial Lights */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -547,15 +547,15 @@ export function IotSystem() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <Reveal className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="max-w-3xl mb-8 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
             <span>Rekayasa Ketahanan IoT &amp; Hardware</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Satu Ekosistem Cerdas, Nol Ketergantungan Sinyal Seluler
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Arsitektur telemetri terdistribusi yang dirancang beroperasi 24/7 di tengah sawah dan kawasan pedesaan tanpa
             jaringan seluler (<em>blank spot</em>) melalui integrasi daya surya mandiri dan frekuensi radio LoRa 915 MHz.
           </p>
@@ -649,10 +649,10 @@ export function IotSystem() {
         </Reveal>
 
         {/* 3-Node Connected Architecture Overview Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 mb-10 sm:mb-20">
           {/* Card 1: Node Lapangan */}
           <Reveal delay={0.15} className="bezel-shell relative group">
-            <div className="bezel-core p-6 sm:p-7 h-full flex flex-col justify-between">
+            <div className="bezel-core p-4 sm:p-7 h-full flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-xs font-mono font-bold text-[#22C55E]">
@@ -698,7 +698,7 @@ export function IotSystem() {
 
           {/* Card 2: Gateway Portabel */}
           <Reveal delay={0.25} className="bezel-shell relative group">
-            <div className="bezel-core p-6 sm:p-7 h-full flex flex-col justify-between">
+            <div className="bezel-core p-4 sm:p-7 h-full flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-xs font-mono font-bold text-[#F58220]">
@@ -744,7 +744,7 @@ export function IotSystem() {
 
           {/* Card 3: Mobile App & AI */}
           <Reveal delay={0.35} className="bezel-shell relative group">
-            <div className="bezel-core p-6 sm:p-7 h-full flex flex-col justify-between">
+            <div className="bezel-core p-4 sm:p-7 h-full flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="px-3 py-1 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-xs font-mono font-bold text-[#38BDF8]">
@@ -792,15 +792,15 @@ export function IotSystem() {
         {/* ========================================================================= */}
         {/* STEP 3 - SHOWCASE A: SENSOR NODE 7-IN-1 (FULL-WIDTH BENTO DECK)            */}
         {/* ========================================================================= */}
-        <Reveal delay={0.2} className="mb-24">
-          <div className="rounded-3xl bg-[#05130A] border border-[#22C55E]/30 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+        <Reveal delay={0.2} className="mb-10 sm:mb-20 lg:mb-24">
+          <div className="rounded-3xl bg-[#05130A] border border-[#22C55E]/30 p-4 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
             {/* Top Deck Banner */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-[#22C55E]/20 gap-4">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-xs font-mono font-bold text-[#22C55E] mb-2">
                   <span>SHOWCASE A · STASIUN LAPANGAN SAWAH</span>
                 </div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                <h3 className="font-display font-bold text-lg sm:text-3xl text-white">
                   Anatomi Lengkap Sensor Node 7-in-1
                 </h3>
                 <p className="text-xs sm:text-sm text-[#A3C2AF] mt-1">
@@ -833,7 +833,7 @@ export function IotSystem() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Left 5 Cols: Massive Sensor Node Photo Pedestal with Interactive Hotspots */}
               <div className="lg:col-span-5 flex flex-col items-center">
-                <div className="relative w-full min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#0A2216]/60 to-black/90 border border-[#22C55E]/20 flex items-center justify-center p-6 overflow-hidden group">
+                <div className="relative w-full min-h-[200px] sm:min-h-[380px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#0A2216]/60 to-black/90 border border-[#22C55E]/20 flex items-center justify-center p-3 sm:p-6 overflow-hidden group">
                   {/* Radial Spotlight Glow */}
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#22C55E]/25 via-[#22C55E]/05 to-transparent pointer-events-none" />
 
@@ -841,7 +841,7 @@ export function IotSystem() {
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#22c55e0a_1px,transparent_1px),linear-gradient(to_bottom,#22c55e0a_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
                   {/* High-Res Image with Gentle Floating Animation */}
-                  <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[520px] flex items-center justify-center">
+                  <div className="relative w-full h-[200px] sm:h-[380px] lg:h-[520px] flex items-center justify-center">
                     <motion.div
                       animate={{ y: [0, -6, 0] }}
                       transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -928,7 +928,7 @@ export function IotSystem() {
                       <div
                         key={comp.id}
                         onClick={() => setActiveNodeHotspot(comp.id)}
-                        className={`min-w-[270px] max-w-[280px] snap-center p-4 rounded-xl border shrink-0 transition-all ${
+                        className={`min-w-[248px] max-w-[258px] snap-center p-3.5 rounded-xl border shrink-0 transition-all ${
                           isActive
                             ? "bg-[#0A2616] border-[#22C55E] shadow-md shadow-[#22C55E]/15"
                             : "bg-black/50 border-white/10"
@@ -986,15 +986,15 @@ export function IotSystem() {
         {/* ========================================================================= */}
         {/* STEP 3 - SHOWCASE B: GATEWAY PORTABEL & BLE BRIDGE (FULL-WIDTH BENTO DECK) */}
         {/* ========================================================================= */}
-        <Reveal delay={0.25} className="mb-24">
-          <div className="rounded-3xl bg-[#05130A] border border-[#F58220]/30 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+        <Reveal delay={0.25} className="mb-10 sm:mb-20 lg:mb-24">
+          <div className="rounded-3xl bg-[#05130A] border border-[#F58220]/30 p-4 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
             {/* Top Deck Banner */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-[#F58220]/20 gap-4">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-xs font-mono font-bold text-[#F58220] mb-2">
                   <span>SHOWCASE B · STASIUN PENERIMA DI RUMAH PETANI</span>
                 </div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                <h3 className="font-display font-bold text-lg sm:text-3xl text-white">
                   Anatomi Gateway Portabel &amp; BLE Bridge
                 </h3>
                 <p className="text-xs sm:text-sm text-[#A3C2AF] mt-1">
@@ -1079,7 +1079,7 @@ export function IotSystem() {
                       <div
                         key={comp.id}
                         onClick={() => setActiveGatewayHotspot(comp.id)}
-                        className={`min-w-[270px] max-w-[280px] snap-center p-4 rounded-xl border shrink-0 transition-all ${
+                        className={`min-w-[248px] max-w-[258px] snap-center p-3.5 rounded-xl border shrink-0 transition-all ${
                           isActive
                             ? "bg-[#25170B] border-[#F58220] shadow-md shadow-[#F58220]/15"
                             : "bg-black/50 border-white/10"
@@ -1133,7 +1133,7 @@ export function IotSystem() {
 
               {/* Right 5 Cols on Desktop: Massive Gateway Photo Pedestal with Interactive Hotspots */}
               <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col items-center">
-                <div className="relative w-full min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#22160A]/60 to-black/90 border border-[#F58220]/20 flex items-center justify-center p-6 overflow-hidden group">
+                <div className="relative w-full min-h-[200px] sm:min-h-[380px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#22160A]/60 to-black/90 border border-[#F58220]/20 flex items-center justify-center p-3 sm:p-6 overflow-hidden group">
                   {/* Radial Spotlight Glow */}
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#F58220]/25 via-[#F58220]/05 to-transparent pointer-events-none" />
 
@@ -1141,7 +1141,7 @@ export function IotSystem() {
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#f582200a_1px,transparent_1px),linear-gradient(to_bottom,#f582200a_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
                   {/* High-Res Image with Gentle Floating Animation */}
-                  <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[500px] flex items-center justify-center">
+                  <div className="relative w-full h-[200px] sm:h-[380px] lg:h-[500px] flex items-center justify-center">
                     <motion.div
                       animate={{ y: [0, -6, 0] }}
                       transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
@@ -1180,8 +1180,8 @@ export function IotSystem() {
         {/* ========================================================================= */}
         {/* STEP 3 - SHOWCASE C: SOIL MULTI-PARAMETER SENSOR RS485 7-IN-1            */}
         {/* ========================================================================= */}
-        <Reveal delay={0.28} className="mb-24">
-          <div className="rounded-3xl bg-[#05130A] border border-[#84CC16]/30 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+        <Reveal delay={0.28} className="mb-10 sm:mb-20 lg:mb-24">
+          <div className="rounded-3xl bg-[#05130A] border border-[#84CC16]/30 p-4 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
             {/* Top Deck Banner */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-[#84CC16]/20 gap-4">
               <div>
@@ -1189,7 +1189,7 @@ export function IotSystem() {
                   <span className="w-2 h-2 rounded-full bg-[#84CC16] animate-pulse" />
                   <span>SHOWCASE C · TRANSDUSER TANAH MULTI-PARAMETER RS485 7-IN-1</span>
                 </div>
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-white">
+                <h3 className="font-display font-bold text-lg sm:text-3xl text-white">
                   Sensor Multi-Parameter Tanah 7-in-1 (Industrial Grade)
                 </h3>
                 <p className="text-xs sm:text-sm text-[#A3C2AF] mt-1">
@@ -1222,7 +1222,7 @@ export function IotSystem() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
               {/* Left 5 Cols: Massive Sensor Photo Pedestal with Interactive Hotspots */}
               <div className="lg:col-span-5 flex flex-col items-center">
-                <div className="relative w-full min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#0e2410]/60 to-black/90 border border-[#84CC16]/20 flex items-center justify-center p-6 overflow-hidden group">
+                <div className="relative w-full min-h-[200px] sm:min-h-[380px] lg:min-h-[560px] rounded-2xl bg-gradient-to-b from-black/80 via-[#0e2410]/60 to-black/90 border border-[#84CC16]/20 flex items-center justify-center p-3 sm:p-6 overflow-hidden group">
                   {/* Radial Spotlight Glow */}
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#84CC16]/25 via-[#22C55E]/05 to-transparent pointer-events-none" />
 
@@ -1230,7 +1230,7 @@ export function IotSystem() {
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#84cc160a_1px,transparent_1px),linear-gradient(to_bottom,#84cc160a_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
                   {/* High-Res Image with Gentle Floating Animation */}
-                  <div className="relative w-full h-[460px] sm:h-[500px] lg:h-[520px] flex items-center justify-center">
+                  <div className="relative w-full h-[200px] sm:h-[380px] lg:h-[520px] flex items-center justify-center">
                     <motion.div
                       animate={{ y: [0, -6, 0] }}
                       transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
@@ -1323,7 +1323,7 @@ export function IotSystem() {
                       <div
                         key={comp.id}
                         onClick={() => setActiveSoilHotspot(comp.id)}
-                        className={`min-w-[270px] max-w-[280px] snap-center p-4 rounded-xl border shrink-0 transition-all ${
+                        className={`min-w-[248px] max-w-[258px] snap-center p-3.5 rounded-xl border shrink-0 transition-all ${
                           isActive
                             ? "bg-[#16290C] border-[#84CC16] shadow-md shadow-[#84CC16]/15"
                             : "bg-black/50 border-white/10"

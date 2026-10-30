@@ -69,29 +69,29 @@ export function AppDownload() {
   };
 
   return (
-    <section id="unduh" className="relative py-20 sm:py-28 overflow-hidden bg-[#081A10]">
+    <section id="unduh" className="relative py-10 sm:py-20 lg:py-28 overflow-hidden bg-[#081A10]">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#22C55E]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#F58220]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
               <Smartphone className="w-3.5 h-3.5" />
               <span>Aplikasi Mobile Android · PKM-KC USU 2026</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-display font-black text-3xl sm:text-5xl tracking-tight text-white leading-tight">
+            <h2 className="font-display font-black text-xl sm:text-5xl tracking-tight text-white leading-tight">
               Unduh Aplikasi <span className="text-[#F58220]">Flood2Food</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mt-4 text-sm sm:text-base text-[#A3C2AF] leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#A3C2AF] leading-relaxed">
               Pantau 7 parameter kesuburan tanah sawah secara real-time, kendalikan telemetri mandiri,
               dan konsultasi cerdas bersama AI Tanya Bimo langsung dari smartphone Anda.
             </p>
@@ -103,7 +103,7 @@ export function AppDownload() {
           {/* Left Column (7 Cols): Specifications, Primary Download CTA, Installation Steps */}
           <Reveal delay={0.2} className="lg:col-span-7 flex flex-col">
             <div className="bezel-shell h-full flex flex-col">
-              <div className="bezel-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6 sm:space-y-8">
+              <div className="bezel-core p-4 sm:p-8 flex flex-col justify-between h-full space-y-5 sm:space-y-8">
                 <div>
                   {/* Technical Spec Badges */}
                   <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 mb-5">
@@ -236,7 +236,7 @@ export function AppDownload() {
           {/* Right Column (5 Cols): Interactive QR Code Scanner Card */}
           <Reveal delay={0.3} className="lg:col-span-5 flex flex-col">
             <div className="bezel-shell h-full flex flex-col">
-              <div className="bezel-core p-6 sm:p-8 flex flex-col items-center justify-between text-center relative overflow-hidden h-full space-y-6">
+              <div className="bezel-core p-4 sm:p-8 flex flex-col items-center justify-between text-center relative overflow-hidden h-full space-y-5 sm:space-y-6">
                 {/* Header QR Card */}
                 <div>
                   <div className="w-12 h-12 rounded-2xl bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] flex items-center justify-center mx-auto mb-3 shadow-lg shadow-[#22C55E]/10">

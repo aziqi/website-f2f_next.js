@@ -84,25 +84,25 @@ const teamMembers = [
 
 export function Team() {
   return (
-    <section id="tim" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
+    <section id="tim" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-[#F58220] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="max-w-3xl mb-8 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-[#F58220] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <Users className="w-3.5 h-3.5" />
             <span>Peneliti &amp; Pengembang</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Tim PKM-KC USU 2026
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Kolaborasi lintas disiplin ilmu mahasiswa Universitas Sumatera Utara dari Fakultas Pertanian, FMIPA,
             Fasilkom-TI, dan Fakultas Vokasi yang mendedikasikan teknologi untuk kedaulatan pangan petani.
           </p>
         </Reveal>
 
         {/* Official Team Photo Banner */}
-        <Reveal delay={0.1} className="mb-14 rounded-3xl overflow-hidden border border-[#A7C7B5]/20 shadow-2xl shadow-black/60 bg-black/40">
-          <div className="relative w-full aspect-[16/9] max-h-[500px]">
+        <Reveal delay={0.1} className="mb-8 sm:mb-14 rounded-2xl sm:rounded-3xl overflow-hidden border border-[#A7C7B5]/20 shadow-2xl shadow-black/60 bg-black/40">
+          <div className="relative w-full aspect-[16/9] max-h-[220px] sm:max-h-[400px] lg:max-h-[500px]">
             <Image
               src="/assets/team/dengan-nama.png"
               alt="Foto Resmi Tim Peneliti Flood2Food USU 2026"
@@ -115,8 +115,8 @@ export function Team() {
         </Reveal>
 
         {/* Dosen Pembimbing Banner (Di Atas) */}
-        <Reveal delay={0.15} className="bezel-shell mb-10">
-          <div className="bezel-core p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <Reveal delay={0.15} className="bezel-shell mb-6 sm:mb-10">
+          <div className="bezel-core p-4 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
             <div className="flex items-center gap-5">
               <div className="w-14 h-14 rounded-2xl bg-[#22C55E]/15 border border-[#22C55E]/30 flex items-center justify-center shrink-0 text-[#22C55E]">
                 <GraduationCap className="w-7 h-7" />
@@ -145,7 +145,7 @@ export function Team() {
               <Reveal
                 key={member.name}
                 delay={idx * 0.1}
-                className={`min-w-[260px] sm:min-w-[280px] lg:min-w-0 shrink-0 lg:shrink p-6 rounded-3xl bg-[#0F2E1B]/80 border ${member.theme.border} hover:bg-[#0F2E1B] transition-all duration-300 shadow-xl shadow-black/40 flex flex-col justify-between`}
+                className={`min-w-[240px] sm:min-w-[280px] lg:min-w-0 shrink-0 lg:shrink p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#0F2E1B]/80 border ${member.theme.border} hover:bg-[#0F2E1B] transition-all duration-300 shadow-xl shadow-black/40 flex flex-col justify-between`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">

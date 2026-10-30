@@ -90,29 +90,29 @@ export function Documents() {
   }, [activeDoc, handleClose]);
 
   return (
-    <section id="dokumen" className="relative py-20 sm:py-28 overflow-hidden bg-[#06140D] border-b border-[#A7C7B5]/10">
+    <section id="dokumen" className="relative py-10 sm:py-20 lg:py-28 overflow-hidden bg-[#06140D] border-b border-[#A7C7B5]/10">
       {/* Radial lighting background glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[32rem] h-[32rem] bg-[#22C55E]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-[32rem] h-[32rem] bg-[#F58220]/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
               <ShieldCheck className="w-3.5 h-3.5 text-[#22C55E]" />
               <span>Dokumentasi Resmi &amp; Legalitas Intelektual</span>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-display font-black text-3xl sm:text-5xl tracking-tight text-white leading-tight">
+            <h2 className="font-display font-black text-xl sm:text-5xl tracking-tight text-white leading-tight">
               Legalitas Hak Cipta &amp; <span className="text-[#F58220]">Manual Book</span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mt-4 text-sm sm:text-base text-[#A3C2AF] leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-[#A3C2AF] leading-relaxed">
               Inovasi Flood2Food dilindungi secara hukum oleh Kementerian Hukum Republik Indonesia dan
               didukung buku panduan teknis operasional lengkap untuk petani, penyuluh, dan teknisi lapangan.
             </p>
@@ -124,7 +124,7 @@ export function Documents() {
           {/* Card 1: Surat Pencatatan Hak Cipta Kemenkumham */}
           <Reveal delay={0.2} className="flex flex-col">
             <div className="bezel-shell h-full flex flex-col group">
-              <div className="bezel-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
+              <div className="bezel-core p-4 sm:p-8 flex flex-col justify-between h-full space-y-6">
                 <div>
                   {/* Top Badges */}
                   <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -266,7 +266,7 @@ export function Documents() {
           {/* Card 2: Manual Book & Petunjuk Teknis */}
           <Reveal delay={0.3} className="flex flex-col">
             <div className="bezel-shell h-full flex flex-col group">
-              <div className="bezel-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
+              <div className="bezel-core p-4 sm:p-8 flex flex-col justify-between h-full space-y-6">
                 <div>
                   {/* Top Badges */}
                   <div className="flex flex-wrap items-center gap-2 mb-4">

@@ -68,18 +68,18 @@ export function AppShowcase() {
   const activeScreen = screens[activeTab];
 
   return (
-    <section id="tampilan" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
+    <section id="tampilan" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <Reveal className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="max-w-3xl mb-8 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <Smartphone className="w-3.5 h-3.5" />
             <span>Tampilan Aplikasi Mobile Android</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Antarmuka Ramah Petani dengan Kecerdasan Buatan AI
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Didesain intuitif dengan bahasa Indonesia sederhana, tipografi kontras tinggi untuk penggunaan di bawah sinar matahari sawah,
             dan kalkulator dosis presisi yang beroperasi tanpa sinyal internet.
           </p>
@@ -111,7 +111,7 @@ export function AppShowcase() {
 
           {/* Centered Phone Preview for Mobile */}
           <div className="flex flex-col items-center">
-            <div className="relative w-[260px] sm:w-[290px] mb-6">
+            <div className="relative w-[190px] sm:w-[260px] mb-6">
               <div className="absolute inset-0 bg-[#22C55E]/15 rounded-[40px] blur-2xl transform scale-95" />
               <div className="relative rounded-[40px] border-[8px] border-[#13261b] bg-black overflow-hidden shadow-2xl shadow-black/90 ring-1 ring-white/10">
                 <AnimatePresence mode="wait">

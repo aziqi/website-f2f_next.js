@@ -162,18 +162,18 @@ export function Parameters() {
   const activeParam = parameters.find((p) => p.code === selectedCode) || parameters[0];
 
   return (
-    <section id="fitur" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
+    <section id="fitur" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-[#081A10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <Reveal className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="max-w-3xl mb-8 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#22C55E] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse" />
             <span>Sensor Fusion 7-in-1 Heavy Duty</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Tujuh Parameter Kimia-Fisika Tanah dalam Sekali Tancap
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Menghilangkan ketergantungan pada uji tabung kimiawi yang memakan waktu.
             Satu probe stainless steel membaca keseimbangan unsur hara lengkap secara simultan di bawah 2 detik.
           </p>
@@ -214,8 +214,8 @@ export function Parameters() {
         </div>
 
         {/* Active Inspection Cockpit Panel */}
-        <Reveal delay={0.1} className="mb-10 bezel-shell">
-          <div className="bezel-core p-6 sm:p-8 bg-gradient-to-r from-[#0F2E1B] via-[#0D2918] to-[#0F2E1B]">
+        <Reveal delay={0.1} className="mb-8 sm:mb-10 bezel-shell">
+          <div className="bezel-core p-4 sm:p-8 bg-gradient-to-r from-[#0F2E1B] via-[#0D2918] to-[#0F2E1B]">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
               <div className="flex items-center gap-4">
                 <div
@@ -277,7 +277,7 @@ export function Parameters() {
               <button
                 key={param.code}
                 onClick={() => setSelectedCode(param.code)}
-                className={`text-left p-5 sm:p-6 rounded-3xl border transition-all duration-200 flex flex-col justify-between group ${
+                className={`text-left p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl border transition-all duration-200 flex flex-col justify-between group ${
                   isSelected
                     ? "bg-[#0F2E1B] border-[#22C55E] ring-2 ring-[#22C55E]/20 shadow-xl shadow-black/50 scale-[1.02]"
                     : "bg-[#0F2E1B]/50 border-white/5 hover:border-white/20 hover:bg-[#0F2E1B]/80"
@@ -298,7 +298,7 @@ export function Parameters() {
                     <span className="font-mono text-[11px] text-[#A3C2AF]">{param.unit}</span>
                   </div>
 
-                  <h4 className="font-display font-bold text-base sm:text-lg text-white mb-1.5 group-hover:text-[#22C55E] transition-colors">
+                  <h4 className="font-display font-bold text-sm sm:text-lg text-white mb-1.5 group-hover:text-[#22C55E] transition-colors">
                     {param.name}
                   </h4>
                   <div className="text-[11px] font-mono text-[#F58220] mb-2">

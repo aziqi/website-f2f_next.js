@@ -47,23 +47,23 @@ export function Faq() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-24 sm:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0A2216] to-[#081A10]">
+    <section id="faq" className="relative py-10 sm:py-20 lg:py-32 border-b border-[#A7C7B5]/10 bg-gradient-to-b from-[#081A10] via-[#0A2216] to-[#081A10]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] text-xs font-mono tracking-wide mb-4">
+        <Reveal className="text-center mb-8 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#38BDF8]/15 border border-[#38BDF8]/30 text-[#38BDF8] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Tanya Jawab Teknis &amp; Agronomi</span>
           </div>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+          <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
             Pertanyaan yang Sering Diajukan
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C2AF] leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-xs sm:text-lg text-[#A3C2AF] leading-relaxed">
             Jawaban lengkap seputar ketahanan rekayasa perangkat keras, transmisi nirkabel, dan akurasi model agronomi Flood2Food.
           </p>
         </Reveal>
 
         {/* Accordion List with Double-Bezel */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
@@ -71,10 +71,10 @@ export function Faq() {
                 <div className="bezel-core overflow-hidden">
                   <button
                     onClick={() => setOpenIdx(isOpen ? null : idx)}
-                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none focus:ring-1 focus:ring-[#22C55E]"
+                    className="w-full text-left p-3.5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none focus:ring-1 focus:ring-[#22C55E]"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-display font-semibold text-base sm:text-lg text-white">
+                    <span className="font-display font-semibold text-sm sm:text-lg text-white">
                       {faq.question}
                     </span>
                     <ChevronDown

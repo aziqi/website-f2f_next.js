@@ -18,7 +18,7 @@ export default function Home() {
       {/* GPU-Composited Fixed Background Layer (Zero paint overhead during scroll) */}
       <div className="bg-canvas-fixed" aria-hidden="true" />
       <Navbar />
-      <main id="main" className="relative z-10">
+      <main id="main" className="relative z-10 pb-20 sm:pb-0">
         <Hero />
         <SponsorsBar />
         <VideoDemo />

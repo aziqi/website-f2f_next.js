@@ -19,7 +19,7 @@ const sponsors = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#06140D] border-t border-[#A7C7B5]/15 pt-16 pb-12 text-[#A3C2AF] text-sm">
+    <footer className="relative bg-[#06140D] border-t border-[#A7C7B5]/15 pt-10 pb-28 sm:pt-14 sm:pb-12 lg:pt-16 text-[#A3C2AF] text-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#A7C7B5]/10">
           {/* Brand Info */}
