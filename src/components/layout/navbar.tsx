@@ -19,6 +19,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MusicToggleButton } from "@/components/audio/music-toggle-button";
 
 const navLinks = [
+  { id: "latar-belakang", href: "/#latar-belakang", label: "Latar Belakang" },
   { id: "video", href: "/#video", label: "Video Demo" },
   { id: "sistem", href: "/#sistem", label: "Sistem IoT" },
   { id: "fitur", href: "/#fitur", label: "7 Parameter" },
@@ -30,6 +31,7 @@ const navLinks = [
 ];
 
 const secondaryLinks = [
+  { id: "latar-belakang", href: "/#latar-belakang", label: "Latar Belakang & Masalah" },
   { id: "video", href: "/#video", label: "Video Demo" },
   { id: "dokumen", href: "/#dokumen", label: "Dokumen & Riset" },
   { id: "tim", href: "/#tim", label: "Tim Peneliti" },
