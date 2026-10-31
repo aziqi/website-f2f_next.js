@@ -26,7 +26,7 @@ export function ProblemBackground() {
         <Reveal className="max-w-4xl mb-10 sm:mb-16 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F58220]/15 border border-[#F58220]/30 text-[#F58220] text-xs font-mono tracking-wide mb-3 sm:mb-4">
             <AlertTriangle className="w-3.5 h-3.5" />
-            <span>Urgensi Ketahanan Pangan · Data BPS &amp; BNPB 2024</span>
+            <span>LATAR BELAKANG</span>
           </div>
 
           <h2 className="font-display font-bold text-xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
@@ -462,3 +462,4 @@ export function ProblemBackground() {
     </section>
   );
 }
+
