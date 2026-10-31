@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
 import { SponsorsBar } from "@/components/sections/sponsors-bar";
+import { ProblemBackground } from "@/components/sections/problem-background";
 import { VideoDemo } from "@/components/sections/video-demo";
 import { IotSystem } from "@/components/sections/iot-system";
 import { Parameters } from "@/components/sections/parameters";
@@ -21,6 +22,9 @@ export default function Home() {
       <main id="main" className="relative z-10 pb-20 sm:pb-0">
         <Hero />
         <SponsorsBar />
+        <div className="section-optimized">
+          <ProblemBackground />
+        </div>
         <VideoDemo />
         <div className="section-optimized">
           <IotSystem />
